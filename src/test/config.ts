@@ -130,7 +130,6 @@ describe('config', () => {
         },
         env: { GITHUB_TOKEN: token }
       }
-
       const config = resolveConfig(pluginConfig, context, undefined, step)
 
       expect(config).toEqual({
