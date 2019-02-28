@@ -289,6 +289,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/gh-pages@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/gh-pages/-/gh-pages-2.0.0.tgz#a38a9b76bc9a5ed1e3f207321df003b2e5164f63"
+  integrity sha512-nv697/tjlju4YlRZRc38rBTeABgnI+ZIFX1Kh9Q1QYBpq8QDSwMRnDMJMye2piRjrqJStTEYKQhjEWZ+0TG3lw==
+
 "@types/glob@*":
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.1.tgz#aa59a1c6e3fbc421e07ccd31a944c30eba521575"
