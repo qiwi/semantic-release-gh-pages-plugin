@@ -1,13 +1,14 @@
-import {Context} from 'semantic-release'
+import { Context } from 'semantic-release'
+
+export type TAnyMap = {
+  [key: string]: any
+}
 
 export type TContext = Context & {
-  env: {
-    [key: string]: any
-  },
-  options: {
-    publish: Array<any>,
-    verifyConditions: Array<any>,
-    [key: string]: any
+  env: TAnyMap,
+  options: TAnyMap & {
+    publish?: Array<any>,
+    verifyConditions?: Array<any>
   }
 }
 
