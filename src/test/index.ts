@@ -1,7 +1,10 @@
 import AggregateError from 'aggregate-error'
+import { TAnyMap } from '../main/interface'
 import {
   DEFAULT_SRC,
+  DEFAULT_DST,
   DEFAULT_MSG,
+  DEFAULT_BRANCH,
   PLUGIN_PATH
 } from '../main/defaults'
 
@@ -65,7 +68,7 @@ describe('index', () => {
         jest.resetModules()
       })
 
-      it('asserts repository.url', async  () => {
+      it('asserts repository.url', async () => {
         const AggregateError = require('aggregate-error')
         const { verifyConditions } = require('../main')
         const context = {
@@ -87,7 +90,16 @@ describe('index', () => {
     beforeAll(() => {
       jest.resetModules()
       jest.mock('gh-pages', () => ({
-        publish: jest.fn(() => {})
+        publish: jest.fn((src: string, opts: TAnyMap, cb: Function) => {
+          if (src === 'error') {
+            cb({
+              src,
+              opts
+            })
+          } else {
+            cb()
+          }
+        })
       }))
     })
 
@@ -116,16 +128,45 @@ describe('index', () => {
         },
         env: { GITHUB_TOKEN: token }
       }
-
-      const res = await publish(pluginConfig, context)
-
-      expect(ghpagesPublish).toHaveBeenCalledWith(DEFAULT_SRC, {
+      const expectedOpts = {
         repo: getRepo(context),
         branch: 'doc-branch',
         message: DEFAULT_MSG,
         dest: 'root'
+      }
+
+      const res = await publish(pluginConfig, context)
+
+      expect(ghpagesPublish).toHaveBeenCalledWith(DEFAULT_SRC, expectedOpts, expect.any(Function))
+      expect(res).toBe('OK')
+    })
+
+    it('throws rejection on fail', async () => {
+      const { publish } = require('../main')
+      const { getRepo } = require('../main/config')
+      const pluginConfig = {
+        foo: 'bar',
+        baz: 'qux'
+      }
+      const context = {
+        logger,
+        options: {
+          ...globalConfig,
+          [step]: [{ path, src: 'error' }]
+        },
+        env: { GITHUB_TOKEN: token }
+      }
+      const expectedOpts = {
+        repo: getRepo(context),
+        branch: DEFAULT_BRANCH,
+        message: DEFAULT_MSG,
+        dest: DEFAULT_DST
+      }
+
+      await expect(publish(pluginConfig, context)).rejects.toEqual({
+        src: 'error',
+        opts: expectedOpts
       })
-      expect(res).toBeUndefined()
     })
   })
 })

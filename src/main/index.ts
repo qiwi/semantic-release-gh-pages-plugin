@@ -18,7 +18,7 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
 export const publish = async (pluginConfig: any, context: TContext) => {
   const config = resolveConfig(pluginConfig, context, undefined, 'publish')
 
-  ghpagesPublish(config.src, {
+  return ghpagesPublish(config.src, {
     repo: config.repo,
     branch: config.branch,
     message: config.msg,
