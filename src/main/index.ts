@@ -3,6 +3,8 @@ import { TContext } from './interface'
 import { resolveConfig } from './config'
 import { publish as ghpagesPublish } from './ghpages'
 
+export * from 'defaults'
+
 export const verifyConditions = async (pluginConfig: any, context: TContext) => {
   const config = resolveConfig(pluginConfig, context, undefined, 'publish')
 
