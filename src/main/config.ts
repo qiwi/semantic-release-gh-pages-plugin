@@ -1,4 +1,4 @@
-import { castArray, get } from 'lodash'
+import { castArray, get, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import {
   TContext,
@@ -56,8 +56,9 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
 
 export const resolveOptions = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): TAnyMap => {
   const { options } = context
+  const base = omit(pluginConfig, 'branch')
   const extra = step && options[step] && castArray(options[step])
     .find(config => get(config, 'path') === path) || {}
 
-  return { ...pluginConfig, ...extra }
+  return { ...base, ...extra }
 }

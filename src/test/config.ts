@@ -85,12 +85,12 @@ describe('config', () => {
       const pluginConfig = {
         foo: 'bar',
         baz: 'qux',
-        msg: 'doc update'
+        msg: 'doc update',
+        branch: 'master' // NOTE must be omitted
       }
       const extra = {
         src: 'docsdocs',
-        dst: 'root',
-        branch: 'doc-branch'
+        dst: 'root'
       }
       const context = {
         logger,
@@ -108,7 +108,7 @@ describe('config', () => {
       expect(config).toEqual({
         src: 'docsdocs',
         dst: 'root',
-        branch: 'doc-branch',
+        branch: DEFAULT_BRANCH,
         msg: 'doc update',
         token,
         repo: `https://${token}@github.com/${repoName}.git`
