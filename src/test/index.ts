@@ -112,6 +112,7 @@ describe('index', () => {
       const { publish: ghpagesPublish } = require('gh-pages')
       const { publish } = require('../main')
       const { getRepo } = require('../main/config')
+      const { OK } = require('../main/ghpages')
       const pluginConfig = {
         foo: 'bar',
         baz: 'qux'
@@ -138,7 +139,7 @@ describe('index', () => {
       const res = await publish(pluginConfig, context)
 
       expect(ghpagesPublish).toHaveBeenCalledWith(DEFAULT_SRC, expectedOpts, expect.any(Function))
-      expect(res).toBe('OK')
+      expect(res).toBe(OK)
     })
 
     it('throws rejection on fail', async () => {
