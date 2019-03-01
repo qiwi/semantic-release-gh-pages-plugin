@@ -5,7 +5,8 @@ import {
   DEFAULT_MSG,
   DEFAULT_SRC,
   resolveOptions,
-  resolveConfig
+  resolveConfig,
+  extractRepoName
 } from '../main/config'
 
 describe('config', () => {
@@ -18,6 +19,7 @@ describe('config', () => {
     repositoryUrl: 'foobar',
     tagFormat: 'v{{version}}'
   }
+  const repoName = extractRepoName()
 
   it('exposes defaults', () => {
     ([DEFAULT_BRANCH,
@@ -108,7 +110,8 @@ describe('config', () => {
         dst: 'root',
         branch: 'doc-branch',
         msg: 'doc update',
-        token
+        token,
+        repo: `https://${token}@github.com/${repoName}.git`
       })
     })
 
@@ -137,7 +140,8 @@ describe('config', () => {
         dst: DEFAULT_DST,
         msg: DEFAULT_MSG,
         src: DEFAULT_SRC,
-        token
+        token,
+        repo: `https://${token}@github.com/${repoName}.git`
       })
     })
   })
