@@ -1,0 +1,5 @@
+export const PLUGIN_PATH = '@qiwi/semantic-release-gh-pages-plugin'
+export const DEFAULT_BRANCH = 'gh-pages'
+export const DEFAULT_SRC = 'docs'
+export const DEFAULT_DST = '.'
+export const DEFAULT_MSG = 'update docs v$npm_package_version'

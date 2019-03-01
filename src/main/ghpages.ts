@@ -1,1 +1,1 @@
-export {publish} from 'gh-pages'
+ export { publish } from 'gh-pages'

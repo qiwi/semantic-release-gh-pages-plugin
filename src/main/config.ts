@@ -1,25 +1,46 @@
-import { TContext, IGhpagesPluginConfig, TAnyMap } from './interface'
 import { castArray, get } from 'lodash'
-import {sync as readPkg} from 'read-pkg';
+import readPkg from 'read-pkg'
+import {
+  TContext,
+  IGhpagesPluginConfig,
+  TAnyMap
+} from './interface'
+import { DEFAULT_BRANCH,
+  DEFAULT_SRC,
+  DEFAULT_MSG,
+  DEFAULT_DST,
+  PLUGIN_PATH
+} from './defaults'
 
-export const PLUGIN_PATH = '@qiwi/semantic-release-gh-pages-plugin'
-export const DEFAULT_BRANCH = 'gh-pages'
-export const DEFAULT_SRC = 'docs'
-export const DEFAULT_DST = '.'
-export const DEFAULT_MSG = 'update docs v$npm_package_version'
+export const REPO_PATTERN = /.*github.com\/([a-z-_]+\/[a-z-_]+)\.git$/i
+
+export const extractRepoName = (): string => {
+  const pkg = readPkg.sync()
+  const repoUrl = get(pkg, 'repository.url') || get(pkg, 'repository', '')
+  return (REPO_PATTERN.exec(repoUrl) || [])[1]
+}
+
+export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
+
+export const getRepo = ({ env }: TContext): string => {
+  const repoName = extractRepoName()
+  const token = getToken(env)
+
+  return repoName && `https://${token}@github.com/${repoName}.git`
+}
 
 export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): IGhpagesPluginConfig => {
   const { env } = context
   const opts = resolveOptions(pluginConfig, context, path, step)
-  const { repository: {url} } = readPkg()
-  const repo = 'dd'
+  const token = getToken(env)
+  const repo = getRepo(context)
 
   return {
     src: opts.src || DEFAULT_SRC,
     dst: opts.dst || DEFAULT_DST,
     msg: opts.msg || DEFAULT_MSG,
     branch: opts.branch || DEFAULT_BRANCH,
-    token: env.GH_TOKEN || env.GITHUB_TOKEN,
+    token,
     repo
   }
 }
@@ -30,4 +51,12 @@ export const resolveOptions = (pluginConfig: TAnyMap, context: TContext, path = 
     .find(config => get(config, 'path') === path) || {}
 
   return { ...pluginConfig, ...extra }
+}
+
+export {
+  DEFAULT_BRANCH,
+  DEFAULT_SRC,
+  DEFAULT_MSG,
+  DEFAULT_DST,
+  PLUGIN_PATH
 }

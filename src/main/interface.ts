@@ -13,10 +13,10 @@ export type TContext = Context & {
 }
 
 export interface IGhpagesPluginConfig {
-  src?: string,
-  dst?: string,
-  branch?: string,
-  msg?: string,
+  src: string,
+  dst: string,
+  branch: string,
+  msg: string,
   token?: string,
   repo?: string
 }

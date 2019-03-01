@@ -1,7 +1,7 @@
 import AggregateError from 'aggregate-error'
-import { sync as readPkg } from 'read-pkg'
 import { TContext } from './interface'
 import { resolveConfig } from './config'
+import { publish as ghpagesPublish } from './ghpages'
 
 export const verifyConditions = async (pluginConfig: any, context: TContext) => {
   const config = resolveConfig(pluginConfig, context, undefined, 'publish')
@@ -9,13 +9,21 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
   if (!config.token) {
     throw new AggregateError(['env.GH_TOKEN is required by gh-pages plugin'])
   }
+
+  if (!config.repo) {
+    throw new AggregateError(['package.json repository.url does not match github.com pattern'])
+  }
 }
 
 export const publish = async (pluginConfig: any, context: TContext) => {
   const config = resolveConfig(pluginConfig, context, undefined, 'publish')
-  const { repository } = readPkg()
 
-  console.log('args=', config, repository)
+  ghpagesPublish(config.src, {
+    repo: config.repo,
+    branch: config.branch,
+    message: config.msg,
+    dest: config.dst
+  })
 }
 
 export default {
