@@ -24,6 +24,12 @@
     "coveralls_push": "cat ./coverage/lcov.info | coveralls",
     "docs": "typedoc src/main --ignoreCompilerErrors || exit 0"
   },
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "lib",
+    "typings"
+  ],
   "dependencies": {
     "aggregate-error": "^2.1.0",
     "lodash": "^4.17.11",
