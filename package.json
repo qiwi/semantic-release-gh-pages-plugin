@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "gh-pages publishing plugin for semantic-release",
   "main": "lib/es5/index.js",
-  "repository": "git@github.com:antongolub/semantic-release-gh-pages-plugin.git",
+  "repository": "git@github.com:qiwi/semantic-release-gh-pages-plugin.git",
   "author": "Anton Golub <mailbox@antongolub.ru>",
   "license": "MIT",
   "private": false,
