@@ -1,0 +1,32 @@
+language: node_js
+node_js:
+  - '10'
+
+before_install:
+  - npm install -g yarn
+  - npm install -g greenkeeper-lockfile
+
+before_script:
+  - greenkeeper-lockfile-update
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+after_script:
+  - greenkeeper-lockfile-upload
+  - ./cc-test-reporter format-coverage -t lcov ./coverage/lcov.info
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+
+install:
+  - yarn cache clean
+  - yarn
+
+script:
+  - yarn run build
+  - yarn test_with_report
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+    - npx semantic-release
