@@ -12,6 +12,14 @@ import { DEFAULT_BRANCH,
   PLUGIN_PATH
 } from './defaults'
 
+export {
+  DEFAULT_BRANCH,
+  DEFAULT_SRC,
+  DEFAULT_MSG,
+  DEFAULT_DST,
+  PLUGIN_PATH
+}
+
 export const REPO_PATTERN = /.*github.com\/([a-z-_]+\/[a-z-_]+)\.git$/i
 
 export const extractRepoName = (): string => {
@@ -22,7 +30,8 @@ export const extractRepoName = (): string => {
 
 export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
 
-export const getRepo = ({ env }: TContext): string => {
+export const getRepo = (context: TContext): string => {
+  const { env } = context
   const repoName = extractRepoName()
   const token = getToken(env)
 
@@ -51,12 +60,4 @@ export const resolveOptions = (pluginConfig: TAnyMap, context: TContext, path = 
     .find(config => get(config, 'path') === path) || {}
 
   return { ...pluginConfig, ...extra }
-}
-
-export {
-  DEFAULT_BRANCH,
-  DEFAULT_SRC,
-  DEFAULT_MSG,
-  DEFAULT_DST,
-  PLUGIN_PATH
 }
