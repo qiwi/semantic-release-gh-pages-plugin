@@ -1750,10 +1750,10 @@ eslint-plugin-typescript@^0.14.0:
   dependencies:
     requireindex "~1.1.0"
 
-esm@^3.2.7:
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.7.tgz#5fcb7649cce55323bce9ac02496e89339df86f9f"
-  integrity sha512-zsyD5gO8CY9dpK3IrdC4WHtvtHGXEFOpYA4zB+6p+Kygf3vv/6kF3YMEQLOArwKPPNvKt8gjI8UYhQW8bXM/YQ==
+esm@^3.2.9:
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.9.tgz#9dca653e3b39f89c3c65c5e84cebfa4af345c10d"
+  integrity sha512-mATFs9dpCjnEyNv27z29UNDmJmBBX8zMdcFip7aIOrBRTpLs8SA+6Ek1QtsWfvecAJVeZy+X5D3Z6xZVtUvYdg==
 
 esprima@^3.1.3:
   version "3.1.3"
@@ -2012,17 +2012,17 @@ find-versions@^3.0.0:
     array-uniq "^2.0.0"
     semver-regex "^2.0.0"
 
-flowgen@1.5.8:
-  version "1.5.8"
-  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.5.8.tgz#edc3c1f301c2e0f12692e91b1441ca50d3bea3b9"
-  integrity sha512-ZkdwwU1wp39LCRmV0pWHrS81SQXwuBhYJUN7JoaKrrlTFzZNDvQGkLVkUnqmJXbCbnTwi3ZTdxjuBUpmZOdSIQ==
+flowgen@1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.6.0.tgz#524338acd87db375c072e90d5347bef47375a539"
+  integrity sha512-rN4CkNbJPVOdxHlLCSaIPPB9CaUQYx4ysD+UgBQCApVFCI0PfGqtuXC7XCJrCdoJv3ftA7NceqkgKR/2/O1zGw==
   dependencies:
     commander "^2.11.0"
     lodash "^4.17.4"
     paralleljs "^0.2.1"
-    prettier "^1.12.1"
-    shelljs "^0.8.2"
-    typescript "^3.3.1"
+    prettier "^1.16.4"
+    shelljs "^0.8.3"
+    typescript "^3.3.3"
     typescript-compiler "^1.4.1-2"
 
 flush-write-stream@^1.0.0:
@@ -4887,7 +4887,7 @@ prepend-http@^1.0.0, prepend-http@^1.0.1:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-prettier@^1.12.1:
+prettier@^1.16.4:
   version "1.16.4"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.16.4.tgz#73e37e73e018ad2db9c76742e2647e21790c9717"
   integrity sha512-ZzWuos7TI5CKUeQAtFd6Zhm2s6EpAD/ZLApIhsF9pRvRtM1RFo61dM/4MSRUA0SuLugA/zgrZD8m0BaY46Og7g==
@@ -5513,7 +5513,7 @@ shebang-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
   integrity sha1-2kL0l0DAtC2yypcoVxyxkMmO/qM=
 
-shelljs@^0.8.2:
+shelljs@^0.8.2, shelljs@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/shelljs/-/shelljs-0.8.3.tgz#a7f3319520ebf09ee81275b2368adb286659b097"
   integrity sha512-fc0BKlAWiLpwZljmOvAOTE/gXawtCoNrP5oaY7KIaQbbyHeQVg01pSEuEGvGh3HEdBU4baCD7wQBwADmM/7f7A==
@@ -6276,7 +6276,7 @@ typescript@3.2.x:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.2.4.tgz#c585cb952912263d915b462726ce244ba510ef3d"
   integrity sha512-0RNDbSdEokBeEAkgNbxJ+BLwSManFy9TeXz8uW+48j/xhEXv1ePME60olyzw2XzUqUBNAYFeJadIqAgNqIACwg==
 
-typescript@^3.3.1, typescript@^3.3.3:
+typescript@^3.3.3:
   version "3.3.3333"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.3.3333.tgz#171b2c5af66c59e9431199117a3bcadc66fdcfd6"
   integrity sha512-JjSKsAfuHBE/fB2oZ8NxtRTk5iGcg6hkYXMnZ3Wc+b2RSqejEqTaem11mHASMnFilHrax3sLK0GDzcJrekZYLw==
