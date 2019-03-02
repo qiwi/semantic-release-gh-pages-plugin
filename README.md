@@ -1,4 +1,7 @@
 # @qiwi/semantic-release-gh-pages-plugin
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/qiwi/semantic-release-gh-pages-plugin.svg)](https://greenkeeper.io/)
+
 gh-pages publishing plugin for [semantic-release](https://github.com/semantic-release/semantic-release)
 
 | Step               | Description |
