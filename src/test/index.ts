@@ -9,9 +9,11 @@ import {
 } from '../main/defaults'
 
 describe('index', () => {
+  const log = jest.fn((...vars: any[]) => { console.log(vars) })
+  const error = jest.fn((...vars: any[]) => { console.log(vars) })
   const logger = {
-    log (msg: string, ...vars: any[]) { console.log(vars || msg) },
-    error (msg: string, ...vars: any[]) { console.log(vars || msg) }
+    log,
+    error
   }
   const globalConfig = {
     branch: 'master',
@@ -22,6 +24,11 @@ describe('index', () => {
   const path = PLUGIN_PATH
   const token = 'token'
   const pluginConfig = {}
+
+  afterEach(() => {
+    log.mockClear()
+    error.mockClear()
+  })
 
   describe('verifyConditions', () => {
     it('returns void if everything is ok', async () => {
@@ -138,6 +145,9 @@ describe('index', () => {
 
       const res = await publish(pluginConfig, context)
 
+      expect(log).toHaveBeenCalledWith('Publishing docs via gh-pages')
+      expect(log).toHaveBeenCalledWith('Docs published successfully, branch=doc-branch, src=docs, dst=root')
+
       expect(ghpagesPublish).toHaveBeenCalledWith(DEFAULT_SRC, expectedOpts, expect.any(Function))
       expect(res).toBe(OK)
     })
@@ -163,11 +173,18 @@ describe('index', () => {
         message: DEFAULT_MSG,
         dest: DEFAULT_DST
       }
-
-      await expect(publish(pluginConfig, context)).rejects.toEqual({
+      const expected = {
         src: 'error',
         opts: expectedOpts
-      })
+      }
+
+      try {
+        await publish(pluginConfig, context)
+
+      } catch (e) {
+        expect(error).toHaveBeenCalledWith('Publish docs failure', expected)
+        expect(e).toEqual(expected)
+      }
     })
   })
 })

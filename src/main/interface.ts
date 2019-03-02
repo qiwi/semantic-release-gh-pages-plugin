@@ -20,3 +20,8 @@ export interface IGhpagesPluginConfig {
   token?: string,
   repo?: string
 }
+
+export interface ILogger {
+  log: (message: string, ...vars: any[]) => void,
+  error: (message: string, ...vars: any[]) => void,
+}
