@@ -5,8 +5,9 @@
   "keywords": [
     "gh-pages",
     "ghpages",
+    "github pages",
     "semantic-release",
-    "semantic-release docs plugin"
+    "semantic release"
   ],
   "main": "lib/es5/index.js",
   "repository": {
