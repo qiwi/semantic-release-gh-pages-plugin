@@ -35,7 +35,7 @@ yarn add @qiwi/semantic-release-ghpages-plugin --dev
       {
         "branch": "gh-pages",
         "src": "docs",
-        "msg": "update docs v$npm_package_version"
+        "msg": "updated v{{=it.nextRelease.gitTag}}"
       }
     ]
   ]

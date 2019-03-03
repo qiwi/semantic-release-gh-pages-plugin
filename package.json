@@ -21,7 +21,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "jest": "jest --config=jest.config.json",
+    "jest": "jest -w 2 --config=jest.config.json",
     "lint": "tslint src/**/*.ts --fix",
     "test": "yarn lint && yarn jest",
     "clean": "rm -rf lib typings",
