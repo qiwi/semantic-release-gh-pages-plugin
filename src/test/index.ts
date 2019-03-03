@@ -126,10 +126,12 @@ describe('index', () => {
       }
       const extra = {
         dst: 'root',
-        branch: 'doc-branch'
+        branch: 'doc-branch',
+        msg: 'docs updated v{{=it.nextRelease.gitTag}}'
       }
       const context = {
         logger,
+        // nextRelease: {},
         options: {
           ...globalConfig,
           [step]: [{ path, ...extra }]
@@ -139,7 +141,7 @@ describe('index', () => {
       const expectedOpts = {
         repo: getRepo(context),
         branch: 'doc-branch',
-        message: DEFAULT_MSG,
+        message: 'docs updated v{{=it.nextRelease.gitTag}}',
         dest: 'root'
       }
 

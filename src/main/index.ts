@@ -2,6 +2,7 @@ import AggregateError from 'aggregate-error'
 import { TContext } from './interface'
 import { resolveConfig } from './config'
 import { publish as ghpagesPublish } from './ghpages'
+import { render } from './tpl'
 
 export * from 'defaults'
 
@@ -23,14 +24,15 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
 export const publish = async (pluginConfig: any, context: TContext) => {
   const config = resolveConfig(pluginConfig, context, undefined, 'publish')
   const { logger } = context
+  const message = render(config.msg, context, logger)
 
   logger.log('Publishing docs via gh-pages')
 
   return ghpagesPublish(config.src, {
     repo: config.repo,
     branch: config.branch,
-    message: config.msg,
-    dest: config.dst
+    dest: config.dst,
+    message
   }, logger)
 }
 
