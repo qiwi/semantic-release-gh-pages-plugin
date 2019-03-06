@@ -20,7 +20,7 @@ export {
   PLUGIN_PATH
 }
 
-export const REPO_PATTERN = /.*github.com\/([a-z-_]+\/[a-z-_]+)\.git$/i
+export const REPO_PATTERN = /.*github\.com\/([a-z-_]+\/[a-z-_.]+)\.git$/i
 
 export const extractRepoName = (): string => {
   const pkg = readPkg.sync()
