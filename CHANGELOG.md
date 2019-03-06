@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.4.0...v1.4.1) (2019-03-06)
+
+
+### Bug Fixes
+
+* **config:** update github repository pattern ([#10](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/10)) ([e70a058](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/e70a058))
+
 # [1.4.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.3.0...v1.4.0) (2019-03-03)
 
 
