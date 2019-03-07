@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.4.1...v1.5.0) (2019-03-07)
+
+
+### Features
+
+* force re-validation if config was changed between steps ([c86650f](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/c86650f)), closes [#3](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/3)
+
 ## [1.4.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.4.0...v1.4.1) (2019-03-06)
 
 
