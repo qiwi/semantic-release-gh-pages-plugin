@@ -23,21 +23,27 @@ yarn add @qiwi/semantic-release-ghpages-plugin --dev
 
 ### Usage
 
+Describe plugin configuration in [package.json / .releaserc.js](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration)
 ```json
 {
-  "plugins": [
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
-    "@semantic-release/git",
-    [
-      "@qiwi/semantic-release-ghpages-plugin", 
+  "release": {
+    "branch": "master",
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@qiwi/semantic-release-gh-pages-plugin"
+    ],
+    "publish": [
+      "@semantic-release/npm",
+      "@semantic-release/github",
       {
-        "branch": "gh-pages",
-        "src": "docs",
-        "msg": "updated v{{=it.nextRelease.gitTag}}"
+        "path": "@qiwi/semantic-release-gh-pages-plugin",
+        "msg": "updated",
+        "branch": "docs"
       }
     ]
-  ]
+  }
 }
 ```
 
