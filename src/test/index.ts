@@ -154,7 +154,26 @@ describe('index', () => {
       expect(res).toBe(OK)
     })
 
-    it('throws rejection on fail', async () => {
+    it('skips verification step if config has not been changed', async () => {
+      const { publish, verifyConditions } = require('../main')
+      const pluginConfig = {}
+      const context = {
+        logger,
+        options: {
+          ...globalConfig,
+          [step]: [{ path }]
+        },
+        env: { GITHUB_TOKEN: token }
+      }
+
+      await verifyConditions(pluginConfig, context)
+      await publish(pluginConfig, context)
+
+      expect(log).toHaveBeenCalledWith('Publishing docs via gh-pages')
+      expect(log).toHaveBeenCalledWith('Docs published successfully, branch=gh-pages, src=docs, dst=.')
+    })
+
+    it('throws rejection on gh-pages fail', async () => {
       const { publish } = require('../main')
       const { getRepo } = require('../main/config')
       const pluginConfig = {
@@ -167,7 +186,7 @@ describe('index', () => {
           ...globalConfig,
           [step]: [{ path, src: 'error' }]
         },
-        env: { GITHUB_TOKEN: token }
+        env: { GITHUB_TOKEN: token + 'foo' }
       }
       const expectedOpts = {
         repo: getRepo(context),
@@ -184,6 +203,7 @@ describe('index', () => {
         await publish(pluginConfig, context)
 
       } catch (e) {
+        expect(log).toHaveBeenCalledWith('verify gh-pages config')
         expect(error).toHaveBeenCalledWith('Publish docs failure', expected)
         expect(e).toEqual(expected)
       }
