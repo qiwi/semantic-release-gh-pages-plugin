@@ -6,7 +6,8 @@ import {
   DEFAULT_SRC,
   resolveOptions,
   resolveConfig,
-  extractRepoName
+  extractRepoName,
+  getRepoName
 } from '../main/config'
 
 describe('config', () => {
@@ -19,7 +20,7 @@ describe('config', () => {
     repositoryUrl: 'foobar',
     tagFormat: 'v{{version}}'
   }
-  const repoName = extractRepoName()
+  const repoName = getRepoName()
 
   it('exposes defaults', () => {
     ([DEFAULT_BRANCH,
@@ -144,5 +145,17 @@ describe('config', () => {
         repo: `https://${token}@github.com/${repoName}.git`
       })
     })
+  })
+
+  it('#extractRepoName returns proper values', () => {
+    const cases = [
+      ['https://github.com/qiwi/semantic-release-gh-pages-plugin.git', 'qiwi/semantic-release-gh-pages-plugin'],
+      ['https://github.com/qiwi/FormattableTextView.git', 'qiwi/FormattableTextView'],
+      ['https://github.com/tesT123/R.e-po.git', 'tesT123/R.e-po'],
+      ['https://github.com/tesT123%%/foo.git', undefined],
+      ['https://github.com/foo/bar/baz.git', undefined]
+    ]
+
+    cases.forEach(([input = '', result]) => expect(extractRepoName(input)).toBe(result))
   })
 })

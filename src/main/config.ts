@@ -20,19 +20,24 @@ export {
   PLUGIN_PATH
 }
 
-export const REPO_PATTERN = /.*github\.com\/([a-z-_]+\/[a-z-_.]+)\.git$/i
+export const GITHIB_REPO_PATTERN = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+)\.git$/
 
-export const extractRepoName = (): string => {
+export const extractRepoName = (repoUrl: string): string => {
+  return (GITHIB_REPO_PATTERN.exec(repoUrl) || [])[1]
+}
+
+export const getRepoName = (): string => {
   const pkg = readPkg.sync()
   const repoUrl = get(pkg, 'repository.url') || get(pkg, 'repository', '')
-  return (REPO_PATTERN.exec(repoUrl) || [])[1]
+
+  return extractRepoName(repoUrl)
 }
 
 export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
 
 export const getRepo = (context: TContext): string => {
   const { env } = context
-  const repoName = extractRepoName()
+  const repoName = getRepoName()
   const token = getToken(env)
 
   return repoName && `https://${token}@github.com/${repoName}.git`
