@@ -1,3 +1,11 @@
+## [1.5.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.5.0...v1.5.1) (2019-03-09)
+
+
+### Bug Fixes
+
+* correct github repo pattern ([4434117](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/4434117)), closes [#9](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/9)
+* remove 'v' from DEFAULT_MSG template ([154d2c9](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/154d2c9)), closes [#12](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/12)
+
 # [1.5.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.4.1...v1.5.0) (2019-03-07)
 
 
