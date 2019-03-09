@@ -23,6 +23,8 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
     throw new AggregateError(['package.json repository.url does not match github.com pattern'])
   }
 
+  Object.assign(pluginConfig, config)
+
   _config = config
 }
 

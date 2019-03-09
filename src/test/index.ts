@@ -31,8 +31,9 @@ describe('index', () => {
   })
 
   describe('verifyConditions', () => {
-    it('returns void if everything is ok', async () => {
+    it('populates plugin context with resolved config data and returns void', async () => {
       const { verifyConditions } = require('../main')
+      const { getRepo } = require('../main/config')
       const context = {
         logger,
         options: {
@@ -41,8 +42,17 @@ describe('index', () => {
         },
         env: { GITHUB_TOKEN: token }
       }
+      const result = await verifyConditions(pluginConfig, context)
 
-      await expect(verifyConditions(pluginConfig, context)).resolves.toBeUndefined()
+      expect(pluginConfig).toEqual({
+        branch: DEFAULT_BRANCH,
+        msg: DEFAULT_MSG,
+        dst: DEFAULT_DST,
+        src: DEFAULT_SRC,
+        repo: getRepo(context),
+        token
+      })
+      expect(result).toBeUndefined()
     })
 
     it('asserts GH_TOKEN', async () => {
