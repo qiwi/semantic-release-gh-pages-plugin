@@ -2219,10 +2219,10 @@ find-versions@^3.0.0:
     array-uniq "^2.0.0"
     semver-regex "^2.0.0"
 
-flowgen@1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.6.0.tgz#524338acd87db375c072e90d5347bef47375a539"
-  integrity sha512-rN4CkNbJPVOdxHlLCSaIPPB9CaUQYx4ysD+UgBQCApVFCI0PfGqtuXC7XCJrCdoJv3ftA7NceqkgKR/2/O1zGw==
+flowgen@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.7.0.tgz#5fd0cf5813e4a474968e0f5a927b2104535a792b"
+  integrity sha512-iLy/M5BuEflS7TFSrs0mjRQRkdD7iPVy8WnvpX6ugY9v39oRxT08fpk3Mp84hrIplAnk//T12DR4gAP3qb+CxA==
   dependencies:
     commander "^2.11.0"
     lodash "^4.17.4"
