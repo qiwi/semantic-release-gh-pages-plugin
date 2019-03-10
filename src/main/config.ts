@@ -26,18 +26,27 @@ export const extractRepoName = (repoUrl: string): string => {
   return (GITHIB_REPO_PATTERN.exec(repoUrl) || [])[1]
 }
 
-export const getRepoName = (): string => {
-  const pkg = readPkg.sync()
-  const repoUrl = get(pkg, 'repository.url') || get(pkg, 'repository', '')
+export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {
+  const { env } = context
+  const urlFronEnv = env.REPO_URL
+  const urlFromStepOpts = pluginConfig.repositoryUrl
+  const urlFromOpts = get(context, 'options.repositoryUrl')
+  const urlFromPackage = getUrlFromPackage()
 
-  return extractRepoName(repoUrl)
+  return urlFronEnv || urlFromStepOpts || urlFromOpts || urlFromPackage
+}
+
+export const getUrlFromPackage = () => {
+  const pkg = readPkg.sync()
+  return get(pkg, 'repository.url') || get(pkg, 'repository', '')
 }
 
 export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
 
-export const getRepo = (context: TContext): string => {
+export const getRepo = (pluginConfig: TAnyMap, context: TContext): string => {
   const { env } = context
-  const repoName = getRepoName()
+  const repoUrl = getRepoUrl(pluginConfig, context)
+  const repoName = extractRepoName(repoUrl)
   const token = getToken(env)
 
   return repoName && `https://${token}@github.com/${repoName}.git`
@@ -47,7 +56,7 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   const { env } = context
   const opts = resolveOptions(pluginConfig, context, path, step)
   const token = getToken(env)
-  const repo = getRepo(context)
+  const repo = getRepo(pluginConfig, context)
 
   return {
     src: opts.src || DEFAULT_SRC,

@@ -7,20 +7,24 @@ import {
   resolveOptions,
   resolveConfig,
   extractRepoName,
-  getRepoName
+  getUrlFromPackage,
+  getRepoUrl
 } from '../main/config'
 
+import { TAnyMap, TContext } from '../main/interface'
+
 describe('config', () => {
+  const repositoryUrl = getUrlFromPackage()
   const logger = {
     log (msg: string, ...vars: any[]) { console.log(vars || msg) },
     error (msg: string, ...vars: any[]) { console.log(vars || msg) }
   }
   const globalConfig = {
     branch: 'master',
-    repositoryUrl: 'foobar',
-    tagFormat: 'v{{version}}'
+    tagFormat: 'v{{version}}',
+    repositoryUrl
   }
-  const repoName = getRepoName()
+  const repoName = extractRepoName(repositoryUrl)
 
   it('exposes defaults', () => {
     ([DEFAULT_BRANCH,
@@ -157,5 +161,69 @@ describe('config', () => {
     ]
 
     cases.forEach(([input = '', result]) => expect(extractRepoName(input)).toBe(result))
+  })
+
+  describe('#getRepoUrl', () => {
+    it('returns proper value', () => {
+      const cases: Array<{pluginConfig: TAnyMap, context: TContext, result: string}> =
+        [
+          {
+            pluginConfig: {},
+            context: {
+              logger,
+              options: {
+                ...globalConfig
+              },
+              env: { REPO_URL: 'foo' }
+            },
+            result: 'foo'
+          },
+          {
+            pluginConfig: {},
+            context: {
+              logger,
+              options: {
+                ...globalConfig,
+                repositoryUrl: 'bar'
+              },
+              env: {}
+            },
+            result: 'bar'
+          },
+          {
+            pluginConfig: {
+              repositoryUrl: 'baz'
+            },
+            context: {
+              logger,
+              options: {
+                ...globalConfig
+              },
+              env: {}
+            },
+            result: 'baz'
+          },
+          {
+            pluginConfig: {},
+            context: {
+              logger,
+              options: {
+                ...globalConfig
+              },
+              env: {}
+            },
+            result: repositoryUrl
+          }
+        ]
+
+      cases.forEach(({
+        pluginConfig,
+        context,
+        result
+      }) => {
+
+        expect(getRepoUrl(pluginConfig, context)).toBe(result)
+      })
+    })
   })
 })

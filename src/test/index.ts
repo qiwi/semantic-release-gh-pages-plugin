@@ -7,18 +7,20 @@ import {
   DEFAULT_BRANCH,
   PLUGIN_PATH
 } from '../main/defaults'
+import { getUrlFromPackage } from '../main/config'
 
 describe('index', () => {
   const log = jest.fn((...vars: any[]) => { console.log(vars) })
   const error = jest.fn((...vars: any[]) => { console.log(vars) })
+  const repositoryUrl = getUrlFromPackage()
   const logger = {
     log,
     error
   }
   const globalConfig = {
     branch: 'master',
-    repositoryUrl: 'foobar',
-    tagFormat: 'v{{version}}'
+    tagFormat: 'v{{version}}',
+    repositoryUrl
   }
   const step = 'publish'
   const path = PLUGIN_PATH
@@ -49,7 +51,7 @@ describe('index', () => {
         msg: DEFAULT_MSG,
         dst: DEFAULT_DST,
         src: DEFAULT_SRC,
-        repo: getRepo(context),
+        repo: getRepo(pluginConfig, context),
         token
       })
       expect(result).toBeUndefined()
@@ -92,7 +94,8 @@ describe('index', () => {
           logger,
           options: {
             ...globalConfig,
-            [step]: [{ path }]
+            [step]: [{ path }],
+            repositoryUrl: null
           },
           env: { GITHUB_TOKEN: token }
         }
@@ -149,7 +152,7 @@ describe('index', () => {
         env: { GITHUB_TOKEN: token }
       }
       const expectedOpts = {
-        repo: getRepo(context),
+        repo: getRepo(pluginConfig, context),
         branch: 'doc-branch',
         message: 'docs updated v{{=it.nextRelease.gitTag}}',
         dest: 'root'
@@ -199,7 +202,7 @@ describe('index', () => {
         env: { GITHUB_TOKEN: token + 'foo' }
       }
       const expectedOpts = {
-        repo: getRepo(context),
+        repo: getRepo(pluginConfig, context),
         branch: DEFAULT_BRANCH,
         message: DEFAULT_MSG,
         dest: DEFAULT_DST
