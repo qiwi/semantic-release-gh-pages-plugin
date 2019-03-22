@@ -548,10 +548,10 @@
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
 
-"@types/read-pkg@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/read-pkg/-/read-pkg-3.0.0.tgz#17ab6f0b396a58a5567ee387f558f2caedc8ae53"
-  integrity sha512-oU5aK3cmIcJ4+r+MaXMJ53RHdri8c2XbwI2Tjn1hpxCh48XIqHdJT6opwVd1ZF2FcucXQMv6sh/TtOm00DMZIQ==
+"@types/read-pkg@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/read-pkg/-/read-pkg-4.0.0.tgz#773457698f405b53a73471538e76e433e04cb786"
+  integrity sha512-mnQ7ukQhFGkbErwioo+ahHhkdIhw/llqW97ijWi6l3JYKXAokElLZxlEOtlYYmPKLUJxRKhplOa514n2TyVxjg==
   dependencies:
     "@types/normalize-package-data" "*"
 
