@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.6.0...v1.6.1) (2019-03-26)
+
+
+### Bug Fixes
+
+* export default module typo ([a85bcc0](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/a85bcc0)), closes [#19](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/19)
+
 # [1.6.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.5.1...v1.6.0) (2019-03-10)
 
 
