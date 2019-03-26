@@ -5,7 +5,7 @@ import { publish as ghpagesPublish } from './ghpages'
 import { render } from './tpl'
 import { isEqual } from 'lodash'
 
-export * from 'defaults'
+export * from './defaults'
 
 let _config: any
 
