@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.6.1...v1.6.2) (2019-04-01)
+
+
+### Bug Fixes
+
+* **package:** tslib is required dep ([7283bfa](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/7283bfa)), closes [#22](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/22)
+
 ## [1.6.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.6.0...v1.6.1) (2019-03-26)
 
 
