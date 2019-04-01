@@ -44,7 +44,7 @@
     "typings"
   ],
   "dependencies": {
-    "aggregate-error": "^2.2.0",
+    "aggregate-error": "^3.0.0",
     "dot": "^1.1.2",
     "gh-pages": "^2.0.1",
     "lodash": "^4.17.11",
