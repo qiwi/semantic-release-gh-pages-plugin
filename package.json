@@ -22,12 +22,12 @@
   "private": false,
   "scripts": {
     "jest": "jest -w 2 --config=jest.config.json",
-    "lint": "tslint src/**/*.ts --fix",
+    "lint": "tslint -p tsconfig.json src/**/*.ts --fix",
     "test": "yarn lint && yarn jest",
     "clean": "rm -rf lib typings",
     "build": "yarn clean && yarn build_es5 && yarn build_es6 && yarn build_ts && yarn libdef",
-    "build_es5": "mkdir -p lib/es5 && tsc -p tsconfig.json --target ES5 --outDir lib/es5",
-    "build_es6": "mkdir -p lib/es6 && tsc -p tsconfig.json --target ES6 --outDir lib/es6",
+    "build_es5": "mkdir -p lib/es5 && tsc -p tsconfig.build.json --target ES5 --outDir lib/es5",
+    "build_es6": "mkdir -p lib/es6 && tsc -p tsconfig.build.json --target ES6 --outDir lib/es6",
     "build_ts": "cp -r src/main/ lib/ts/",
     "dtsgen": "dts-generator --project ./ --out typings/index.d.ts --prefix @qiwi/semantic-release-gh-pages-plugin/lib/es5 --name @qiwi/semantic-release-gh-pages-plugin --main @qiwi/semantic-release-gh-pages-plugin/lib/es5/index --moduleResolution node",
     "flowgen": "flowgen typings/index.d.ts --output-file typings/index.flow.js",
@@ -44,12 +44,12 @@
     "typings"
   ],
   "dependencies": {
-    "tslib": "^1.9.3",
     "aggregate-error": "^3.0.0",
     "dot": "^1.1.2",
     "gh-pages": "^2.0.1",
     "lodash": "^4.17.11",
-    "read-pkg": "^5.0.0"
+    "read-pkg": "^5.0.0",
+    "tslib": "^1.9.3"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.2",
@@ -71,9 +71,9 @@
     "replace-in-file": "^3.4.4",
     "semantic-release": "^15.13.3",
     "ts-jest": "^24.0.1",
-
     "tslint": "^5.14.0",
     "tslint-config-standard": "^8.0.1",
+    "tslint-config-qiwi": "^1.0.1",
     "typedoc": "^0.14.2",
     "typedoc-plugin-external-module-name": "^2.0.0",
     "typescript": "^3.4.1",

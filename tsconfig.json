@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "rootDir": "./src/main",
-    "baseUrl": "./src/main",
+    "rootDir": "./src/main/",
+    "baseUrl": "./src/main/",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "target": "es5",
@@ -23,8 +23,6 @@
     "src/**/*"
   ],
   "exclude": [
-    "node_modules",
-    "**/test/*.ts",
-    "src/test"
+    "node_modules"
   ]
 }
