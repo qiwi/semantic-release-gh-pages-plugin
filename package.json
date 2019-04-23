@@ -21,7 +21,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "jest": "jest -w 2 --config=jest.config.json",
+    "jest": "jest -w 2 --config=jest.config.json --forceExit",
     "lint": "tslint -p tsconfig.json src/**/*.ts --fix",
     "test": "yarn lint && yarn jest",
     "clean": "rm -rf lib typings",
@@ -49,6 +49,7 @@
     "gh-pages": "^2.0.1",
     "lodash": "^4.17.11",
     "read-pkg": "^5.0.0",
+    "sync-request": "^6.1.0",
     "tslib": "^1.9.3"
   },
   "devDependencies": {

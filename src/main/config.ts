@@ -1,5 +1,6 @@
 import { castArray, get, omit } from 'lodash'
 import readPkg from 'read-pkg'
+import request from 'sync-request'
 import {
   TContext,
   IGhpagesPluginConfig,
@@ -20,10 +21,16 @@ export {
   PLUGIN_PATH
 }
 
-export const GITHIB_REPO_PATTERN = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+)\.git$/
+export const GITHUB_REPO_PATTERN = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+?)(\.git)?$/
+
+export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
 
 export const extractRepoName = (repoUrl: string): string => {
-  return (GITHIB_REPO_PATTERN.exec(repoUrl) || [])[1]
+  if (GITIO_REPO_PATTERN.test(repoUrl)) {
+    const res: any = request('GET', repoUrl, { followRedirects: false, timeout: 5000 })
+    return extractRepoName(res.headers.location)
+  }
+  return (GITHUB_REPO_PATTERN.exec(repoUrl) || [])[1]
 }
 
 export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {

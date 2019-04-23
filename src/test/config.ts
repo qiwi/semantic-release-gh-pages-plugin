@@ -157,7 +157,11 @@ describe('config', () => {
       ['https://github.com/qiwi/FormattableTextView.git', 'qiwi/FormattableTextView'],
       ['https://github.com/tesT123/R.e-po.git', 'tesT123/R.e-po'],
       ['https://github.com/tesT123%%/foo.git', undefined],
-      ['https://github.com/foo/bar/baz.git', undefined]
+      ['https://github.com/foo/bar/baz.git', undefined],
+      ['https://git.io/fjYhK', 'qiwi/semantic-release-gh-pages-plugin'],
+      ['https://git.io/wrongShortcut', undefined],
+      ['http://git.io/fjYhK', undefined],
+      ['git.io/fjYhK', undefined]
     ]
 
     cases.forEach(([input = '', result]) => expect(extractRepoName(input)).toBe(result))
