@@ -21,16 +21,14 @@ export {
   PLUGIN_PATH
 }
 
-export const GITHUB_REPO_PATTERN = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+)\.git$/
+export const GITHUB_REPO_PATTERN = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+?)(\.git)?$/
 
-export const GITHUB_REPO_PATTERN_NO_EXTENSION = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+)$/
-
-export const GITHUB_SHORT_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+/
+export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+/
 
 export const extractRepoName = (repoUrl: string): string => {
-  if (GITHUB_SHORT_REPO_PATTERN.test(repoUrl)) {
-    const res: any = request('GET', repoUrl, { followRedirects: false })
-    return (GITHUB_REPO_PATTERN_NO_EXTENSION.exec(res.headers.location) || [])[1]
+  if (GITIO_REPO_PATTERN.test(repoUrl)) {
+    const res: any = request('GET', repoUrl, { followRedirects: false, timeout: 5000 })
+    return (GITHUB_REPO_PATTERN.exec(res.headers.location) || [])[1]
   }
   return (GITHUB_REPO_PATTERN.exec(repoUrl) || [])[1]
 }
