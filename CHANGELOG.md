@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.6.2...v1.7.0) (2019-04-23)
+
+
+### Features
+
+* added git.io support ([d5c02a7](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/d5c02a7)), closes [#17](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/17)
+
 ## [1.6.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.6.1...v1.6.2) (2019-04-01)
 
 
