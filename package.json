@@ -48,8 +48,8 @@
     "dot": "^1.1.2",
     "gh-pages": "^2.0.1",
     "lodash": "^4.17.11",
-    "read-pkg": "^5.0.0",
     "sync-request": "^6.1.0",
+    "read-pkg": "^5.1.0",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
@@ -67,7 +67,7 @@
     "dts-generator": "^3.0.0",
     "eslint-plugin-typescript": "^0.14.0",
     "esm": "^3.2.22",
-    "flowgen": "1.8.0",
+    "flowgen": "1.8.2",
     "jest": "^24.7.1",
     "replace-in-file": "^4.0.0",
     "semantic-release": "^15.13.3",
@@ -77,7 +77,7 @@
     "tslint-config-qiwi": "^1.0.1",
     "typedoc": "^0.14.2",
     "typedoc-plugin-external-module-name": "^2.0.0",
-    "typescript": "^3.4.4",
+    "typescript": "^3.4.5",
     "yargs": "^13.2.2"
   },
   "release": {
