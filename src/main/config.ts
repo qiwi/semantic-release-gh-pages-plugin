@@ -1,17 +1,8 @@
 import { castArray, get, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
-import {
-  TContext,
-  IGhpagesPluginConfig,
-  TAnyMap
-} from './interface'
-import { DEFAULT_BRANCH,
-  DEFAULT_SRC,
-  DEFAULT_MSG,
-  DEFAULT_DST,
-  PLUGIN_PATH
-} from './defaults'
+import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
+import { DEFAULT_BRANCH, DEFAULT_DST, DEFAULT_MSG, DEFAULT_SRC, PLUGIN_PATH } from './defaults'
 
 export {
   DEFAULT_BRANCH,
@@ -25,12 +16,15 @@ export const GITHUB_REPO_PATTERN = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+?)(\.g
 
 export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
 
+export const GITHUB_SSH_REPO_PATTERN = /^(?:ssh:\/\/)?git@github\.com:([A-Za-z0-9-]+\/[\w.-]+?)(\.git)?$/
+
 export const extractRepoName = (repoUrl: string): string => {
   if (GITIO_REPO_PATTERN.test(repoUrl)) {
     const res: any = request('GET', repoUrl, { followRedirects: false, timeout: 5000 })
     return extractRepoName(res.headers.location)
   }
-  return (GITHUB_REPO_PATTERN.exec(repoUrl) || [])[1]
+
+  return (GITHUB_REPO_PATTERN.exec(repoUrl) || GITHUB_SSH_REPO_PATTERN.exec(repoUrl) || [])[1]
 }
 
 export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {
