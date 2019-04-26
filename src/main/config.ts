@@ -1,17 +1,8 @@
 import { castArray, get, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
-import {
-  TContext,
-  IGhpagesPluginConfig,
-  TAnyMap
-} from './interface'
-import { DEFAULT_BRANCH,
-  DEFAULT_SRC,
-  DEFAULT_MSG,
-  DEFAULT_DST,
-  PLUGIN_PATH
-} from './defaults'
+import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
+import { DEFAULT_BRANCH, DEFAULT_DST, DEFAULT_MSG, DEFAULT_SRC, PLUGIN_PATH } from './defaults'
 
 export {
   DEFAULT_BRANCH,
@@ -33,8 +24,10 @@ export const extractRepoName = (repoUrl: string): string => {
     return extractRepoName(res.headers.location)
   }
 
-  if (GITHUB_SSH_REPO_PATTERN.test(repoUrl)) {
-    return (GITHUB_SSH_REPO_PATTERN.exec(repoUrl) || [])[1]
+  const sshGroups = GITHUB_SSH_REPO_PATTERN.exec(repoUrl)
+
+  if (sshGroups) {
+    return sshGroups[1]
   }
 
   return (GITHUB_REPO_PATTERN.exec(repoUrl) || [])[1]
