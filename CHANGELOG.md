@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.7.0...v1.8.0) (2019-04-26)
+
+
+### Features
+
+* added ssh url support ([c16a953](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/c16a953)), closes [#26](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/26)
+
 # [1.7.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.6.2...v1.7.0) (2019-04-23)
 
 
