@@ -24,13 +24,7 @@ export const extractRepoName = (repoUrl: string): string => {
     return extractRepoName(res.headers.location)
   }
 
-  const sshGroups = GITHUB_SSH_REPO_PATTERN.exec(repoUrl)
-
-  if (sshGroups) {
-    return sshGroups[1]
-  }
-
-  return (GITHUB_REPO_PATTERN.exec(repoUrl) || [])[1]
+  return (GITHUB_REPO_PATTERN.exec(repoUrl) || GITHUB_SSH_REPO_PATTERN.exec(repoUrl) || [])[1]
 }
 
 export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {
