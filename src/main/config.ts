@@ -25,11 +25,18 @@ export const GITHUB_REPO_PATTERN = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+?)(\.g
 
 export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
 
+export const GITHUB_SSH_REPO_PATTERN = /^(?:ssh:\/\/)?git@github\.com\:([A-Za-z0-9-]+\/[\w.-]+?)(\.git)?$/
+
 export const extractRepoName = (repoUrl: string): string => {
   if (GITIO_REPO_PATTERN.test(repoUrl)) {
     const res: any = request('GET', repoUrl, { followRedirects: false, timeout: 5000 })
     return extractRepoName(res.headers.location)
   }
+
+  if (GITHUB_SSH_REPO_PATTERN.test(repoUrl)) {
+    return (GITHUB_SSH_REPO_PATTERN.exec(repoUrl) || [])[1]
+  }
+
   return (GITHUB_REPO_PATTERN.exec(repoUrl) || [])[1]
 }
 

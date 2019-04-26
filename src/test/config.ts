@@ -161,7 +161,10 @@ describe('config', () => {
       ['https://git.io/fjYhK', 'qiwi/semantic-release-gh-pages-plugin'],
       ['https://git.io/wrongShortcut', undefined],
       ['http://git.io/fjYhK', undefined],
-      ['git.io/fjYhK', undefined]
+      ['git.io/fjYhK', undefined],
+      ['git+https://github.com/qiwi/uniconfig.git', 'qiwi/uniconfig'],
+      ['git@github.com:qiwi/consul-service-discovery.git', 'qiwi/consul-service-discovery'],
+      ['ssh://git@github.com:qiwi/consul-service-discovery.git', 'qiwi/consul-service-discovery']
     ]
 
     cases.forEach(([input = '', result]) => expect(extractRepoName(input)).toBe(result))
