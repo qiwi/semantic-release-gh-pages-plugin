@@ -16,7 +16,7 @@ export const GITHUB_REPO_PATTERN = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+?)(\.g
 
 export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
 
-export const GITHUB_SSH_REPO_PATTERN = /^(?:ssh:\/\/)?git@github\.com\:([A-Za-z0-9-]+\/[\w.-]+?)(\.git)?$/
+export const GITHUB_SSH_REPO_PATTERN = /^(?:ssh:\/\/)?git@github\.com:([A-Za-z0-9-]+\/[\w.-]+?)(\.git)?$/
 
 export const extractRepoName = (repoUrl: string): string => {
   if (GITIO_REPO_PATTERN.test(repoUrl)) {
