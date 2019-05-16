@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.8.0...v1.9.0) (2019-05-16)
+
+
+### Features
+
+* added env GH_URL GITHUB_URL support ([bdd7838](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/bdd7838))
+
 # [1.8.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.7.0...v1.8.0) (2019-04-26)
 
 
