@@ -29,12 +29,12 @@ export const extractRepoName = (repoUrl: string): string => {
 
 export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {
   const { env } = context
-  const urlFronEnv = env.REPO_URL
+  const urlFromEnv = env.GH_URL || env.GITHUB_URL || env.REPO_URL
   const urlFromStepOpts = pluginConfig.repositoryUrl
   const urlFromOpts = get(context, 'options.repositoryUrl')
   const urlFromPackage = getUrlFromPackage()
 
-  return urlFronEnv || urlFromStepOpts || urlFromOpts || urlFromPackage
+  return urlFromEnv || urlFromStepOpts || urlFromOpts || urlFromPackage
 }
 
 export const getUrlFromPackage = () => {
