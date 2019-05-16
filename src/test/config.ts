@@ -220,6 +220,32 @@ describe('config', () => {
               env: {}
             },
             result: repositoryUrl
+          },
+          {
+            pluginConfig: {},
+            context: {
+              logger,
+              options: {
+                ...globalConfig
+              },
+              env: {
+                GH_URL: 'bat'
+              }
+            },
+            result: 'bat'
+          },
+          {
+            pluginConfig: {},
+            context: {
+              logger,
+              options: {
+                ...globalConfig
+              },
+              env: {
+                GITHUB_URL: 'qux'
+              }
+            },
+            result: 'qux'
           }
         ]
 
