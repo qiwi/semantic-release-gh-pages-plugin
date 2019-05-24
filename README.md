@@ -18,7 +18,11 @@ gh-pages publishing plugin for [semantic-release](https://github.com/semantic-re
 
 ### Install
 ```bash
-yarn add @qiwi/semantic-release-ghpages-plugin --dev
+yarn add @qiwi/semantic-release-gh-pages-plugin --dev
+```
+or
+```bash
+npm add @qiwi/semantic-release-gh-pages-plugin -D
 ```
 
 ### Usage
