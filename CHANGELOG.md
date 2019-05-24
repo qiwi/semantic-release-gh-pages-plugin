@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.9.0...v1.9.1) (2019-05-24)
+
+
+### Bug Fixes
+
+* **readme:** fix installation cmd ([867fd38](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/867fd38))
+
 # [1.9.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.8.0...v1.9.0) (2019-05-16)
 
 
