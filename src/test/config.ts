@@ -174,6 +174,7 @@ describe('config', () => {
       ['github.qiwi.com/qiwi/foo', 'qiwi/foo'],
       ['qiwigithub.com/qiwi/foo.git', 'qiwi/foo', { enterprise: true }],
       ['https://qiwigithub.com/qiwi/foo.git', 'qiwi/foo', { enterprise: true }],
+      ['https://qiwigithub.ru/qiwi/foo.git', 'qiwi/foo', { enterprise: true }],
       ['qiwigithub.com/qiwi/foo', 'qiwi/foo', { enterprise: true }],
       ['qiwigithub/qiwi/bar.git', undefined, { enterprise: true }]
     ]

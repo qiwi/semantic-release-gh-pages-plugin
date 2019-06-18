@@ -20,7 +20,7 @@ export const GITHUB_SSH_REPO_PATTERN = /^(?:ssh:\/\/)?git@github\.com:([A-Za-z0-
 
 export const GITHUB_ENTERPRISE_REPO_PATTERN = /^.*github.[\w.-]+\.com\/([\w.-]+\/[\w.-]+?)(\.git)?$/
 
-export const REPO_PATTERN = /^.*[\w-]+\.com\/([\w.-]+\/[\w.-]+?)(\.git)?$/
+export const REPO_PATTERN = /^.*[\w-]+\.[\w]+\/([\w.-]+\/[\w.-]+?)(\.git)?$/
 
 export const REPO_DOMAIN_PATTERN = /^(?:https?:\/\/)?([\w-.]+\.[\w]+)\/([\w.-]+\/[\w.-]+?)(\.git)?$/
 
