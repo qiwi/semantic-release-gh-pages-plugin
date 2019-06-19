@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.9.1...v1.10.0) (2019-06-19)
+
+
+### Features
+
+* added enterprise urls support ([#39](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/39)) ([aa1e841](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/aa1e841)), closes [#27](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/27)
+
 ## [1.9.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.9.0...v1.9.1) (2019-05-24)
 
 
