@@ -10,8 +10,7 @@ import {
   getUrlFromPackage,
   getRepoUrl,
   getRepo,
-  extractRepoDomain,
-  IRepoNameOptions
+  extractRepoDomain
 } from '../main/config'
 
 import { TAnyMap, TContext } from '../main/interface'
@@ -155,7 +154,7 @@ describe('config', () => {
   })
 
   it('#extractRepoName returns proper values', () => {
-    const cases: Array<[string, string?, IRepoNameOptions?]> = [
+    const cases: Array<[string, string?]> = [
       ['https://github.com/qiwi/semantic-release-gh-pages-plugin.git', 'qiwi/semantic-release-gh-pages-plugin'],
       ['https://github.com/qiwi/FormattableTextView.git', 'qiwi/FormattableTextView'],
       ['https://github.com/tesT123/R.e-po.git', 'tesT123/R.e-po'],
@@ -172,23 +171,26 @@ describe('config', () => {
       ['http://github.qiwi.com/qiwi/foo.git', 'qiwi/foo'],
       ['http://github.qi&wi.com/qiwi/foo.git', undefined],
       ['github.qiwi.com/qiwi/foo', 'qiwi/foo'],
-      ['qiwigithub.com/qiwi/foo.git', 'qiwi/foo', { enterprise: true }],
-      ['https://qiwigithub.com/qiwi/foo.git', 'qiwi/foo', { enterprise: true }],
-      ['https://qiwigithub.ru/qiwi/foo.git', 'qiwi/foo', { enterprise: true }],
-      ['qiwigithub.com/qiwi/foo', 'qiwi/foo', { enterprise: true }],
-      ['qiwigithub/qiwi/bar.git', undefined, { enterprise: true }]
+      ['qiwigithub.com/qiwi/foo.git', 'qiwi/foo'],
+      ['https://qiwigithub.com/qiwi/foo.git', 'qiwi/foo'],
+      ['https://qiwigithub.ru/qiwi/foo.git', 'qiwi/foo'],
+      ['qiwigithub.com/qiwi/foo', 'qiwi/foo'],
+      ['qiwigithub/qiwi/bar.git', undefined],
+      ['', undefined]
     ]
 
-    cases.forEach(([input = '', result, options]) => expect(extractRepoName(input, options)).toBe(result))
+    cases.forEach(([input = '', result]) => expect(extractRepoName(input)).toBe(result))
   })
 
   it('#extractRepoDomain returns proper values', () => {
-    const cases: Array<[string, string | undefined]> = [
+    const cases: Array<[string, string?]> = [
       ['asd.com/qiwi/foo.git', 'asd.com'],
       ['https://qiwi.com/qiwi/foo.git', 'qiwi.com'],
       ['http://qiwi.github.com/qiwi/foo.git', 'qiwi.github.com'],
       ['http://barbar.ru/qiwi/foo.git', 'barbar.ru'],
-      ['http://asfasf/qiwi/foo.git', undefined]
+      ['git+http://barfoo.ru/qiwi/foo.git', 'barfoo.ru'],
+      ['git+http://bar-foo.ru/qiwi/foo.git', 'bar-foo.ru'],
+      ['http://bar/qiwi/foo.git', undefined]
     ]
 
     cases.forEach(([input, result]) => expect(extractRepoDomain(input)).toBe(result))
@@ -223,7 +225,8 @@ describe('config', () => {
             GH_TOKEN: 'foo'
           }
         },
-        result: 'https://foo@github.qiwi.com/qiwi/foo.git'
+        result: 'https://foo@github.qiwi.com/qiwi/foo.git',
+        options: { enterprise: true }
       },
       {
         pluginConfig: {},
@@ -237,7 +240,8 @@ describe('config', () => {
             GH_TOKEN: 'foo'
           }
         },
-        result: 'https://foo@github.qiwi.com/qiwi/foo.git'
+        result: 'https://foo@github.qiwi.com/qiwi/foo.git',
+        options: { enterprise: true }
       }
     ]
 

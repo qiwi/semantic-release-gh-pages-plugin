@@ -12,37 +12,25 @@ export {
   PLUGIN_PATH
 }
 
-export const GITHUB_REPO_PATTERN = /.*github\.com\/([A-Za-z0-9-]+\/[\w.-]+?)(\.git)?$/
-
-export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
-
-export const GITHUB_SSH_REPO_PATTERN = /^(?:ssh:\/\/)?git@github\.com:([A-Za-z0-9-]+\/[\w.-]+?)(\.git)?$/
-
-export const GITHUB_ENTERPRISE_REPO_PATTERN = /^.*github.[\w.-]+\.com\/([\w.-]+\/[\w.-]+?)(\.git)?$/
-
-export const REPO_PATTERN = /^.*[\w-]+\.[\w]+\/([\w.-]+\/[\w.-]+?)(\.git)?$/
-
-export const REPO_DOMAIN_PATTERN = /^(?:https?:\/\/)?([\w-.]+\.[\w]+)\/([\w.-]+\/[\w.-]+?)(\.git)?$/
-
-export interface IRepoNameOptions {
+export interface IRepoOptions {
   enterprise?: boolean
 }
 
-export const extractRepoName = (repoUrl: string, options?: IRepoNameOptions): string => {
-  if (options && options.enterprise) {
-    return (REPO_PATTERN.exec(repoUrl) || [])[1]
-  }
+export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
 
+export const REPO_PATTERN = /^(?:[\w+]+:\/\/)?(?:\w+@)?([\w-.]+\.\w+)[/:]([\w.-]+\/[\w.-]+?)(?:\.git)?$/
+
+export const extractRepoName = (repoUrl: string): string => {
   if (GITIO_REPO_PATTERN.test(repoUrl)) {
     const res: any = request('GET', repoUrl, { followRedirects: false, timeout: 5000 })
     return extractRepoName(res.headers.location)
   }
 
-  return (GITHUB_REPO_PATTERN.exec(repoUrl) || GITHUB_SSH_REPO_PATTERN.exec(repoUrl) || GITHUB_ENTERPRISE_REPO_PATTERN.exec(repoUrl) || [])[1]
+  return (REPO_PATTERN.exec(repoUrl) || [])[2]
 }
 
 export const extractRepoDomain = (repoUrl: string): string => {
-  return (REPO_DOMAIN_PATTERN.exec(repoUrl) || [])[1]
+  return (REPO_PATTERN.exec(repoUrl) || [])[1]
 }
 
 export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {
@@ -62,14 +50,19 @@ export const getUrlFromPackage = () => {
 
 export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
 
-export const getRepo = (pluginConfig: TAnyMap, context: TContext, options?: IRepoNameOptions): string => {
+export const getRepo = (pluginConfig: TAnyMap, context: TContext, options?: IRepoOptions): string | undefined => {
   const { env } = context
   const repoUrl = getRepoUrl(pluginConfig, context)
-  const repoName = extractRepoName(repoUrl, options)
+  const repoName = extractRepoName(repoUrl)
+  const repoDomain = extractRepoDomain(repoUrl)
   const token = getToken(env)
 
-  if (options && options.enterprise || GITHUB_ENTERPRISE_REPO_PATTERN.test(repoUrl)) {
-    return repoName && `https://${token}@${extractRepoDomain(repoUrl)}/${repoName}.git`
+  if (options && options.enterprise) {
+    return repoName && `https://${token}@${repoDomain}/${repoName}.git`
+  }
+
+  if (repoDomain !== 'github.com') {
+    return
   }
 
   return repoName && `https://${token}@github.com/${repoName}.git`
