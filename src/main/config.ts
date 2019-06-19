@@ -2,18 +2,15 @@ import { castArray, get, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
 import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
-import { DEFAULT_BRANCH, DEFAULT_DST, DEFAULT_MSG, DEFAULT_SRC, PLUGIN_PATH } from './defaults'
+import { DEFAULT_BRANCH, DEFAULT_DST, DEFAULT_MSG, DEFAULT_SRC, PLUGIN_PATH, DEFAULT_ENTERPRISE } from './defaults'
 
 export {
   DEFAULT_BRANCH,
   DEFAULT_SRC,
   DEFAULT_MSG,
   DEFAULT_DST,
+  DEFAULT_ENTERPRISE,
   PLUGIN_PATH
-}
-
-export interface IRepoOptions {
-  enterprise?: boolean
 }
 
 export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
@@ -21,11 +18,6 @@ export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
 export const REPO_PATTERN = /^(?:[\w+]+:\/\/)?(?:\w+@)?([\w-.]+\.\w+)[/:]([\w.-]+\/[\w.-]+?)(?:\.git)?$/
 
 export const extractRepoName = (repoUrl: string): string => {
-  if (GITIO_REPO_PATTERN.test(repoUrl)) {
-    const res: any = request('GET', repoUrl, { followRedirects: false, timeout: 5000 })
-    return extractRepoName(res.headers.location)
-  }
-
   return (REPO_PATTERN.exec(repoUrl) || [])[2]
 }
 
@@ -40,7 +32,14 @@ export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => 
   const urlFromOpts = get(context, 'options.repositoryUrl')
   const urlFromPackage = getUrlFromPackage()
 
-  return urlFromEnv || urlFromStepOpts || urlFromOpts || urlFromPackage
+  const url = urlFromEnv || urlFromStepOpts || urlFromOpts || urlFromPackage
+
+  if (GITIO_REPO_PATTERN.test(url)) {
+    const res: any = request('GET', urlFromOpts, { followRedirects: false, timeout: 5000 })
+    return res.headers.location
+  }
+
+  return url
 }
 
 export const getUrlFromPackage = () => {
@@ -50,22 +49,18 @@ export const getUrlFromPackage = () => {
 
 export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
 
-export const getRepo = (pluginConfig: TAnyMap, context: TContext, options?: IRepoOptions): string | undefined => {
+export const getRepo = (pluginConfig: TAnyMap, context: TContext): string | undefined => {
   const { env } = context
   const repoUrl = getRepoUrl(pluginConfig, context)
   const repoName = extractRepoName(repoUrl)
   const repoDomain = extractRepoDomain(repoUrl)
   const token = getToken(env)
 
-  if (options && options.enterprise) {
-    return repoName && `https://${token}@${repoDomain}/${repoName}.git`
-  }
-
-  if (repoDomain !== 'github.com') {
+  if (repoDomain !== 'github.com' && !pluginConfig.enterprise) {
     return
   }
 
-  return repoName && `https://${token}@github.com/${repoName}.git`
+  return repoName && `https://${token}@${repoDomain}/${repoName}.git`
 }
 
 export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): IGhpagesPluginConfig => {
@@ -79,6 +74,7 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
     dst: opts.dst || DEFAULT_DST,
     msg: opts.msg || DEFAULT_MSG,
     branch: opts.branch || DEFAULT_BRANCH,
+    enterprise: opts.enterprise || DEFAULT_ENTERPRISE,
     token,
     repo
   }

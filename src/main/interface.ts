@@ -18,7 +18,8 @@ export interface IGhpagesPluginConfig {
   branch: string,
   msg: string,
   token?: string,
-  repo?: string
+  repo?: string,
+  enterprise?: boolean
 }
 
 export interface ILogger {
