@@ -60,10 +60,12 @@ Describe plugin configuration in [package.json / .releaserc.js](https://github.c
 
 ##### Options
 
-| Option          | Description             | Default |
-|-----------------|-------------------------| --------|
-| `msg`           | Commit message template | `updated v{{=it.nextRelease.gitTag}}` |
-| `src`           | Documentation directory | `docs`<br/><br/>**NOTE** don't forget to run docs builder (`yarn docs`, `yarn typedoc`, etc) as a part of your build step or any other way|
-| `dst`           | Destination directory   | `.` (root) |
-| `branch`        | Docs branch to push     | `gh-pages` |
-| `repositoryUrl` | Repository url          | inherited from .git |
+| Option          | Description                                             | Default |
+|-----------------|---------------------------------------------------------| --------|
+| `msg`           | Commit message template                                 | `updated v{{=it.nextRelease.gitTag}}` |
+| `src`           | Documentation directory                                 | `docs`<br/><br/>**NOTE** don't forget to run docs builder (`yarn docs`, `yarn typedoc`, etc) as a part of your build step or any other way|
+| `dst`           | Destination directory                                   | `.` (root) |
+| `branch`        | Docs branch to push                                     | `gh-pages` |
+| `repositoryUrl` | Repository url                                          | inherited from .git |
+| `enterprise`    | Disables host assertion for GitHub Enterprise domains   | false      |
+

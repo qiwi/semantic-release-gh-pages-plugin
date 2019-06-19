@@ -4,11 +4,14 @@ import {
   DEFAULT_DST,
   DEFAULT_MSG,
   DEFAULT_SRC,
+  DEFAULT_ENTERPRISE,
   resolveOptions,
   resolveConfig,
   extractRepoName,
   getUrlFromPackage,
-  getRepoUrl
+  getRepoUrl,
+  getRepo,
+  extractRepoDomain
 } from '../main/config'
 
 import { TAnyMap, TContext } from '../main/interface'
@@ -91,6 +94,7 @@ describe('config', () => {
         foo: 'bar',
         baz: 'qux',
         msg: 'doc update',
+        enterprise: true,
         branch: 'master' // NOTE must be omitted
       }
       const extra = {
@@ -113,6 +117,7 @@ describe('config', () => {
       expect(config).toEqual({
         src: 'docsdocs',
         dst: 'root',
+        enterprise: true,
         branch: DEFAULT_BRANCH,
         msg: 'doc update',
         token,
@@ -143,6 +148,7 @@ describe('config', () => {
       expect(config).toEqual({
         branch: DEFAULT_BRANCH,
         dst: DEFAULT_DST,
+        enterprise: DEFAULT_ENTERPRISE,
         msg: DEFAULT_MSG,
         src: DEFAULT_SRC,
         token,
@@ -152,22 +158,97 @@ describe('config', () => {
   })
 
   it('#extractRepoName returns proper values', () => {
-    const cases = [
+    const cases: Array<[string, string?]> = [
       ['https://github.com/qiwi/semantic-release-gh-pages-plugin.git', 'qiwi/semantic-release-gh-pages-plugin'],
       ['https://github.com/qiwi/FormattableTextView.git', 'qiwi/FormattableTextView'],
       ['https://github.com/tesT123/R.e-po.git', 'tesT123/R.e-po'],
       ['https://github.com/tesT123%%/foo.git', undefined],
       ['https://github.com/foo/bar/baz.git', undefined],
-      ['https://git.io/fjYhK', 'qiwi/semantic-release-gh-pages-plugin'],
-      ['https://git.io/wrongShortcut', undefined],
-      ['http://git.io/fjYhK', undefined],
-      ['git.io/fjYhK', undefined],
       ['git+https://github.com/qiwi/uniconfig.git', 'qiwi/uniconfig'],
       ['git@github.com:qiwi/consul-service-discovery.git', 'qiwi/consul-service-discovery'],
-      ['ssh://git@github.com:qiwi/consul-service-discovery.git', 'qiwi/consul-service-discovery']
+      ['ssh://git@github.com:qiwi/consul-service-discovery.git', 'qiwi/consul-service-discovery'],
+      ['https://github.qiwi.com/qiwi/foo.git', 'qiwi/foo'],
+      ['http://github.qiwi.com/qiwi/foo.git', 'qiwi/foo'],
+      ['http://github.qi&wi.com/qiwi/foo.git', undefined],
+      ['github.qiwi.com/qiwi/foo', 'qiwi/foo'],
+      ['qiwigithub.com/qiwi/foo.git', 'qiwi/foo'],
+      ['https://qiwigithub.com/qiwi/foo.git', 'qiwi/foo'],
+      ['https://qiwigithub.ru/qiwi/foo.git', 'qiwi/foo'],
+      ['qiwigithub.com/qiwi/foo', 'qiwi/foo'],
+      ['qiwigithub/qiwi/bar.git', undefined],
+      ['', undefined]
     ]
 
     cases.forEach(([input = '', result]) => expect(extractRepoName(input)).toBe(result))
+  })
+
+  it('#extractRepoDomain returns proper values', () => {
+    const cases: Array<[string, string?]> = [
+      ['asd.com/qiwi/foo.git', 'asd.com'],
+      ['https://qiwi.com/qiwi/foo.git', 'qiwi.com'],
+      ['http://qiwi.github.com/qiwi/foo.git', 'qiwi.github.com'],
+      ['http://barbar.ru/qiwi/foo.git', 'barbar.ru'],
+      ['git+http://barfoo.ru/qiwi/foo.git', 'barfoo.ru'],
+      ['git+http://bar-foo.ru/qiwi/foo.git', 'bar-foo.ru'],
+      ['http://bar/qiwi/foo.git', undefined]
+    ]
+
+    cases.forEach(([input, result]) => expect(extractRepoDomain(input)).toBe(result))
+  })
+
+  it('#getRepo returns proper repo url with token', () => {
+    const cases = [
+      {
+        pluginConfig: {
+          enterprise: true
+        },
+        context: {
+          logger,
+          options: {
+            ...globalConfig
+          },
+          env: {
+            REPO_URL: 'qiwigithub.com/qiwi/foo.git',
+            GH_TOKEN: 'foo'
+          }
+        },
+        result: 'https://foo@qiwigithub.com/qiwi/foo.git'
+      },
+      {
+        pluginConfig: {
+          enterprise: true
+        },
+        context: {
+          logger,
+          options: {
+            ...globalConfig
+          },
+          env: {
+            REPO_URL: 'https://github.qiwi.com/qiwi/foo.git',
+            GH_TOKEN: 'foo'
+          }
+        },
+        result: 'https://foo@github.qiwi.com/qiwi/foo.git'
+      },
+      {
+        pluginConfig: {
+          enterprise: true
+        },
+        context: {
+          logger,
+          options: {
+            ...globalConfig
+          },
+          env: {
+            REPO_URL: 'http://github.qiwi.com/qiwi/foo',
+            GH_TOKEN: 'foo'
+          }
+        },
+        result: 'https://foo@github.qiwi.com/qiwi/foo.git'
+      }
+    ]
+
+    cases.forEach(({ pluginConfig, context, result }) => expect(getRepo(pluginConfig, context)).toBe(result))
   })
 
   describe('#getRepoUrl', () => {
@@ -246,6 +327,18 @@ describe('config', () => {
               }
             },
             result: 'qux'
+          },
+          {
+            pluginConfig: {},
+            context: {
+              logger,
+              options: {
+                ...globalConfig,
+                repositoryUrl: 'https://git.io/fjYhK'
+              },
+              env: {}
+            },
+            result: 'https://github.com/qiwi/semantic-release-gh-pages-plugin'
           }
         ]
 

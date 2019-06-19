@@ -5,6 +5,7 @@ import {
   DEFAULT_DST,
   DEFAULT_MSG,
   DEFAULT_BRANCH,
+  DEFAULT_ENTERPRISE,
   PLUGIN_PATH
 } from '../main/defaults'
 import { getUrlFromPackage } from '../main/config'
@@ -51,6 +52,7 @@ describe('index', () => {
         msg: DEFAULT_MSG,
         dst: DEFAULT_DST,
         src: DEFAULT_SRC,
+        enterprise: DEFAULT_ENTERPRISE,
         repo: getRepo(pluginConfig, context),
         token
       })
