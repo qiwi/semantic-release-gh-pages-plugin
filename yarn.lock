@@ -653,10 +653,10 @@
   resolved "https://registry.yarnpkg.com/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
   integrity sha512-yALhelO3i0hqZwhjtcr6dYyaLoCHbAMshwtj6cGxTvHZAKXHsYGdff6E8EPw3xLKY0ELUTQ69Q1rQiJENnccMA==
 
-"@types/jest@^24.0.14":
-  version "24.0.14"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.14.tgz#bb40fec243164b2def5cfaddd0cb4d4e958c5c1c"
-  integrity sha512-IxS2AO0nOr4zrpKfRCxobQUb1bSK6ejodZ7odCzHXMjsASCI8J10N8qVQhrCjvJTc3bUjGGeuD+ytKZqyhajqQ==
+"@types/jest@^24.0.15":
+  version "24.0.15"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.15.tgz#6c42d5af7fe3b44ffff7cc65de7bf741e8fa427f"
+  integrity sha512-MU1HIvWUme74stAoc3mgAi+aMlgKOudgEvQDIm1v4RkrDudBh1T+NFp5sftpBAdXdx1J0PbdpJ+M2EsSOi1djA==
   dependencies:
     "@types/jest-diff" "*"
 
@@ -2372,11 +2372,13 @@ find-versions@^3.0.0:
     array-uniq "^2.1.0"
     semver-regex "^2.0.0"
 
-flowgen@1.8.3:
-  version "1.8.3"
-  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.8.3.tgz#1c3bea04455552b99483422ec21d7ae477d17881"
-  integrity sha512-AUOXBA/o9jfvMzmYJTeoWHGEenC/rOMZNJjCQQEjSNu7Am7hP2VtiXDiBrE0JMGaqx4jPLd3iGXM3NbAQ2aZYA==
+flowgen@1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.9.0.tgz#a67dcd300574036cca9b0c42de142ae9885f8ff6"
+  integrity sha512-dDH1Degcdg+c/qKMgRAnXEg4Tdek/p4Ymn/JzJMG+A/olZ6o9V/F74Ygr4lX8ZS/x/QE/N8wwfRNWrh05jdX0A==
   dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@babel/highlight" "^7.0.0"
     commander "^2.11.0"
     lodash "^4.17.4"
     paralleljs "^0.2.1"
