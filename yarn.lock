@@ -2372,10 +2372,10 @@ find-versions@^3.0.0:
     array-uniq "^2.1.0"
     semver-regex "^2.0.0"
 
-flowgen@1.9.0:
-  version "1.9.0"
-  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.9.0.tgz#a67dcd300574036cca9b0c42de142ae9885f8ff6"
-  integrity sha512-dDH1Degcdg+c/qKMgRAnXEg4Tdek/p4Ymn/JzJMG+A/olZ6o9V/F74Ygr4lX8ZS/x/QE/N8wwfRNWrh05jdX0A==
+flowgen@1.9.1:
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.9.1.tgz#a1b8f0a8dab1fd444996296938e846b527d45fa2"
+  integrity sha512-bSZvkBwb0p4B5IKofAI/NUe1aJxOnroonDqyuUOQNjT4eZiQ2qIPjNLMLZ8MKDe5Y7/57RJUBmpWDMRm0yd82A==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/highlight" "^7.0.0"
