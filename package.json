@@ -67,7 +67,7 @@
     "dts-generator": "^3.0.0",
     "eslint-plugin-typescript": "^0.14.0",
     "esm": "^3.2.25",
-    "flowgen": "1.9.0",
+    "flowgen": "1.9.1",
     "jest": "^24.8.0",
     "replace-in-file": "^4.1.0",
     "semantic-release": "^15.13.16",
