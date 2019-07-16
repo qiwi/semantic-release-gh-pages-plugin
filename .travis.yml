@@ -3,10 +3,10 @@ node_js:
   - '10'
 
 before_install:
-  - npm install -g yarn
   - npm install -g greenkeeper-lockfile
 
 before_script:
+  - yarn link || true && yarn link @qiwi/semantic-release-gh-pages-plugin
   - greenkeeper-lockfile-update
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
@@ -23,7 +23,6 @@ install:
 
 script:
   - yarn run build
-  - yarn link
   - yarn test:report
 
 deploy:
