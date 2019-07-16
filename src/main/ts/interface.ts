@@ -1,3 +1,5 @@
+/** @module semantic-release-gh-pages-plugin */
+
 import { Context } from 'semantic-release'
 
 export type TAnyMap = {

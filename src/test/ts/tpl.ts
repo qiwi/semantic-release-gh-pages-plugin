@@ -1,4 +1,4 @@
-import { render } from '../main/tpl'
+import { render } from '../../main/ts/tpl'
 
 describe('tpl', () => {
   const error = jest.fn((...vars: any[]) => { console.log(vars) })

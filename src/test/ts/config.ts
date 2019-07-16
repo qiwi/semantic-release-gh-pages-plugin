@@ -12,9 +12,9 @@ import {
   getRepoUrl,
   getRepo,
   extractRepoDomain
-} from '../main/config'
+} from '../../main/ts/config'
 
-import { TAnyMap, TContext } from '../main/interface'
+import { TAnyMap, TContext } from '../../main/ts/interface'
 
 describe('config', () => {
   const repositoryUrl = getUrlFromPackage()

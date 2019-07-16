@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "rootDir": "./src/main/",
-    "baseUrl": "./src/main/",
+    "rootDir": "./src/main/ts/",
+    "baseUrl": "./src/main/ts/",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "target": "es5",
@@ -9,7 +9,7 @@
       "esnext"
     ],
     "strict": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "declaration": false,
     "noEmitHelpers": true,
     "noUnusedLocals": true,
@@ -17,12 +17,17 @@
     "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+
+    "incremental": true,
+    "tsBuildInfoFile": "./buildcache/.tsbuildinfo"
   },
   "include": [
-    "src/**/*"
+    "src/main/**/*"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "src/test"
   ]
 }

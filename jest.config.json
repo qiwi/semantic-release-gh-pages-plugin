@@ -2,17 +2,17 @@
   "preset": "ts-jest",
   "collectCoverage": true,
   "coveragePathIgnorePatterns": [
-    "<rootDir>/src/main/interface.ts"
+    "<rootDir>/src/main/ts/interface.ts"
   ],
   "collectCoverageFrom": [
-    "<rootDir>/src/main/**/*.ts"
+    "<rootDir>/src/main/ts/**/*.ts"
   ],
   "testMatch": [
-    "<rootDir>/src/test/*.ts"
+    "<rootDir>/src/test/ts/**/*.ts",
+    "<rootDir>/src/test/js/**/*.js"
   ],
   "testPathIgnorePatterns": [
-    "/node_modules/",
-    "<rootDir>/src/test/stub"
+    "/node_modules/"
   ],
   "moduleFileExtensions": [
     "ts",
@@ -21,5 +21,10 @@
     "jsx",
     "json",
     "node"
-  ]
+  ],
+  "globals": {
+    "ts-jest": {
+      "tsConfig": "tsconfig.test.json"
+    }
+  }
 }

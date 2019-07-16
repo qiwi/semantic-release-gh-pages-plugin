@@ -1,3 +1,5 @@
+/** @module semantic-release-gh-pages-plugin */
+
 export const PLUGIN_PATH: string = '@qiwi/semantic-release-gh-pages-plugin'
 export const DEFAULT_BRANCH: string = 'gh-pages'
 export const DEFAULT_SRC: string = 'docs'

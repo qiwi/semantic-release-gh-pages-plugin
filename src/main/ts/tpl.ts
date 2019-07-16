@@ -1,6 +1,9 @@
-import { ILogger, TAnyMap } from './interface'
-import dot from 'dot'
+/** @module semantic-release-gh-pages-plugin */
 
+import { ILogger, TAnyMap } from './interface'
+import * as dot from 'dot'
+
+/** @private **/
 export const render = (template: string, context: TAnyMap, logger: ILogger) => {
   try {
     return dot.template(template)(context)

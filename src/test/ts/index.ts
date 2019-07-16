@@ -1,5 +1,5 @@
 import AggregateError from 'aggregate-error'
-import { TAnyMap } from '../main/interface'
+import { TAnyMap } from '../../main/ts/interface'
 import {
   DEFAULT_SRC,
   DEFAULT_DST,
@@ -7,8 +7,8 @@ import {
   DEFAULT_BRANCH,
   DEFAULT_ENTERPRISE,
   PLUGIN_PATH
-} from '../main/defaults'
-import { getUrlFromPackage } from '../main/config'
+} from '../../main/ts/defaults'
+import { getUrlFromPackage } from '../../main/ts/config'
 
 describe('index', () => {
   const log = jest.fn((...vars: any[]) => { console.log(vars) })
@@ -35,8 +35,8 @@ describe('index', () => {
 
   describe('verifyConditions', () => {
     it('populates plugin context with resolved config data and returns void', async () => {
-      const { verifyConditions } = require('../main')
-      const { getRepo } = require('../main/config')
+      const { verifyConditions } = require('../../main/ts')
+      const { getRepo } = require('../../main/ts/config')
       const context = {
         logger,
         options: {
@@ -60,7 +60,7 @@ describe('index', () => {
     })
 
     it('asserts GH_TOKEN', async () => {
-      const { verifyConditions } = require('../main')
+      const { verifyConditions } = require('../../main/ts')
       const context = {
         logger,
         options: {
@@ -91,7 +91,7 @@ describe('index', () => {
 
       it('asserts repository.url', async () => {
         const AggregateError = require('aggregate-error')
-        const { verifyConditions } = require('../main')
+        const { verifyConditions } = require('../../main/ts')
         const context = {
           logger,
           options: {
@@ -132,9 +132,9 @@ describe('index', () => {
 
     it('performs commit to docs branch via gh-pages util', async () => {
       const { publish: ghpagesPublish } = require('gh-pages')
-      const { publish } = require('../main')
-      const { getRepo } = require('../main/config')
-      const { OK } = require('../main/ghpages')
+      const { publish } = require('../../main/ts')
+      const { getRepo } = require('../../main/ts/config')
+      const { OK } = require('../../main/ts/ghpages')
       const pluginConfig = {
         foo: 'bar',
         baz: 'qux'
@@ -170,7 +170,7 @@ describe('index', () => {
     })
 
     it('skips verification step if config has not been changed', async () => {
-      const { publish, verifyConditions } = require('../main')
+      const { publish, verifyConditions } = require('../../main/ts')
       const pluginConfig = {}
       const context = {
         logger,
@@ -189,8 +189,8 @@ describe('index', () => {
     })
 
     it('throws rejection on gh-pages fail', async () => {
-      const { publish } = require('../main')
-      const { getRepo } = require('../main/config')
+      const { publish } = require('../../main/ts')
+      const { getRepo } = require('../../main/ts/config')
       const pluginConfig = {
         foo: 'bar',
         baz: 'qux'

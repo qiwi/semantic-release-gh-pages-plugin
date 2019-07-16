@@ -1,3 +1,5 @@
+/** @module semantic-release-gh-pages-plugin */
+
 import AggregateError from 'aggregate-error'
 import { TContext } from './interface'
 import { resolveConfig } from './config'
