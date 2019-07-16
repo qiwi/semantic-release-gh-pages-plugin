@@ -1,6 +1,7 @@
 /** @module semantic-release-gh-pages-plugin */
 
 import AggregateError from 'aggregate-error'
+import fs from 'fs'
 import { TContext } from './interface'
 import { resolveConfig } from './config'
 import { publish as ghpagesPublish } from './ghpages'
@@ -23,6 +24,14 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
 
   if (!config.repo) {
     throw new AggregateError(['package.json repository.url does not match github.com pattern'])
+  }
+
+  if (!fs.existsSync(config.src)) {
+    throw new Error('docs directory does not exist')
+  }
+
+  if (!fs.lstatSync(config.src).isDirectory()) {
+    throw new Error('docs is a file rather than directory')
   }
 
   Object.assign(pluginConfig, config)
