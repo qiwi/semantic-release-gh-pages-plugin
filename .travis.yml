@@ -23,7 +23,7 @@ install:
 
 script:
   - yarn run build
-  - yarn test_with_report
+  - yarn test:report
 
 deploy:
   provider: script
