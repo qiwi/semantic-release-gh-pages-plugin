@@ -23,6 +23,7 @@ install:
 
 script:
   - yarn run build
+  - yarn link
   - yarn test:report
 
 deploy:

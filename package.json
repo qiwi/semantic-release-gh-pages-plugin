@@ -77,7 +77,6 @@
     "semantic-release": "^15.13.18",
     "ts-jest": "^24.0.2",
     "tslint": "^5.18.0",
-    "tslint-config-standard": "^8.0.1",
     "tslint-config-qiwi": "^1.1.0",
     "typedoc": "^0.14.2",
     "typedoc-plugin-external-module-name": "^2.1.0",
@@ -89,7 +88,8 @@
     "verifyConditions": [
       "@semantic-release/changelog",
       "@semantic-release/npm",
-      "@semantic-release/git"
+      "@semantic-release/git",
+      "@qiwi/semantic-release-gh-pages-plugin"
     ],
     "prepare": [
       "@semantic-release/changelog",
@@ -98,7 +98,8 @@
     ],
     "publish": [
       "@semantic-release/npm",
-      "@semantic-release/github"
+      "@semantic-release/github",
+      "@qiwi/semantic-release-gh-pages-plugin"
     ]
   }
 }

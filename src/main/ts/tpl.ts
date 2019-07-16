@@ -3,7 +3,9 @@
 import { ILogger, TAnyMap } from './interface'
 import * as dot from 'dot'
 
-/** @private **/
+/**
+ * @private
+ */
 export const render = (template: string, context: TAnyMap, logger: ILogger) => {
   try {
     return dot.template(template)(context)

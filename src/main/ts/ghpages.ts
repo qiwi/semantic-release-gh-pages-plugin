@@ -3,10 +3,14 @@
 import { publish as ghpagePublish } from 'gh-pages'
 import { ILogger, TAnyMap } from './interface'
 
-/** @private **/
+/**
+ * @private
+ */
 export const OK = { status: 'OK' }
 
-/** @private **/
+/**
+ * @private
+ */
 export const publish = (src: string, opts: TAnyMap, logger: ILogger) => new Promise((resolve, reject) => {
   ghpagePublish(src, opts, (err?: any) => {
     if (err) {

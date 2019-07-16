@@ -1,15 +1,15 @@
 {
-  "name": "@qiwi/cyclone",
+  "name": "@qiwi/semantic-release-gh-pages-plugin",
   "mode": "modules",
   "out": "./docs",
   "target": "ES6",
-  "exclude": ["test", "node_modules"],
+  "exclude": ["src/test", "node_modules"],
   "externalPattern": "**/node_modules/**",
   "excludePrivate": true,
   "excludeNotExported": true,
   "moduleResolution": "node",
   "module": "commonjs",
   "hideGenerator": true,
-  "readme": "none",
+  "readme": true,
   "ignoreCompilerErrors": true
 }

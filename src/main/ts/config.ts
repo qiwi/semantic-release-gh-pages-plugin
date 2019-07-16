@@ -1,6 +1,5 @@
 /** @module semantic-release-gh-pages-plugin */
 
-
 import { castArray, get, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
@@ -27,17 +26,23 @@ export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
 
 export const REPO_PATTERN = /^(?:[\w+]+:\/\/)?(?:\w+@)?([\w-.]+\.\w+)[/:]([\w.-]+\/[\w.-]+?)(?:\.git)?$/
 
-/** @private **/
+/**
+ * @private
+ */
 export const extractRepoName = (repoUrl: string): string => {
   return (REPO_PATTERN.exec(repoUrl) || [])[2]
 }
 
-/** @private **/
+/**
+ * @private
+ */
 export const extractRepoDomain = (repoUrl: string): string => {
   return (REPO_PATTERN.exec(repoUrl) || [])[1]
 }
 
-/** @private **/
+/**
+ * @private
+ */
 export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {
   const { env } = context
   const urlFromEnv = env.GH_URL || env.GITHUB_URL || env.REPO_URL
@@ -55,16 +60,22 @@ export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => 
   return url
 }
 
-/** @private **/
+/**
+ * @private
+ */
 export const getUrlFromPackage = () => {
   const pkg = readPkg.sync()
   return get(pkg, 'repository.url') || get(pkg, 'repository', '')
 }
 
-/** @private **/
+/**
+ * @private
+ */
 export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
 
-/** @private **/
+/**
+ * @private
+ */
 export const getRepo = (pluginConfig: TAnyMap, context: TContext): string | undefined => {
   const { env } = context
   const repoUrl = getRepoUrl(pluginConfig, context)
@@ -79,7 +90,9 @@ export const getRepo = (pluginConfig: TAnyMap, context: TContext): string | unde
   return repoName && `https://${token}@${repoDomain}/${repoName}.git`
 }
 
-/** @private **/
+/**
+ * @private
+ */
 export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): IGhpagesPluginConfig => {
   const { env } = context
   const opts = resolveOptions(pluginConfig, context, path, step)
@@ -97,7 +110,9 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   }
 }
 
-/** @private **/
+/**
+ * @private
+ */
 export const resolveOptions = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): TAnyMap => {
   const { options } = context
   const base = omit(pluginConfig, 'branch')
