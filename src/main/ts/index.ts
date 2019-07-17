@@ -26,12 +26,8 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
     throw new AggregateError(['package.json repository.url does not match github.com pattern'])
   }
 
-  if (!fs.existsSync(config.src)) {
-    throw new Error('docs directory does not exist')
-  }
-
   if (!fs.lstatSync(config.src).isDirectory()) {
-    throw new Error('docs is a file rather than directory')
+    throw new Error('docs source directory does not exist')
   }
 
   Object.assign(pluginConfig, config)
