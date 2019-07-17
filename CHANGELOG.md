@@ -1,3 +1,10 @@
+## [1.10.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.2...v1.10.3) (2019-07-17)
+
+
+### Bug Fixes
+
+* replace Error with AggregateError ([fe9c6bc](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/fe9c6bc))
+
 ## [1.10.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.1...v1.10.2) (2019-07-17)
 
 
