@@ -247,10 +247,6 @@ describe('index', () => {
 
     it('throws an error when docs directory does not exist', async () => {
       const { publish } = require('../../main/ts')
-      const pluginConfig = {
-        foo: 'bar',
-        baz: 'qux'
-      }
       const context = {
         logger,
         options: {
@@ -260,7 +256,7 @@ describe('index', () => {
         env: { GITHUB_TOKEN: token + 'foo' }
       }
       try {
-        await publish(pluginConfig, context)
+        await publish({}, context)
       } catch (e) {
         expect(e.message).toBe('docs source directory does not exist')
       }
@@ -268,10 +264,6 @@ describe('index', () => {
 
     it('throws an error when docs is a file rather than directory', async () => {
       const { publish } = require('../../main/ts')
-      const pluginConfig = {
-        foo: 'bar',
-        baz: 'qux'
-      }
       const context = {
         logger,
         options: {
@@ -281,7 +273,7 @@ describe('index', () => {
         env: { GITHUB_TOKEN: token + 'foo' }
       }
       try {
-        await publish(pluginConfig, context)
+        await publish({}, context)
       } catch (e) {
         expect(e.message).toBe('docs source directory does not exist')
       }
