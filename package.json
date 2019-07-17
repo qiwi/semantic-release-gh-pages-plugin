@@ -29,7 +29,7 @@
     "lint": "tslint -p tsconfig.json src/**/*.ts --fix",
     "test": "yarn lint && yarn jest",
     "clean": "rm -rf lib typings",
-    "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn libdef",
+    "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn libdef && yarn docs",
     "build:es5": "mkdir -p target/es5 && tsc -p tsconfig.es5.json",
     "build:es6": "mkdir -p target/es6 && tsc -p tsconfig.es6.json",
     "build:ts": "cp -r src/main/ts/ target/ts/",
