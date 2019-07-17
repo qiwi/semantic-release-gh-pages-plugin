@@ -1,4 +1,5 @@
 import AggregateError from 'aggregate-error'
+import fs from 'fs'
 import { TAnyMap } from '../../main/ts/interface'
 import {
   DEFAULT_SRC,
@@ -9,6 +10,26 @@ import {
   PLUGIN_PATH
 } from '../../main/ts/defaults'
 import { getUrlFromPackage } from '../../main/ts/config'
+
+beforeAll(() => {
+  if (!fs.existsSync(DEFAULT_SRC)) {
+    fs.mkdirSync(DEFAULT_SRC)
+  }
+
+  if (!fs.existsSync('error')) {
+    fs.mkdirSync('error')
+  }
+
+  if (!fs.existsSync('testFile')) {
+    fs.closeSync(fs.openSync('testFile', 'w'))
+  }
+})
+
+afterAll(() => {
+  fs.rmdirSync(DEFAULT_SRC)
+  fs.rmdirSync('error')
+  fs.unlinkSync('testFile')
+})
 
 describe('index', () => {
   const log = jest.fn((...vars: any[]) => { console.log(vars) })
@@ -221,6 +242,40 @@ describe('index', () => {
         expect(log).toHaveBeenCalledWith('verify gh-pages config')
         expect(error).toHaveBeenCalledWith('Publish docs failure', expected)
         expect(e).toEqual(expected)
+      }
+    })
+
+    it('throws an error when docs directory does not exist', async () => {
+      const { publish } = require('../../main/ts')
+      const context = {
+        logger,
+        options: {
+          ...globalConfig,
+          [step]: [{ path, src: 'notExistingDirectory' }]
+        },
+        env: { GITHUB_TOKEN: token + 'foo' }
+      }
+      try {
+        await publish({}, context)
+      } catch (e) {
+        expect(e.message).toBe('docs source directory does not exist')
+      }
+    })
+
+    it('throws an error when docs is a file rather than directory', async () => {
+      const { publish } = require('../../main/ts')
+      const context = {
+        logger,
+        options: {
+          ...globalConfig,
+          [step]: [{ path, src: 'testFile' }]
+        },
+        env: { GITHUB_TOKEN: token + 'foo' }
+      }
+      try {
+        await publish({}, context)
+      } catch (e) {
+        expect(e.message).toBe('docs source directory does not exist')
       }
     })
   })
