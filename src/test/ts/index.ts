@@ -1,5 +1,6 @@
 import AggregateError from 'aggregate-error'
 import fs from 'fs'
+import path from 'path'
 import { TAnyMap } from '../../main/ts/interface'
 import {
   DEFAULT_SRC,
@@ -8,29 +9,30 @@ import {
   DEFAULT_BRANCH,
   DEFAULT_ENTERPRISE,
   PLUGIN_PATH
-} from '../../main/ts/defaults'
+} from '../../main/ts'
 import { getUrlFromPackage } from '../../main/ts/config'
 
-const DOCS = 'documents'
+const TEMP = path.resolve(__dirname, '../temp')
+const DOCS_AS_FILE = TEMP + '/testFile'
+const DOCS_ERR = TEMP + '/error'
 
 beforeAll(() => {
-  if (!fs.existsSync(DOCS)) {
-    fs.mkdirSync(DOCS)
+  if (!fs.existsSync(DEFAULT_SRC)) {
+    fs.mkdirSync(DEFAULT_SRC, { recursive: true })
   }
 
-  if (!fs.existsSync('error')) {
-    fs.mkdirSync('error')
+  if (!fs.existsSync(DOCS_ERR)) {
+    fs.mkdirSync(DOCS_ERR,{ recursive: true })
   }
 
-  if (!fs.existsSync('testFile')) {
-    fs.writeFileSync('testFile', '')
+  if (!fs.existsSync(DOCS_AS_FILE)) {
+    fs.writeFileSync(DOCS_AS_FILE, '')
   }
 })
 
 afterAll(() => {
-  fs.rmdirSync(DOCS)
-  fs.rmdirSync('error')
-  fs.unlinkSync('testFile')
+  fs.rmdirSync(DOCS_ERR)
+  fs.unlinkSync(DOCS_AS_FILE)
 })
 
 describe('index', () => {
@@ -136,7 +138,8 @@ describe('index', () => {
       jest.resetModules()
       jest.mock('gh-pages', () => ({
         publish: jest.fn((src: string, opts: TAnyMap, cb: Function) => {
-          if (src === 'error') {
+          // NOTE If cb gets some value, this triggers error flow
+          if (src === DOCS_ERR) {
             cb({
               src,
               opts
@@ -222,7 +225,7 @@ describe('index', () => {
         logger,
         options: {
           ...globalConfig,
-          [step]: [{ path, src: 'error' }] // NOTE see jest.mock('gh-pages') above
+          [step]: [{ path, src: DOCS_ERR }] // NOTE see jest.mock('gh-pages') above
         },
         env: { GITHUB_TOKEN: token + 'foo' }
       }
@@ -233,7 +236,7 @@ describe('index', () => {
         dest: DEFAULT_DST
       }
       const expected = {
-        src: 'error',
+        src: DOCS_ERR,
         opts: expectedOpts
       }
 
@@ -258,7 +261,7 @@ describe('index', () => {
         env: { GITHUB_TOKEN: token}
       }
       try {
-        await publish({scr: DOCS}, context)
+        await publish({}, context)
       } catch (e) {
         expect(e.message).toBe('docs source directory does not exist')
       }
@@ -270,12 +273,12 @@ describe('index', () => {
         logger,
         options: {
           ...globalConfig,
-          [step]: [{ path, src: 'testFile' }]
+          [step]: [{ path, src: DOCS_AS_FILE }]
         },
         env: { GITHUB_TOKEN: token }
       }
       try {
-        await publish({scr: DOCS}, context)
+        await publish({}, context)
       } catch (e) {
         expect(e.message).toBe('docs source directory does not exist')
       }
