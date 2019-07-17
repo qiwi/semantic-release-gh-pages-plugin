@@ -262,7 +262,7 @@ describe('index', () => {
       try {
         await publish(pluginConfig, context)
       } catch (e) {
-        expect(e.message).toBe('ENOENT: no such file or directory, lstat \'notExistingDirectory\'')
+        expect(e.message).toBe('docs source directory does not exist')
       }
     })
 
