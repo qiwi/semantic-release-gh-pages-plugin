@@ -11,9 +11,11 @@ import {
 } from '../../main/ts/defaults'
 import { getUrlFromPackage } from '../../main/ts/config'
 
+const DOCS = 'documents'
+
 beforeAll(() => {
-  if (!fs.existsSync(DEFAULT_SRC)) {
-    fs.mkdirSync(DEFAULT_SRC)
+  if (!fs.existsSync(DOCS)) {
+    fs.mkdirSync(DOCS)
   }
 
   if (!fs.existsSync('error')) {
@@ -21,12 +23,12 @@ beforeAll(() => {
   }
 
   if (!fs.existsSync('testFile')) {
-    fs.closeSync(fs.openSync('testFile', 'w'))
+    fs.writeFileSync('testFile', '')
   }
 })
 
 afterAll(() => {
-  fs.rmdirSync(DEFAULT_SRC)
+  fs.rmdirSync(DOCS)
   fs.rmdirSync('error')
   fs.unlinkSync('testFile')
 })
@@ -220,7 +222,7 @@ describe('index', () => {
         logger,
         options: {
           ...globalConfig,
-          [step]: [{ path, src: 'error' }]
+          [step]: [{ path, src: 'error' }] // NOTE see jest.mock('gh-pages') above
         },
         env: { GITHUB_TOKEN: token + 'foo' }
       }
@@ -253,10 +255,10 @@ describe('index', () => {
           ...globalConfig,
           [step]: [{ path, src: 'notExistingDirectory' }]
         },
-        env: { GITHUB_TOKEN: token + 'foo' }
+        env: { GITHUB_TOKEN: token}
       }
       try {
-        await publish({}, context)
+        await publish({scr: DOCS}, context)
       } catch (e) {
         expect(e.message).toBe('docs source directory does not exist')
       }
@@ -270,10 +272,10 @@ describe('index', () => {
           ...globalConfig,
           [step]: [{ path, src: 'testFile' }]
         },
-        env: { GITHUB_TOKEN: token + 'foo' }
+        env: { GITHUB_TOKEN: token }
       }
       try {
-        await publish({}, context)
+        await publish({scr: DOCS}, context)
       } catch (e) {
         expect(e.message).toBe('docs source directory does not exist')
       }
