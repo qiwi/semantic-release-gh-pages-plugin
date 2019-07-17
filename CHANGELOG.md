@@ -1,3 +1,11 @@
+## [1.10.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.1...v1.10.2) (2019-07-17)
+
+
+### Bug Fixes
+
+* check `src` dir existence ([e9e6bd8](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/e9e6bd8)), closes [#44](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/44)
+* **docs:** fix self-publishing ([8ebd28a](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/8ebd28a))
+
 ## [1.10.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.0...v1.10.1) (2019-07-16)
 
 
