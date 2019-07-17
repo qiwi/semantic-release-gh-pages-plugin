@@ -252,6 +252,7 @@ describe('index', () => {
 
     it('throws an error when docs directory does not exist', async () => {
       const { publish } = require('../../main/ts')
+      const AggregateError = require('aggregate-error')
       const context = {
         logger,
         options: {
@@ -260,15 +261,14 @@ describe('index', () => {
         },
         env: { GITHUB_TOKEN: token }
       }
-      try {
-        await publish({}, context)
-      } catch (e) {
-        expect(e.message).toBe('docs source directory does not exist')
-      }
+
+      await expect(publish({}, context))
+        .rejects.toEqual(new AggregateError(['docs source directory does not exist']))
     })
 
     it('throws an error when docs is a file rather than directory', async () => {
       const { publish } = require('../../main/ts')
+      const AggregateError = require('aggregate-error')
       const context = {
         logger,
         options: {
@@ -277,11 +277,9 @@ describe('index', () => {
         },
         env: { GITHUB_TOKEN: token }
       }
-      try {
-        await publish({}, context)
-      } catch (e) {
-        expect(e.message).toBe('docs source directory does not exist')
-      }
+
+      await expect(publish({}, context))
+        .rejects.toEqual(new AggregateError(['docs source directory does not exist']))
     })
   })
 })

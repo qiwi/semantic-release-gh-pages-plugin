@@ -27,7 +27,7 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
   }
 
   if (!fs.existsSync(config.src) || !fs.lstatSync(config.src).isDirectory()) {
-    throw new Error('docs source directory does not exist')
+    throw new AggregateError(['docs source directory does not exist'])
   }
 
   Object.assign(pluginConfig, config)
