@@ -3,5 +3,11 @@
   "compilerOptions": {
     "target": "es5",
     "outDir": "target/es5"
-  }
+  },
+  "include": [
+    "src/main/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
