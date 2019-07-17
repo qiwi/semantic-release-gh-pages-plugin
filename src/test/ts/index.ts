@@ -258,7 +258,7 @@ describe('index', () => {
           ...globalConfig,
           [step]: [{ path, src: 'notExistingDirectory' }]
         },
-        env: { GITHUB_TOKEN: token}
+        env: { GITHUB_TOKEN: token }
       }
       try {
         await publish({}, context)

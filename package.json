@@ -26,7 +26,7 @@
   "private": false,
   "scripts": {
     "jest": "jest -w 2 --config=jest.config.json --forceExit",
-    "lint": "tslint -p tsconfig.json src/**/*.ts --fix",
+    "lint": "tslint -p tsconfig.test.json src/**/*.ts --fix",
     "test": "yarn lint && yarn jest",
     "clean": "rm -rf lib typings",
     "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn libdef && yarn docs",
