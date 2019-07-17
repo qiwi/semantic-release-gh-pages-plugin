@@ -37,5 +37,5 @@ const options = {
 }
 
 const changes = replaceSync(options);
-console.log('Modified files:', changes.join(', '));
+console.log('Modified files:', JSON.stringify(changes, null, 2));
 
