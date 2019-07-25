@@ -26,7 +26,8 @@
   "private": false,
   "scripts": {
     "jest": "jest -w 2 --config=jest.config.json --forceExit",
-    "lint": "tslint -p tsconfig.test.json src/**/*.ts --fix",
+    "lint": "tslint -p tsconfig.test.json src/**/*.ts",
+    "lint:fix": "yarn lint --fix",
     "test": "yarn lint && yarn jest",
     "clean": "rm -rf lib typings",
     "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn libdef && yarn docs",
@@ -51,7 +52,7 @@
     "aggregate-error": "^3.0.0",
     "dot": "^1.1.2",
     "gh-pages": "^2.0.1",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.15",
     "sync-request": "^6.1.0",
     "read-pkg": "^5.2.0",
     "tslib": "^1.10.0"
@@ -77,7 +78,7 @@
     "semantic-release": "^15.13.18",
     "ts-jest": "^24.0.2",
     "tslint": "^5.18.0",
-    "tslint-config-qiwi": "^1.1.0",
+    "tslint-config-qiwi": "^1.1.1",
     "typedoc": "^0.14.2",
     "typedoc-plugin-external-module-name": "^2.1.0",
     "typescript": "^3.5.3",
