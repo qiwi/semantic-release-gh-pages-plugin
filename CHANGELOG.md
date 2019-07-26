@@ -1,3 +1,10 @@
+## [1.10.4](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.3...v1.10.4) (2019-07-26)
+
+
+### Bug Fixes
+
+* **deps:** add missed @types/lodash ([65854e3](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/65854e3))
+
 ## [1.10.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.2...v1.10.3) (2019-07-17)
 
 
