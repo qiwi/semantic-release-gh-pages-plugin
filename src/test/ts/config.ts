@@ -46,7 +46,7 @@ describe('config', () => {
         foo: 'bar',
         baz: 'qux'
       }
-      const context = {
+      const context: TContext = {
         logger,
         options: {
           ...globalConfig,
@@ -54,6 +54,7 @@ describe('config', () => {
             { path, foo: 'BAR' }
           ]
         },
+        cwd: process.cwd(),
         env: { GH_TOKEN: 'token' }
       }
 
@@ -76,6 +77,7 @@ describe('config', () => {
         options: {
           ...globalConfig
         },
+        cwd: process.cwd(),
         env: { GH_TOKEN: 'token' }
       }
 
@@ -109,6 +111,7 @@ describe('config', () => {
             { path, foo: 'BAR', ...extra }
           ]
         },
+        cwd: process.cwd(),
         env: { GH_TOKEN: token }
       }
 
@@ -141,6 +144,7 @@ describe('config', () => {
             { path, foo: 'BAR' }
           ]
         },
+        cwd: process.cwd(),
         env: { GITHUB_TOKEN: token }
       }
       const config = resolveConfig(pluginConfig, context, undefined, step)
@@ -207,6 +211,7 @@ describe('config', () => {
           options: {
             ...globalConfig
           },
+          cwd: process.cwd(),
           env: {
             REPO_URL: 'qiwigithub.com/qiwi/foo.git',
             GH_TOKEN: 'foo'
@@ -223,6 +228,7 @@ describe('config', () => {
           options: {
             ...globalConfig
           },
+          cwd: process.cwd(),
           env: {
             REPO_URL: 'https://github.qiwi.com/qiwi/foo.git',
             GH_TOKEN: 'foo'
@@ -239,6 +245,7 @@ describe('config', () => {
           options: {
             ...globalConfig
           },
+          cwd: process.cwd(),
           env: {
             REPO_URL: 'http://github.qiwi.com/qiwi/foo',
             GH_TOKEN: 'foo'
