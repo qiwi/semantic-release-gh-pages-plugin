@@ -1,7 +1,8 @@
 /** @module semantic-release-gh-pages-plugin */
 
 import { publish as ghpagePublish } from 'gh-pages'
-import { ILogger, TAnyMap } from './interface'
+import execa from 'execa'
+import { IPushOpts, TAnyMap } from './interface'
 
 /**
  * @private
@@ -11,15 +12,41 @@ export const OK = { status: 'OK' }
 /**
  * @private
  */
-export const publish = (src: string, opts: TAnyMap, logger: ILogger) => new Promise((resolve, reject) => {
-  ghpagePublish(src, opts, (err?: any) => {
+export const pullTags = (opts: IPushOpts): Promise<any> => {
+  const execaOpts = {
+    env: opts.env,
+    cwd: opts.cwd
+  }
+
+  return execa('git', ['pull', '--tags', '--force'], execaOpts)
+}
+
+/**
+ * @private
+ */
+export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
+  const { src, logger } = opts
+  const ghpagesOpts: TAnyMap = {
+    repo: opts.repo,
+    branch: opts.branch,
+    dest: opts.dst,
+    message: opts.message
+  }
+
+  ghpagePublish(src, ghpagesOpts, (err?: any) => {
     if (err) {
       logger.error('Publish docs failure', err)
       reject(err)
 
     } else {
-      logger.log(`Docs published successfully, branch=${opts.branch}, src=${src}, dst=${opts.dest}`)
+      logger.log(`Docs published successfully, branch=${ghpagesOpts.branch}, src=${src}, dst=${ghpagesOpts.dest}`)
       resolve(OK)
     }
   })
 })
+
+/**
+ * @private
+ */
+export const publish = (opts: IPushOpts) => pullTags(opts)
+  .then(() => pushPages(opts))

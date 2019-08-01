@@ -2,7 +2,7 @@
 
 import AggregateError from 'aggregate-error'
 import fs from 'fs'
-import { TContext } from './interface'
+import { TContext, IPushOpts } from './interface'
 import { resolveConfig } from './config'
 import { publish as ghpagesPublish } from './ghpages'
 import { render } from './tpl'
@@ -37,8 +37,15 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
 
 export const publish = async (pluginConfig: any, context: TContext) => {
   const config = resolveConfig(pluginConfig, context, undefined, 'publish')
-  const { logger } = context
+  const { logger, env, cwd } = context
   const message = render(config.msg, context, logger)
+  const pushOpts: IPushOpts = {
+    ...config,
+    message,
+    logger,
+    env,
+    cwd
+  }
 
   if (!isEqual(_config, config)) {
     await verifyConditions(pluginConfig, context)
@@ -46,12 +53,7 @@ export const publish = async (pluginConfig: any, context: TContext) => {
 
   logger.log('Publishing docs via gh-pages')
 
-  return ghpagesPublish(config.src, {
-    repo: config.repo,
-    branch: config.branch,
-    dest: config.dst,
-    message
-  }, logger)
+  return ghpagesPublish(pushOpts)
 }
 
 export default {

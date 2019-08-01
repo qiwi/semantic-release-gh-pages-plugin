@@ -1,7 +1,7 @@
 import AggregateError from 'aggregate-error'
 import fs from 'fs'
 import path from 'path'
-import { TAnyMap } from '../../main/ts/interface'
+import { TAnyMap, TContext } from '../../main/ts/interface'
 import {
   DEFAULT_SRC,
   DEFAULT_DST,
@@ -149,10 +149,12 @@ describe('index', () => {
           }
         })
       }))
+      jest.mock('execa', () => () => Promise.resolve())
     })
 
     afterAll(() => {
       jest.unmock('gh-pages')
+      jest.unmock('execa')
       jest.resetModules()
     })
 
@@ -170,8 +172,9 @@ describe('index', () => {
         branch: 'doc-branch',
         msg: 'docs updated v{{=it.nextRelease.gitTag}}'
       }
-      const context = {
+      const context: TContext = {
         logger,
+        cwd: process.cwd(),
         // nextRelease: {},
         options: {
           ...globalConfig,

@@ -8,6 +8,7 @@ export type TAnyMap = {
 
 export type TContext = Context & {
   env: TAnyMap,
+  cwd: string,
   options: TAnyMap & {
     publish?: Array<any>,
     verifyConditions?: Array<any>
@@ -22,6 +23,13 @@ export interface IGhpagesPluginConfig {
   token?: string,
   repo?: string,
   enterprise?: boolean
+}
+
+export interface IPushOpts extends IGhpagesPluginConfig {
+  message: string
+  logger: ILogger,
+  env: TAnyMap,
+  cwd: string
 }
 
 export interface ILogger {
