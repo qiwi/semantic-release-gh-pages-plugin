@@ -26,7 +26,7 @@ npm add @qiwi/semantic-release-gh-pages-plugin -D
 
 ### Usage
 
-Describe plugin configuration in [package.json / .releaserc.js](https://github.com/semantic-release/semantic-release/blob/master/docs/usage/configuration.md#configuration)
+Describe plugin configuration in [package.json / .releaserc.js](https://github.com/semantic-release/semantic-release/blob/master/docs/01-usage/plugins.md#plugins-configuration-options)
 ```json
 {
   "release": {
