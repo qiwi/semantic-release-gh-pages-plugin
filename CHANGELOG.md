@@ -1,3 +1,10 @@
+## [1.10.5](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.4...v1.10.5) (2019-08-01)
+
+
+### Bug Fixes
+
+* sync remote tags before git push ([8e1ecac](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/8e1ecac)), closes [#48](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/48)
+
 ## [1.10.4](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.3...v1.10.4) (2019-07-26)
 
 
