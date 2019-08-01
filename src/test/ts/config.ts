@@ -18,6 +18,7 @@ import { TAnyMap, TContext } from '../../main/ts/interface'
 
 describe('config', () => {
   const repositoryUrl = getUrlFromPackage()
+  const cwd = process.cwd()
   const logger = {
     log (msg: string, ...vars: any[]) { console.log(vars || msg) },
     error (msg: string, ...vars: any[]) { console.log(vars || msg) }
@@ -54,7 +55,7 @@ describe('config', () => {
             { path, foo: 'BAR' }
           ]
         },
-        cwd: process.cwd(),
+        cwd,
         env: { GH_TOKEN: 'token' }
       }
 
@@ -77,7 +78,7 @@ describe('config', () => {
         options: {
           ...globalConfig
         },
-        cwd: process.cwd(),
+        cwd,
         env: { GH_TOKEN: 'token' }
       }
 
@@ -111,7 +112,7 @@ describe('config', () => {
             { path, foo: 'BAR', ...extra }
           ]
         },
-        cwd: process.cwd(),
+        cwd,
         env: { GH_TOKEN: token }
       }
 
@@ -144,7 +145,7 @@ describe('config', () => {
             { path, foo: 'BAR' }
           ]
         },
-        cwd: process.cwd(),
+        cwd,
         env: { GITHUB_TOKEN: token }
       }
       const config = resolveConfig(pluginConfig, context, undefined, step)
@@ -211,7 +212,7 @@ describe('config', () => {
           options: {
             ...globalConfig
           },
-          cwd: process.cwd(),
+          cwd,
           env: {
             REPO_URL: 'qiwigithub.com/qiwi/foo.git',
             GH_TOKEN: 'foo'
@@ -228,7 +229,7 @@ describe('config', () => {
           options: {
             ...globalConfig
           },
-          cwd: process.cwd(),
+          cwd,
           env: {
             REPO_URL: 'https://github.qiwi.com/qiwi/foo.git',
             GH_TOKEN: 'foo'
@@ -245,7 +246,7 @@ describe('config', () => {
           options: {
             ...globalConfig
           },
-          cwd: process.cwd(),
+          cwd,
           env: {
             REPO_URL: 'http://github.qiwi.com/qiwi/foo',
             GH_TOKEN: 'foo'
@@ -269,6 +270,7 @@ describe('config', () => {
               options: {
                 ...globalConfig
               },
+              cwd,
               env: { REPO_URL: 'foo' }
             },
             result: 'foo'
@@ -281,6 +283,7 @@ describe('config', () => {
                 ...globalConfig,
                 repositoryUrl: 'bar'
               },
+              cwd,
               env: {}
             },
             result: 'bar'
@@ -294,6 +297,7 @@ describe('config', () => {
               options: {
                 ...globalConfig
               },
+              cwd,
               env: {}
             },
             result: 'baz'
@@ -305,6 +309,7 @@ describe('config', () => {
               options: {
                 ...globalConfig
               },
+              cwd,
               env: {}
             },
             result: repositoryUrl
@@ -316,6 +321,7 @@ describe('config', () => {
               options: {
                 ...globalConfig
               },
+              cwd,
               env: {
                 GH_URL: 'bat'
               }
@@ -329,6 +335,7 @@ describe('config', () => {
               options: {
                 ...globalConfig
               },
+              cwd,
               env: {
                 GITHUB_URL: 'qux'
               }
@@ -343,6 +350,7 @@ describe('config', () => {
                 ...globalConfig,
                 repositoryUrl: 'https://git.io/fjYhK'
               },
+              cwd,
               env: {}
             },
             result: 'https://github.com/qiwi/semantic-release-gh-pages-plugin'

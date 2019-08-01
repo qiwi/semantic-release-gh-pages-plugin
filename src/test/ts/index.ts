@@ -15,6 +15,7 @@ import { getUrlFromPackage } from '../../main/ts/config'
 const TEMP = path.resolve(__dirname, '../temp')
 const DOCS_AS_FILE = TEMP + '/testFile'
 const DOCS_ERR = TEMP + '/error'
+const cwd = process.cwd()
 
 beforeAll(() => {
   if (!fs.existsSync(DEFAULT_SRC)) {
@@ -68,6 +69,7 @@ describe('index', () => {
           ...globalConfig,
           [step]: [{ path }]
         },
+        cwd,
         env: { GITHUB_TOKEN: token }
       }
       const result = await verifyConditions(pluginConfig, context)
@@ -92,6 +94,7 @@ describe('index', () => {
           ...globalConfig,
           [step]: [{ path }]
         },
+        cwd,
         env: { GITHUB_TOKEN: null }
       }
 
@@ -124,6 +127,7 @@ describe('index', () => {
             [step]: [{ path }],
             repositoryUrl: null
           },
+          cwd,
           env: { GITHUB_TOKEN: token }
         }
 
@@ -174,7 +178,7 @@ describe('index', () => {
       }
       const context: TContext = {
         logger,
-        cwd: process.cwd(),
+        cwd,
         // nextRelease: {},
         options: {
           ...globalConfig,
@@ -201,12 +205,13 @@ describe('index', () => {
     it('skips verification step if config has not been changed', async () => {
       const { publish, verifyConditions } = require('../../main/ts')
       const pluginConfig = {}
-      const context = {
+      const context: TContext = {
         logger,
         options: {
           ...globalConfig,
           [step]: [{ path }]
         },
+        cwd,
         env: { GITHUB_TOKEN: token }
       }
 
@@ -230,6 +235,7 @@ describe('index', () => {
           ...globalConfig,
           [step]: [{ path, src: DOCS_ERR }] // NOTE see jest.mock('gh-pages') above
         },
+        cwd,
         env: { GITHUB_TOKEN: token + 'foo' }
       }
       const expectedOpts = {
@@ -262,6 +268,7 @@ describe('index', () => {
           ...globalConfig,
           [step]: [{ path, src: 'notExistingDirectory' }]
         },
+        cwd,
         env: { GITHUB_TOKEN: token }
       }
 
@@ -278,6 +285,7 @@ describe('index', () => {
           ...globalConfig,
           [step]: [{ path, src: DOCS_AS_FILE }]
         },
+        cwd,
         env: { GITHUB_TOKEN: token }
       }
 
