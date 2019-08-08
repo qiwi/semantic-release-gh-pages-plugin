@@ -49,6 +49,22 @@ Describe plugin configuration in [package.json / .releaserc.js](https://github.c
   }
 }
 ```
+or even shorter if default settings are used:
+```json
+{
+  "release": {
+    "branch": "master",
+    "plugins": [
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      "@semantic-release/github",
+      "@semantic-release/npm",
+      "@qiwi/semantic-release-gh-pages-plugin"
+    ]
+  }
+}
+```
 
 ### Configuration
 ##### Environment variables
