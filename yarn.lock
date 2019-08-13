@@ -2262,10 +2262,10 @@ find-versions@^3.0.0:
     array-uniq "^2.1.0"
     semver-regex "^2.0.0"
 
-flowgen@1.9.2:
-  version "1.9.2"
-  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.9.2.tgz#bf4b6319b5455e8724094ab1d8ba2a3b6f3c3a13"
-  integrity sha512-YKKNGUqLX/J8nNClaaoaAmICZVVUACRERbyuZPSLN/sDEK5DWRStvV+cUG/QL2ZCLRc1obZgHvkF2LR5CEK2oQ==
+flowgen@1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/flowgen/-/flowgen-1.10.0.tgz#a041ae31d543d22166e7ba7c296b8445deb3c2e4"
+  integrity sha512-3lsoaa1vxGXhnkHuoE4mLPJi/klvpR3ID8R9CFJ/GBNi+cxJXecWQaUPrWMdNI5tGs8Y+7wrIZaCVFKFLQiGOg==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@babel/highlight" "^7.0.0"
@@ -2274,7 +2274,7 @@ flowgen@1.9.2:
     paralleljs "^0.2.1"
     prettier "^1.16.4"
     shelljs "^0.8.3"
-    typescript "^3.3.3333"
+    typescript "^3.4"
     typescript-compiler "^1.4.1-2"
 
 flush-write-stream@^1.0.0:
@@ -6797,7 +6797,7 @@ typescript-compiler@^1.4.1-2:
   resolved "https://registry.yarnpkg.com/typescript-compiler/-/typescript-compiler-1.4.1-2.tgz#ba4f7db22d91534a1929d90009dce161eb72fd3f"
   integrity sha1-uk99si2RU0oZKdkACdzhYety/T8=
 
-typescript@3.5.x, typescript@^3.3.3333, typescript@^3.5.3:
+typescript@3.5.x, typescript@^3.4, typescript@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
