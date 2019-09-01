@@ -1,3 +1,10 @@
+## [1.10.6](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.5...v1.10.6) (2019-09-01)
+
+
+### Bug Fixes
+
+* use auth token for git tags pull ([02cc279](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/02cc279)), closes [#54](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/54)
+
 ## [1.10.5](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.4...v1.10.5) (2019-08-01)
 
 
