@@ -1,3 +1,10 @@
+## [1.10.7](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.6...v1.10.7) (2019-10-15)
+
+
+### Performance Improvements
+
+* **package:** up execa to 3.0.0 ([f4437e1](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/f4437e1))
+
 ## [1.10.6](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.5...v1.10.6) (2019-09-01)
 
 

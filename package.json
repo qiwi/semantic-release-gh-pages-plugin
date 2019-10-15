@@ -1,6 +1,6 @@
 {
   "name": "@qiwi/semantic-release-gh-pages-plugin",
-  "version": "1.10.6",
+  "version": "1.10.7",
   "description": "gh-pages publishing plugin for semantic-release",
   "keywords": [
     "gh-pages",
