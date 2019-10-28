@@ -76,14 +76,14 @@ export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
 /**
  * @private
  */
-export const getRepo = (pluginConfig: TAnyMap, context: TContext): string | undefined => {
+export const getRepo = (pluginConfig: TAnyMap, context: TContext, opts: TAnyMap): string | undefined => {
   const { env } = context
   const repoUrl = getRepoUrl(pluginConfig, context)
   const repoName = extractRepoName(repoUrl)
   const repoDomain = extractRepoDomain(repoUrl)
   const token = getToken(env)
 
-  if (repoDomain !== 'github.com' && !pluginConfig.enterprise) {
+  if (repoDomain !== 'github.com' && !opts.enterprise) {
     return
   }
 
@@ -97,14 +97,14 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   const { env } = context
   const opts = resolveOptions(pluginConfig, context, path, step)
   const token = getToken(env)
-  const repo = getRepo(pluginConfig, context)
+  const repo = getRepo(pluginConfig, context, opts)
 
   return {
     src: opts.src || DEFAULT_SRC,
     dst: opts.dst || DEFAULT_DST,
     msg: opts.msg || DEFAULT_MSG,
     branch: opts.branch || DEFAULT_BRANCH,
-    enterprise: opts.enterprise || DEFAULT_ENTERPRISE,
+    enterprise: Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE),
     token,
     repo
   }

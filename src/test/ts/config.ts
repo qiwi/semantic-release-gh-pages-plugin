@@ -45,14 +45,15 @@ describe('config', () => {
       const path = PLUGIN_PATH
       const pluginConfig = {
         foo: 'bar',
-        baz: 'qux'
+        baz: 'qux',
+        enterprise: true
       }
       const context: TContext = {
         logger,
         options: {
           ...globalConfig,
           [step]: [
-            { path, foo: 'BAR' }
+            { path, foo: 'BAR'}
           ]
         },
         cwd,
@@ -64,7 +65,8 @@ describe('config', () => {
       expect(config).toEqual({
         foo: 'BAR',
         baz: 'qux',
-        path
+        path,
+        enterprise: true
       })
     })
 
@@ -97,10 +99,10 @@ describe('config', () => {
         foo: 'bar',
         baz: 'qux',
         msg: 'doc update',
-        enterprise: true,
         branch: 'master' // NOTE must be omitted
       }
       const extra = {
+        enterprise: true,
         src: 'docsdocs',
         dst: 'root'
       }
@@ -205,7 +207,7 @@ describe('config', () => {
     const cases = [
       {
         pluginConfig: {
-          enterprise: true
+
         },
         context: {
           logger,
@@ -218,12 +220,13 @@ describe('config', () => {
             GH_TOKEN: 'foo'
           }
         },
+        opts: {
+          enterprise: true
+        },
         result: 'https://foo@qiwigithub.com/qiwi/foo.git'
       },
       {
-        pluginConfig: {
-          enterprise: true
-        },
+        pluginConfig: {},
         context: {
           logger,
           options: {
@@ -235,12 +238,13 @@ describe('config', () => {
             GH_TOKEN: 'foo'
           }
         },
+        opts: {
+          enterprise: true
+        },
         result: 'https://foo@github.qiwi.com/qiwi/foo.git'
       },
       {
-        pluginConfig: {
-          enterprise: true
-        },
+        pluginConfig: {},
         context: {
           logger,
           options: {
@@ -252,11 +256,14 @@ describe('config', () => {
             GH_TOKEN: 'foo'
           }
         },
+        opts: {
+          enterprise: true
+        },
         result: 'https://foo@github.qiwi.com/qiwi/foo.git'
       }
     ]
 
-    cases.forEach(({ pluginConfig, context, result }) => expect(getRepo(pluginConfig, context)).toBe(result))
+    cases.forEach(({ pluginConfig, context, opts, result }) => expect(getRepo(pluginConfig, context, opts)).toBe(result))
   })
 
   describe('#getRepoUrl', () => {
