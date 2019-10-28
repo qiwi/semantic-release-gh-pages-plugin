@@ -221,9 +221,7 @@ describe('config', () => {
             GH_TOKEN: 'foo'
           }
         },
-        opts: {
-          enterprise: true
-        },
+        enterprise: true,
         result: 'https://foo@qiwigithub.com/qiwi/foo.git'
       },
       {
@@ -239,9 +237,7 @@ describe('config', () => {
             GH_TOKEN: 'foo'
           }
         },
-        opts: {
-          enterprise: true
-        },
+        enterprise: true,
         result: 'https://foo@github.qiwi.com/qiwi/foo.git'
       },
       {
@@ -257,14 +253,28 @@ describe('config', () => {
             GH_TOKEN: 'foo'
           }
         },
-        opts: {
-          enterprise: true
-        },
+        enterprise: true,
         result: 'https://foo@github.qiwi.com/qiwi/foo.git'
+      },
+      {
+        pluginConfig: {},
+        context: {
+          logger,
+          options: {
+            ...globalConfig
+          },
+          cwd,
+          env: {
+            REPO_URL: 'http://github.qiwi.com/qiwi/foo',
+            GH_TOKEN: 'foo'
+          }
+        },
+        enterprise: false,
+        result: undefined
       }
     ]
 
-    cases.forEach(({ pluginConfig, context, opts, result }) => expect(getRepo(pluginConfig, context, opts)).toBe(result))
+    cases.forEach(({ pluginConfig, context, enterprise, result }) => expect(getRepo(pluginConfig, context, enterprise)).toBe(result))
   })
 
   describe('#getRepoUrl', () => {

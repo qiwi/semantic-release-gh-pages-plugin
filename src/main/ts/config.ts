@@ -76,14 +76,14 @@ export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
 /**
  * @private
  */
-export const getRepo = (pluginConfig: TAnyMap, context: TContext, opts: TAnyMap): string | undefined => {
+export const getRepo = (pluginConfig: TAnyMap, context: TContext, enterprise?: boolean): string | undefined => {
   const { env } = context
   const repoUrl = getRepoUrl(pluginConfig, context)
   const repoName = extractRepoName(repoUrl)
   const repoDomain = extractRepoDomain(repoUrl)
   const token = getToken(env)
 
-  if (repoDomain !== 'github.com' && !opts.enterprise) {
+  if (repoDomain !== 'github.com' && !enterprise) {
     return
   }
 
@@ -96,15 +96,16 @@ export const getRepo = (pluginConfig: TAnyMap, context: TContext, opts: TAnyMap)
 export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): IGhpagesPluginConfig => {
   const { env } = context
   const opts = resolveOptions(pluginConfig, context, path, step)
+  const enterprise = Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE)
   const token = getToken(env)
-  const repo = getRepo(pluginConfig, context, opts)
+  const repo = getRepo(pluginConfig, context, enterprise)
 
   return {
     src: opts.src || DEFAULT_SRC,
     dst: opts.dst || DEFAULT_DST,
     msg: opts.msg || DEFAULT_MSG,
     branch: opts.branch || DEFAULT_BRANCH,
-    enterprise: Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE),
+    enterprise,
     token,
     repo
   }
