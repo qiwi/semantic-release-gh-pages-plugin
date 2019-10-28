@@ -1,3 +1,10 @@
+## [1.10.8](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.7...v1.10.8) (2019-10-28)
+
+
+### Bug Fixes
+
+* resolve enterprise flag both from step opts and globalConfig ([9ba3ce5](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/9ba3ce5)), closes [#60](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/60)
+
 ## [1.10.7](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.6...v1.10.7) (2019-10-15)
 
 
