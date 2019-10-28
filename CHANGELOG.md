@@ -1,3 +1,10 @@
+## [1.10.9](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.8...v1.10.9) (2019-10-28)
+
+
+### Performance Improvements
+
+* tweak up config resolution ([86d507f](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/86d507f))
+
 ## [1.10.8](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.7...v1.10.8) (2019-10-28)
 
 
