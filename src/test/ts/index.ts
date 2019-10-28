@@ -47,7 +47,8 @@ describe('index', () => {
   const globalConfig = {
     branch: 'master',
     tagFormat: 'v{{version}}',
-    repositoryUrl
+    repositoryUrl,
+    plugins: []
   }
   const step = 'publish'
   const path = PLUGIN_PATH

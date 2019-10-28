@@ -26,7 +26,8 @@ describe('config', () => {
   const globalConfig = {
     branch: 'master',
     tagFormat: 'v{{version}}',
-    repositoryUrl
+    repositoryUrl,
+    plugins: []
   }
   const repoName = extractRepoName(repositoryUrl)
 
@@ -53,7 +54,7 @@ describe('config', () => {
         options: {
           ...globalConfig,
           [step]: [
-            { path, foo: 'BAR'}
+            { path, foo: 'BAR' }
           ]
         },
         cwd,
