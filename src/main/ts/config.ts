@@ -87,11 +87,20 @@ export const getToken = (env: TAnyMap, repoUrl: string) => env.GH_TOKEN || env.G
  * @private
  */
 export const getRepo = (pluginConfig: TAnyMap, context: TContext, enterprise?: boolean): string | undefined => {
-  const { env } = context
+  const { env, logger } = context
   const repoUrl = getRepoUrl(pluginConfig, context)
   const repoName = extractRepoName(repoUrl)
   const repoDomain = extractRepoDomain(repoUrl)
   const token = getToken(env, repoUrl)
+
+  if (process.env.DEBUG) {
+    logger.log('getRepo:')
+    logger.log('repoUrl=', repoUrl)
+    logger.log('repoName=', repoName)
+    logger.log('repoDomain=', repoDomain)
+    logger.log('has token=', !!token)
+    logger.log('enterprise=', enterprise)
+  }
 
   if (repoDomain !== 'github.com' && !enterprise) {
     return
@@ -104,7 +113,7 @@ export const getRepo = (pluginConfig: TAnyMap, context: TContext, enterprise?: b
  * @private
  */
 export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): IGhpagesPluginConfig => {
-  const { env } = context
+  const { env, logger } = context
   const opts = resolveOptions(pluginConfig, context, path, step)
   const enterprise = Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE)
   const repo = getRepo(pluginConfig, context, enterprise)
@@ -112,8 +121,6 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   const token = getToken(env, repoUrl)
 
   if (process.env.DEBUG) {
-    const { logger } = context
-
     logger.log('resolveConfig args:')
     logger.log('context=', JSON.stringify(omit(context, 'env.GH_TOKEN', 'env.GITHUB_TOKEN'), null, 2))
     logger.log('pluginConfig=', JSON.stringify(pluginConfig, null, 2))
