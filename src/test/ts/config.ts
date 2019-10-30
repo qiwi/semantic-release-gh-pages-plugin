@@ -100,7 +100,8 @@ describe('config', () => {
         foo: 'bar',
         baz: 'qux',
         msg: 'doc update',
-        branch: 'master' // NOTE must be omitted
+        branch: 'master', // NOTE must be omitted,
+        repositoryUrl: 'https://enterprise.com/org/repo.git'
       }
       const extra = {
         enterprise: true,
@@ -128,7 +129,7 @@ describe('config', () => {
         branch: DEFAULT_BRANCH,
         msg: 'doc update',
         token,
-        repo: `https://${token}@github.com/${repoName}.git`
+        repo: `https://${token}@enterprise.com/org/repo.git`
       })
     })
 

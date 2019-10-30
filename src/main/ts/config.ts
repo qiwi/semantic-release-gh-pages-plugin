@@ -100,6 +100,16 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   const token = getToken(env)
   const repo = getRepo(pluginConfig, context, enterprise)
 
+  if (process.env.DEBUG) {
+    const { logger } = context
+
+    logger.log('resolveConfig args:')
+    logger.log('context=', omit(context, 'env.GH_TOKEN', 'env.GITHUB_TOKEN'))
+    logger.log('pluginConfig=', pluginConfig)
+    logger.log('path=', path)
+    logger.log('step=', step)
+  }
+
   return {
     src: opts.src || DEFAULT_SRC,
     dst: opts.dst || DEFAULT_DST,
