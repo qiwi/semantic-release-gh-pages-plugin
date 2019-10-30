@@ -1,3 +1,10 @@
+## [1.11.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.11.1...v1.11.2) (2019-10-30)
+
+
+### Performance Improvements
+
+* tech release ([c690e56](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/c690e56))
+
 ## [1.11.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.11.0...v1.11.1) (2019-10-30)
 
 
