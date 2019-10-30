@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.11.2...v1.12.0) (2019-10-30)
+
+
+### Features
+
+* extract token from repo url ([dd87d32](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/dd87d32)), closes [#60](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/60)
+
 ## [1.11.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.11.1...v1.11.2) (2019-10-30)
 
 
