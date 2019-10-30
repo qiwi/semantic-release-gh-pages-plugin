@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.12.2...v1.13.0) (2019-10-30)
+
+
+### Features
+
+* extend debug logging ([530bd4f](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/530bd4f))
+
 ## [1.12.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.12.1...v1.12.2) (2019-10-30)
 
 
