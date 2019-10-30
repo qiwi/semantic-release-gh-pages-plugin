@@ -139,6 +139,15 @@ export const resolveOptions = (pluginConfig: TAnyMap, context: TContext, path = 
   const { options } = context
   const base = omit(pluginConfig, 'branch')
   const extra = step && options[step] && castArray(options[step])
+    .map(config => {
+      if (Array.isArray(config)) {
+        const [path, opts] = config
+
+        return { ...opts, path }
+      }
+
+      return config
+    })
     .find(config => get(config, 'path') === path) || {}
 
   return { ...base, ...extra }
