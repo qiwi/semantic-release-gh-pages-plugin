@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.12.0...v1.12.1) (2019-10-30)
+
+
+### Bug Fixes
+
+* migrate to parse-git-url ([fde21d4](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/fde21d4)), closes [#60](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/60)
+
 # [1.12.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.11.2...v1.12.0) (2019-10-30)
 
 
