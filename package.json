@@ -50,10 +50,12 @@
     "typings"
   ],
   "dependencies": {
+    "@types/git-url-parse": "^9.0.0",
     "aggregate-error": "^3.0.1",
     "dot": "^1.1.2",
     "execa": "^3.2.0",
     "gh-pages": "^2.1.1",
+    "git-url-parse": "^11.1.2",
     "lodash": "^4.17.15",
     "read-pkg": "^5.2.0",
     "sync-request": "^6.1.0",

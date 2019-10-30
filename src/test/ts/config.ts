@@ -243,19 +243,18 @@ describe('config', () => {
       ['https://github.com/qiwi/FormattableTextView.git', 'qiwi/FormattableTextView'],
       ['https://github.com/tesT123/R.e-po.git', 'tesT123/R.e-po'],
       ['https://github.com/tesT123%%/foo.git', undefined],
-      ['https://github.com/foo/bar/baz.git', undefined],
+      ['https://github.com/foo/bar/baz.git', 'foo/bar/baz'],
       ['git+https://github.com/qiwi/uniconfig.git', 'qiwi/uniconfig'],
       ['git@github.com:qiwi/consul-service-discovery.git', 'qiwi/consul-service-discovery'],
       ['ssh://git@github.com:qiwi/consul-service-discovery.git', 'qiwi/consul-service-discovery'],
       ['https://github.qiwi.com/qiwi/foo.git', 'qiwi/foo'],
       ['http://github.qiwi.com/qiwi/foo.git', 'qiwi/foo'],
-      ['http://github.qi&wi.com/qiwi/foo.git', undefined],
-      ['github.qiwi.com/qiwi/foo', 'qiwi/foo'],
-      ['qiwigithub.com/qiwi/foo.git', 'qiwi/foo'],
+      // ['http://github.qi&wi.com/qiwi/foo.git', undefined],
+      // ['github.qiwi.com/qiwi/foo', 'qiwi/foo'],
       ['https://qiwigithub.com/qiwi/foo.git', 'qiwi/foo'],
       ['https://qiwigithub.ru/qiwi/foo.git', 'qiwi/foo'],
-      ['qiwigithub.com/qiwi/foo', 'qiwi/foo'],
-      ['qiwigithub/qiwi/bar.git', undefined],
+      ['git@github.qiwi.com:m-pismenskiy/semrel.git', 'm-pismenskiy/semrel'],
+      // ['qiwigithub/qiwi/bar.git', undefined],
       ['', undefined]
     ]
 
@@ -264,13 +263,13 @@ describe('config', () => {
 
   it('#extractRepoDomain returns proper values', () => {
     const cases: Array<[string, string?]> = [
-      ['asd.com/qiwi/foo.git', 'asd.com'],
+      ['git@asd.com:m-pismenskiy/semrel.git', 'asd.com'],
       ['https://qiwi.com/qiwi/foo.git', 'qiwi.com'],
       ['http://qiwi.github.com/qiwi/foo.git', 'qiwi.github.com'],
       ['http://barbar.ru/qiwi/foo.git', 'barbar.ru'],
       ['git+http://barfoo.ru/qiwi/foo.git', 'barfoo.ru'],
       ['git+http://bar-foo.ru/qiwi/foo.git', 'bar-foo.ru'],
-      ['http://bar/qiwi/foo.git', undefined]
+      ['http://bar/qiwi/foo.git', 'bar']
     ]
 
     cases.forEach(([input, result]) => expect(extractRepoDomain(input)).toBe(result))
@@ -289,7 +288,7 @@ describe('config', () => {
           },
           cwd,
           env: {
-            REPO_URL: 'qiwigithub.com/qiwi/foo.git',
+            REPO_URL: 'git@qiwigithub.com:qiwi/foo.git',
             GH_TOKEN: 'foo'
           }
         },

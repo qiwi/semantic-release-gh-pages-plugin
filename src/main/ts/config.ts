@@ -1,9 +1,11 @@
 /** @module semantic-release-gh-pages-plugin */
 
+import gitParse from 'git-url-parse'
 import { castArray, get, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
 import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
+import { catchToSmth } from './util'
 import {
   DEFAULT_BRANCH,
   DEFAULT_DST,
@@ -22,29 +24,30 @@ export {
   PLUGIN_PATH
 }
 
-export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
+const gitUrlParse = catchToSmth(gitParse, {})
 
-export const REPO_PATTERN = /^(?:[\w+]+:?\/\/)?(?:(\w+)@)?([\w-.]+\.\w+)[/:]([\w.-]+\/[\w.-]+?)(?:\.git)?$/
+export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
 
 /**
  * @private
  */
 export const extractRepoName = (repoUrl: string): string => {
-  return (REPO_PATTERN.exec(repoUrl) || [])[3]
+  return gitUrlParse(repoUrl).full_name
 }
 
 /**
  * @private
  */
 export const extractRepoDomain = (repoUrl: string): string => {
-  return (REPO_PATTERN.exec(repoUrl) || [])[2]
+  return gitUrlParse(repoUrl).resource
 }
 
 /**
  * @private
  */
 export const extractRepoToken = (repoUrl: string): string => {
-  return (REPO_PATTERN.exec(repoUrl) || [])[1]
+  const repo = gitUrlParse(repoUrl)
+  return repo.token || repo.user
 }
 
 /**
