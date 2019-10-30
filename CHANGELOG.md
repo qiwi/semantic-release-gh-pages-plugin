@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.9...v1.11.0) (2019-10-30)
+
+
+### Features
+
+* add debug mode for resolveConfig ([aef853e](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/aef853e)), closes [#60](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/60)
+
 ## [1.10.9](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.10.8...v1.10.9) (2019-10-28)
 
 
