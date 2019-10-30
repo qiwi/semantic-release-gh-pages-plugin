@@ -164,6 +164,77 @@ describe('config', () => {
         repo: `https://${token}@github.com/${repoName}.git`
       })
     })
+
+    it('issues/60', () => {
+      const step = 'publish'
+      const path = '@qiwi/semantic-release-gh-pages-plugin'
+      const pluginConfig = {
+        branch: 'master',
+        repositoryUrl: 'https://secure@github-enterprise-repo-url.com/foo/bar.git',
+        tagFormat: 'v${version}',
+        _: [],
+        $0: 'node_modules\\semantic-release\\bin\\semantic-release.js',
+        enterprise: 'true',
+        src: 'dist/web'
+      }
+      const context = {
+        logger,
+        cwd,
+        env: {},
+        options: {
+          branch: 'master',
+          repositoryUrl: 'https://secure@github-enterprise-repo-url.com/foo/bar.git',
+          tagFormat: 'v${version}',
+          plugins: [
+            '@semantic-release/commit-analyzer',
+            '@semantic-release/release-notes-generator',
+            '@semantic-release/npm',
+            '@semantic-release/github'
+          ],
+          verifyConditions: [
+            '@semantic-release/github',
+            [
+              '@qiwi/semantic-release-gh-pages-plugin',
+              {
+                enterprise: 'true',
+                src: 'dist/web'
+              }
+            ]
+          ],
+          publish: [
+            {
+              path: '@semantic-release/exec',
+              cmd: 'nuget pack dist/package -Version ${nextRelease.version}'
+            },
+            {
+              path: '@semantic-release/github',
+              assets: '*.nupkg'
+            },
+            [
+              '@qiwi/semantic-release-gh-pages-plugin',
+              {
+                enterprise: 'true',
+                src: 'dist/web'
+              }
+            ]
+          ],
+          _: [],
+          $0: 'node_modules\\semantic-release\\bin\\semantic-release.js'
+        }
+      }
+
+      const config = resolveConfig(pluginConfig, context, path, step)
+
+      expect(config).toEqual({
+        branch: DEFAULT_BRANCH,
+        dst: DEFAULT_DST,
+        enterprise: true,
+        msg: DEFAULT_MSG,
+        src: 'dist/web',
+        token: 'secure',
+        repo: `https://secure@github-enterprise-repo-url.com/foo/bar.git`
+      })
+    })
   })
 
   it('#extractRepoName returns proper values', () => {

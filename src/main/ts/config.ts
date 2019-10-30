@@ -24,19 +24,26 @@ export {
 
 export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
 
-export const REPO_PATTERN = /^(?:[\w+]+:\/\/)?(?:\w+@)?([\w-.]+\.\w+)[/:]([\w.-]+\/[\w.-]+?)(?:\.git)?$/
+export const REPO_PATTERN = /^(?:[\w+]+:?\/\/)?(?:(\w+)@)?([\w-.]+\.\w+)[/:]([\w.-]+\/[\w.-]+?)(?:\.git)?$/
 
 /**
  * @private
  */
 export const extractRepoName = (repoUrl: string): string => {
-  return (REPO_PATTERN.exec(repoUrl) || [])[2]
+  return (REPO_PATTERN.exec(repoUrl) || [])[3]
 }
 
 /**
  * @private
  */
 export const extractRepoDomain = (repoUrl: string): string => {
+  return (REPO_PATTERN.exec(repoUrl) || [])[2]
+}
+
+/**
+ * @private
+ */
+export const extractRepoToken = (repoUrl: string): string => {
   return (REPO_PATTERN.exec(repoUrl) || [])[1]
 }
 
@@ -71,7 +78,7 @@ export const getUrlFromPackage = () => {
 /**
  * @private
  */
-export const getToken = (env: TAnyMap) => env.GH_TOKEN || env.GITHUB_TOKEN
+export const getToken = (env: TAnyMap, repoUrl: string) => env.GH_TOKEN || env.GITHUB_TOKEN || extractRepoToken(repoUrl)
 
 /**
  * @private
@@ -81,7 +88,7 @@ export const getRepo = (pluginConfig: TAnyMap, context: TContext, enterprise?: b
   const repoUrl = getRepoUrl(pluginConfig, context)
   const repoName = extractRepoName(repoUrl)
   const repoDomain = extractRepoDomain(repoUrl)
-  const token = getToken(env)
+  const token = getToken(env, repoUrl)
 
   if (repoDomain !== 'github.com' && !enterprise) {
     return
@@ -97,8 +104,9 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   const { env } = context
   const opts = resolveOptions(pluginConfig, context, path, step)
   const enterprise = Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE)
-  const token = getToken(env)
   const repo = getRepo(pluginConfig, context, enterprise)
+  const repoUrl = getRepoUrl(pluginConfig, context)
+  const token = getToken(env, repoUrl)
 
   if (process.env.DEBUG) {
     const { logger } = context
