@@ -104,8 +104,8 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
     const { logger } = context
 
     logger.log('resolveConfig args:')
-    logger.log('context=', omit(context, 'env.GH_TOKEN', 'env.GITHUB_TOKEN'))
-    logger.log('pluginConfig=', pluginConfig)
+    logger.log('context=', JSON.stringify(omit(context, 'env.GH_TOKEN', 'env.GITHUB_TOKEN'), null, 2))
+    logger.log('pluginConfig=', JSON.stringify(pluginConfig, null, 2))
     logger.log('path=', path)
     logger.log('step=', step)
   }
