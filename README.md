@@ -40,11 +40,13 @@ Describe plugin configuration in [package.json / .releaserc.js](https://github.c
     "publish": [
       "@semantic-release/npm",
       "@semantic-release/github",
-      {
-        "path": "@qiwi/semantic-release-gh-pages-plugin",
-        "msg": "updated",
-        "branch": "docs"
-      }
+      [
+        "@qiwi/semantic-release-gh-pages-plugin",
+        {
+          "msg": "updated",
+          "branch": "docs"
+        }
+      ]
     ]
   }
 }
