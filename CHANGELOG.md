@@ -1,3 +1,10 @@
+## [1.13.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.13.0...v1.13.1) (2019-10-30)
+
+
+### Bug Fixes
+
+* use any repoUrl if enterprise flag enabled ([1d652d0](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/1d652d0)), closes [#60](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/60)
+
 # [1.13.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.12.2...v1.13.0) (2019-10-30)
 
 
