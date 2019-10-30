@@ -111,11 +111,13 @@
     <span class="hljs-attr">"publish"</span>: [
       <span class="hljs-string">"@semantic-release/npm"</span>,
       <span class="hljs-string">"@semantic-release/github"</span>,
-      {
-        <span class="hljs-attr">"path"</span>: <span class="hljs-string">"@qiwi/semantic-release-gh-pages-plugin"</span>,
-        <span class="hljs-attr">"msg"</span>: <span class="hljs-string">"updated"</span>,
-        <span class="hljs-attr">"branch"</span>: <span class="hljs-string">"docs"</span>
-      }
+      [
+        <span class="hljs-string">"@qiwi/semantic-release-gh-pages-plugin"</span>,
+        {
+          <span class="hljs-attr">"msg"</span>: <span class="hljs-string">"updated"</span>,
+          <span class="hljs-attr">"branch"</span>: <span class="hljs-string">"docs"</span>
+        }
+      ]
     ]
   }
 }</code></pre>

@@ -80,6 +80,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-private"><a href="_config_.html#extractrepodomain" class="tsd-kind-icon">extract<wbr>Repo<wbr>Domain</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-private"><a href="_config_.html#extractreponame" class="tsd-kind-icon">extract<wbr>Repo<wbr>Name</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-private"><a href="_config_.html#extractrepotoken" class="tsd-kind-icon">extract<wbr>Repo<wbr>Token</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-private"><a href="_config_.html#getrepo" class="tsd-kind-icon">get<wbr>Repo</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-private"><a href="_config_.html#getrepourl" class="tsd-kind-icon">get<wbr>Repo<wbr>Url</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-private"><a href="_config_.html#gettoken" class="tsd-kind-icon">get<wbr>Token</a></li>
@@ -99,17 +100,17 @@
 					<div class="tsd-signature tsd-kind-icon">GITIO_<wbr>REPO_<wbr>PATTERN<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^https:\/\/git\.io\/[A-Za-z0-9-]+$/</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L25">config.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L25">config.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
 					<a name="repo_pattern" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> REPO_<wbr>PATTERN</h3>
-					<div class="tsd-signature tsd-kind-icon">REPO_<wbr>PATTERN<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^(?:[\w+]+:\/\/)?(?:\w+@)?([\w-.]+\.\w+)[/:]([\w.-]+\/[\w.-]+?)(?:\.git)?$/</span></div>
+					<div class="tsd-signature tsd-kind-icon">REPO_<wbr>PATTERN<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> =&nbsp;/^(?:[\w+]+:?\/\/)?(?:(\w+)@)?([\w-.]+\.\w+)[/:]([\w.-]+\/[\w.-]+?)(?:\.git)?$/</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L27">config.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L27">config.ts:27</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -126,7 +127,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L39">config.ts:39</a></li>
+									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L39">config.ts:39</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -149,7 +150,30 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L32">config.ts:32</a></li>
+									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L32">config.ts:32</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>repoUrl: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-private">
+					<a name="extractrepotoken" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagConst">Const</span> extract<wbr>Repo<wbr>Token</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-private">
+						<li class="tsd-signature tsd-kind-icon">extract<wbr>Repo<wbr>Token<span class="tsd-signature-symbol">(</span>repoUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L46">config.ts:46</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -172,7 +196,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L79">config.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L86">config.ts:86</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -204,7 +228,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L46">config.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L53">config.ts:53</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -224,19 +248,22 @@
 					<a name="gettoken" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagConst">Const</span> get<wbr>Token</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Token<span class="tsd-signature-symbol">(</span>env<span class="tsd-signature-symbol">: </span><a href="_interface_.html#tanymap" class="tsd-signature-type">TAnyMap</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Token<span class="tsd-signature-symbol">(</span>env<span class="tsd-signature-symbol">: </span><a href="_interface_.html#tanymap" class="tsd-signature-type">TAnyMap</a>, repoUrl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L74">config.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L81">config.ts:81</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>env: <a href="_interface_.html#tanymap" class="tsd-signature-type">TAnyMap</a></h5>
+								</li>
+								<li>
+									<h5>repoUrl: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -253,7 +280,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L66">config.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L73">config.ts:73</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
@@ -270,7 +297,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L96">config.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L103">config.ts:103</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -302,7 +329,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/c690e56/src/main/ts/config.ts#L127">config.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/qiwi/semantic-release-gh-pages-plugin/blob/dd87d32/src/main/ts/config.ts#L135">config.ts:135</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -365,6 +392,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-private">
 						<a href="_config_.html#extractreponame" class="tsd-kind-icon">extract<wbr>Repo<wbr>Name</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-private">
+						<a href="_config_.html#extractrepotoken" class="tsd-kind-icon">extract<wbr>Repo<wbr>Token</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-private">
 						<a href="_config_.html#getrepo" class="tsd-kind-icon">get<wbr>Repo</a>
