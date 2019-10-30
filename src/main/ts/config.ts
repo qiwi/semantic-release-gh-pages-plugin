@@ -92,6 +92,7 @@ export const getRepo = (pluginConfig: TAnyMap, context: TContext, enterprise?: b
   const repoName = extractRepoName(repoUrl)
   const repoDomain = extractRepoDomain(repoUrl)
   const token = getToken(env, repoUrl)
+  const url = `https://${token}@${repoDomain}/${repoName}.git`
 
   if (process.env.DEBUG) {
     logger.log('getRepo:')
@@ -102,11 +103,15 @@ export const getRepo = (pluginConfig: TAnyMap, context: TContext, enterprise?: b
     logger.log('enterprise=', enterprise)
   }
 
-  if (repoDomain !== 'github.com' && !enterprise) {
-    return
+  if (repoDomain === 'github.com' && repoName) {
+    return url
   }
 
-  return repoName && `https://${token}@${repoDomain}/${repoName}.git`
+  if (enterprise) {
+    return repoName
+      ? url
+      : repoUrl
+  }
 }
 
 /**
