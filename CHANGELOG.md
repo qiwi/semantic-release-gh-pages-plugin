@@ -1,3 +1,10 @@
+## [1.12.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.12.1...v1.12.2) (2019-10-30)
+
+
+### Bug Fixes
+
+* fix options as array handling ([f9f4734](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/f9f4734)), closes [#60](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/60)
+
 ## [1.12.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.12.0...v1.12.1) (2019-10-30)
 
 
