@@ -103,10 +103,12 @@
     "publish": [
       "@semantic-release/npm",
       "@semantic-release/github",
-      {
-        "path": "@qiwi/semantic-release-gh-pages-plugin",
-        "docs": "docs v{{=it.nextRelease.gitTag}}"
-      }
+      [
+        "@qiwi/semantic-release-gh-pages-plugin",
+        {
+          "docs": "docs v{{=it.nextRelease.gitTag}}"
+        }
+      ]
     ]
   }
 }
