@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.13.1...v1.14.0) (2019-10-31)
+
+
+### Features
+
+* add debug logging for getRepoUrl ([35c2d63](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/35c2d63))
+
 ## [1.13.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.13.0...v1.13.1) (2019-10-30)
 
 
