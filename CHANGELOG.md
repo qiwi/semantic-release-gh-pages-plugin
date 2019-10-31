@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.14.0...v1.14.1) (2019-10-31)
+
+
+### Bug Fixes
+
+* change getRepoUrl severity order to be consistent with other sem-rel plugins ([4499687](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/4499687)), closes [#60](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/60)
+
 # [1.14.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.13.1...v1.14.0) (2019-10-31)
 
 
