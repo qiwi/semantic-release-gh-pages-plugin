@@ -6,8 +6,12 @@ export type TAnyMap = {
   [key: string]: any
 }
 
+export type TStringMap = {
+  [key: string]: string
+}
+
 export type TContext = Context & {
-  env: TAnyMap,
+  env: TStringMap,
   cwd: string,
   options: TAnyMap & {
     publish?: Array<any>,

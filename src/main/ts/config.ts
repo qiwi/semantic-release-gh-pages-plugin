@@ -55,12 +55,12 @@ export const extractRepoToken = (repoUrl: string): string => {
  */
 export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {
   const { env, logger } = context
-  const urlFromEnv = env.GH_URL || env.GITHUB_URL || env.REPO_URL
+  const urlFromEnv = getRepoUrlFromEnv(env)
   const urlFromStepOpts = pluginConfig.repositoryUrl
   const urlFromOpts = get(context, 'options.repositoryUrl')
   const urlFromPackage = getUrlFromPackage()
 
-  const url = urlFromEnv || urlFromStepOpts || urlFromOpts || urlFromPackage
+  const url = urlFromStepOpts || urlFromOpts || urlFromEnv || urlFromPackage
 
   if (process.env.DEBUG) {
     logger.log('getRepoUrl:')
@@ -82,9 +82,14 @@ export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => 
 /**
  * @private
  */
-export const getUrlFromPackage = () => {
+const getRepoUrlFromEnv = (env: TAnyMap) => env.REPO_URL
+
+/**
+ * @private
+ */
+export const getUrlFromPackage = (): string => {
   const pkg = readPkg.sync()
-  return get(pkg, 'repository.url') || get(pkg, 'repository', '')
+  return get(pkg, 'repository.url') || get(pkg, 'repository') || ''
 }
 
 /**

@@ -14,7 +14,7 @@ import {
   extractRepoDomain
 } from '../../main/ts/config'
 
-import { TAnyMap, TContext } from '../../main/ts/interface'
+import { TAnyMap, TContext, TStringMap } from '../../main/ts/interface'
 
 describe('config', () => {
   const repositoryUrl = getUrlFromPackage()
@@ -152,7 +152,9 @@ describe('config', () => {
         cwd,
         env: { GITHUB_TOKEN: token }
       }
+      process.env.DEBUG = 'true'
       const config = resolveConfig(pluginConfig, context, undefined, step)
+      delete process.env.DEBUG
 
       expect(config).toEqual({
         branch: DEFAULT_BRANCH,
@@ -288,25 +290,24 @@ describe('config', () => {
           },
           cwd,
           env: {
-            REPO_URL: 'git@qiwigithub.com:qiwi/foo.git',
             GH_TOKEN: 'foo'
           }
         },
         enterprise: true,
-        result: 'https://foo@qiwigithub.com/qiwi/foo.git'
+        result: 'https://foo@github.com/qiwi/semantic-release-gh-pages-plugin.git'
       },
       {
         pluginConfig: {},
         context: {
           logger,
           options: {
-            ...globalConfig
+            ...globalConfig,
+            repositoryUrl: 'https://github.qiwi.com/qiwi/foo.git'
           },
           cwd,
           env: {
-            REPO_URL: 'https://github.qiwi.com/qiwi/foo.git',
             GH_TOKEN: 'foo'
-          }
+          } as TStringMap
         },
         enterprise: true,
         result: 'https://foo@github.qiwi.com/qiwi/foo.git'
@@ -316,7 +317,8 @@ describe('config', () => {
         context: {
           logger,
           options: {
-            ...globalConfig
+            ...globalConfig,
+            repositoryUrl: ''
           },
           cwd,
           env: {
@@ -332,7 +334,8 @@ describe('config', () => {
         context: {
           logger,
           options: {
-            ...globalConfig
+            ...globalConfig,
+            repositoryUrl: ''
           },
           cwd,
           env: {
@@ -362,7 +365,7 @@ describe('config', () => {
               cwd,
               env: { REPO_URL: 'foo' }
             },
-            result: 'foo'
+            result: getUrlFromPackage()
           },
           {
             pluginConfig: {},
@@ -408,28 +411,15 @@ describe('config', () => {
             context: {
               logger,
               options: {
-                ...globalConfig
+                ...globalConfig,
+                repositoryUrl: ''
               },
               cwd,
               env: {
-                GH_URL: 'bat'
+                REPO_URL: 'bat'
               }
             },
             result: 'bat'
-          },
-          {
-            pluginConfig: {},
-            context: {
-              logger,
-              options: {
-                ...globalConfig
-              },
-              cwd,
-              env: {
-                GITHUB_URL: 'qux'
-              }
-            },
-            result: 'qux'
           },
           {
             pluginConfig: {},
