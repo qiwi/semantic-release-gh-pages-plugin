@@ -54,13 +54,22 @@ export const extractRepoToken = (repoUrl: string): string => {
  * @private
  */
 export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {
-  const { env } = context
+  const { env, logger } = context
   const urlFromEnv = env.GH_URL || env.GITHUB_URL || env.REPO_URL
   const urlFromStepOpts = pluginConfig.repositoryUrl
   const urlFromOpts = get(context, 'options.repositoryUrl')
   const urlFromPackage = getUrlFromPackage()
 
   const url = urlFromEnv || urlFromStepOpts || urlFromOpts || urlFromPackage
+
+  if (process.env.DEBUG) {
+    logger.log('getRepoUrl:')
+    logger.log('urlFromEnv=', urlFromEnv)
+    logger.log('urlFromStepOpts=', urlFromStepOpts)
+    logger.log('urlFromOpts=', urlFromOpts)
+    logger.log('urlFromPackage', urlFromPackage)
+    logger.log('url=', url)
+  }
 
   if (GITIO_REPO_PATTERN.test(url)) {
     const res: any = request('GET', urlFromOpts, { followRedirects: false, timeout: 5000 })
