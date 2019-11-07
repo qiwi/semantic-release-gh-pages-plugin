@@ -1,3 +1,10 @@
+## [1.14.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.14.1...v1.14.2) (2019-11-07)
+
+
+### Performance Improvements
+
+* migrate to TS 3.7 ([1281035](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/1281035a387a33f630008b3cb21345ff612cb8b2))
+
 ## [1.14.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.14.0...v1.14.1) (2019-10-31)
 
 
