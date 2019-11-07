@@ -1,7 +1,7 @@
 /** @module semantic-release-gh-pages-plugin */
 
 import gitParse from 'git-url-parse'
-import { castArray, get, omit } from 'lodash'
+import { castArray, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
 import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
@@ -57,7 +57,7 @@ export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => 
   const { env, logger } = context
   const urlFromEnv = getRepoUrlFromEnv(env)
   const urlFromStepOpts = pluginConfig.repositoryUrl
-  const urlFromOpts = get(context, 'options.repositoryUrl')
+  const urlFromOpts = context?.options?.repositoryUrl || ''
   const urlFromPackage = getUrlFromPackage()
 
   const url = urlFromStepOpts || urlFromOpts || urlFromEnv || urlFromPackage
@@ -89,7 +89,7 @@ const getRepoUrlFromEnv = (env: TAnyMap) => env.REPO_URL
  */
 export const getUrlFromPackage = (): string => {
   const pkg = readPkg.sync()
-  return get(pkg, 'repository.url') || get(pkg, 'repository') || ''
+  return String(pkg?.repository?.url || pkg?.repository || '')
 }
 
 /**
@@ -174,7 +174,7 @@ export const resolveOptions = (pluginConfig: TAnyMap, context: TContext, path = 
 
       return config
     })
-    .find(config => get(config, 'path') === path) || {}
+    .find(config => config?.path === path) || {}
 
   return { ...base, ...extra }
 }
