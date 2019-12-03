@@ -1,3 +1,10 @@
+## [1.15.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.1...v1.15.2) (2019-12-03)
+
+
+### Bug Fixes
+
+* always return err code 0 on doc branch delete ([8cc09c5](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/8cc09c59b28969bf8dc0c0dc6bb66c50ac147866))
+
 ## [1.15.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.0...v1.15.1) (2019-12-03)
 
 
