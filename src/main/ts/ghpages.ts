@@ -25,6 +25,19 @@ export const pullTags = (opts: IPushOpts): Promise<any> => {
 /**
  * @private
  */
+export const gropLocalBranch = (opts: IPushOpts): Promise<any> => {
+  const { branch } = opts
+  const execaOpts = {
+    env: opts.env,
+    cwd: opts.cwd
+  }
+
+  return execa('git', ['branch', '-d', branch], execaOpts)
+}
+
+/**
+ * @private
+ */
 export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
   const { src, logger } = opts
   const ghpagesOpts: TAnyMap = {
@@ -50,4 +63,5 @@ export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
  * @private
  */
 export const publish = (opts: IPushOpts) => pullTags(opts)
+  .then(() => gropLocalBranch(opts))
   .then(() => pushPages(opts))

@@ -139,6 +139,8 @@ describe('index', () => {
   })
 
   describe('publish', () => {
+    const fakeExeca = jest.fn(() => Promise.resolve())
+
     beforeAll(() => {
       jest.resetModules()
       jest.mock('gh-pages', () => ({
@@ -154,8 +156,10 @@ describe('index', () => {
           }
         })
       }))
-      jest.mock('execa', () => () => Promise.resolve())
+      jest.mock('execa', () => fakeExeca)
     })
+
+    afterEach(fakeExeca.mockClear)
 
     afterAll(() => {
       jest.unmock('gh-pages')
@@ -193,9 +197,34 @@ describe('index', () => {
         message: 'docs updated v{{=it.nextRelease.gitTag}}',
         dest: 'root'
       }
+      const execaOpts = {
+        cwd,
+        env: {
+          GITHUB_TOKEN: 'token'
+        }
+      }
 
       const res = await publish(pluginConfig, context)
 
+      expect(fakeExeca).toHaveBeenCalledWith(
+        'git',
+        [
+          'pull',
+          '--tags',
+          '--force',
+          expectedOpts.repo
+        ],
+        execaOpts
+      )
+      expect(fakeExeca).toHaveBeenCalledWith(
+        'git',
+        [
+          'branch',
+          '-d',
+          'doc-branch'
+        ],
+        execaOpts
+      )
       expect(log).toHaveBeenCalledWith('Publishing docs via gh-pages')
       expect(log).toHaveBeenCalledWith('Docs published successfully, branch=doc-branch, src=docs, dst=root')
 
