@@ -144,6 +144,7 @@ describe('index', () => {
     beforeAll(() => {
       jest.resetModules()
       jest.mock('gh-pages', () => ({
+        clean: () => { /* noop */ },
         publish: jest.fn((src: string, opts: TAnyMap, cb: Function) => {
           // NOTE If cb gets some value, this triggers error flow
           if (src === DOCS_ERR) {
@@ -216,15 +217,7 @@ describe('index', () => {
         ],
         execaOpts
       )
-      expect(fakeExeca).toHaveBeenCalledWith(
-        'git',
-        [
-          'branch',
-          '-d',
-          'doc-branch'
-        ],
-        execaOpts
-      )
+
       expect(log).toHaveBeenCalledWith('Publishing docs via gh-pages')
       expect(log).toHaveBeenCalledWith('Docs published successfully, branch=doc-branch, src=docs, dst=root')
 

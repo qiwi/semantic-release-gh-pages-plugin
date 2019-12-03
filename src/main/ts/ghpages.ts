@@ -1,6 +1,6 @@
 /** @module semantic-release-gh-pages-plugin */
 
-import { publish as ghpagePublish } from 'gh-pages'
+import { publish as ghpagePublish, clean } from 'gh-pages'
 import execa from 'execa'
 import { IPushOpts, TAnyMap } from './interface'
 
@@ -20,19 +20,6 @@ export const pullTags = (opts: IPushOpts): Promise<any> => {
   }
 
   return execa('git', ['pull', '--tags', '--force', repo], execaOpts)
-}
-
-/**
- * @private
- */
-export const gropLocalBranch = (opts: IPushOpts): Promise<any> => {
-  const { branch } = opts
-  const execaOpts = {
-    env: opts.env,
-    cwd: opts.cwd
-  }
-
-  return execa('git', ['branch', '-d', branch], execaOpts).catch(() => null)
 }
 
 /**
@@ -63,5 +50,5 @@ export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
  * @private
  */
 export const publish = (opts: IPushOpts) => pullTags(opts)
-  .then(() => gropLocalBranch(opts))
+  .then(() => clean())
   .then(() => pushPages(opts))
