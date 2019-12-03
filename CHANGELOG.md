@@ -1,3 +1,10 @@
+## [1.15.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.2...v1.15.3) (2019-12-03)
+
+
+### Bug Fixes
+
+* fix cmd typo ([cb268b7](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/cb268b73321e781ab6d340cf110856e0c332f435))
+
 ## [1.15.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.1...v1.15.2) (2019-12-03)
 
 
