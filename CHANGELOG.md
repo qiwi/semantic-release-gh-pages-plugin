@@ -1,3 +1,10 @@
+## [1.15.4](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.3...v1.15.4) (2019-12-03)
+
+
+### Bug Fixes
+
+* use promise catch instead of pipe ([7b9d605](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/7b9d605374952c8ff00a1cd40eba8ac9793eb4b0))
+
 ## [1.15.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.2...v1.15.3) (2019-12-03)
 
 
