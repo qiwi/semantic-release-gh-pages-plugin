@@ -32,7 +32,7 @@ export const gropLocalBranch = (opts: IPushOpts): Promise<any> => {
     cwd: opts.cwd
   }
 
-  return execa('git', ['branch', '-d', branch, '| exit 0'], execaOpts)
+  return execa('git', ['branch', '-d', branch, '|| exit 0'], execaOpts)
 }
 
 /**
