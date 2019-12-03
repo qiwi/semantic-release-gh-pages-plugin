@@ -221,8 +221,7 @@ describe('index', () => {
         [
           'branch',
           '-d',
-          'doc-branch',
-          '|| exit 0'
+          'doc-branch'
         ],
         execaOpts
       )
