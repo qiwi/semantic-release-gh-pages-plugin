@@ -2,6 +2,7 @@
 
 import AggregateError from 'aggregate-error'
 import fs from 'fs'
+import path from 'path'
 import { TContext, IPushOpts } from './interface'
 import { resolveConfig } from './config'
 import { publish as ghpagesPublish } from './ghpages'
@@ -27,6 +28,7 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
   }
 
   if (!fs.existsSync(config.src) || !fs.lstatSync(config.src).isDirectory()) {
+    logger.error('Resolved docs src path=', path.resolve(config.src))
     throw new AggregateError(['docs source directory does not exist'])
   }
 
