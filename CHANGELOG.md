@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.0...v1.15.1) (2019-12-03)
+
+
+### Bug Fixes
+
+* drop local docs branch before gh-publish ([a07bee2](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/a07bee20c6765fbe8af6fa6d3288fc3d7f0068f9)), closes [#63](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/63)
+
 # [1.15.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.14.2...v1.15.0) (2019-12-03)
 
 
