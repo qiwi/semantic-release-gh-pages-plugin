@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.14.2...v1.15.0) (2019-12-03)
+
+
+### Features
+
+* print resolved docs path if not found ([a713297](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/a7132978d6c9d24e5e2909b8c3505a6c3abfefb0)), closes [#62](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/62)
+
 ## [1.14.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.14.1...v1.14.2) (2019-11-07)
 
 
