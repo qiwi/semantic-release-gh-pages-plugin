@@ -1,3 +1,10 @@
+## [1.15.5](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.4...v1.15.5) (2019-12-04)
+
+
+### Performance Improvements
+
+* tweak up 'branch already exists' handling ([85119f7](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/85119f7f6883af2d9ca7219e91fdbe6f668f9532))
+
 ## [1.15.4](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.3...v1.15.4) (2019-12-03)
 
 
