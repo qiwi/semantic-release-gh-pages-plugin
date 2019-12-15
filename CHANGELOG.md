@@ -1,3 +1,10 @@
+## [1.15.6](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.5...v1.15.6) (2019-12-15)
+
+
+### Bug Fixes
+
+* **package:** up deps, fix vulns ([91ea60f](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/91ea60fc8cdd34dbdf0dc21cb35dea0176d3a2c3))
+
 ## [1.15.5](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.4...v1.15.5) (2019-12-04)
 
 
