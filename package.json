@@ -80,7 +80,7 @@
     "flowgen": "1.10.0",
     "jest": "^24.9.0",
     "replace-in-file": "^5.0.2",
-    "semantic-release": "^15.14.0",
+    "semantic-release": "^16.0.0",
     "ts-jest": "^24.2.0",
     "tslint": "^5.20.1",
     "tslint-config-qiwi": "^1.3.1",
