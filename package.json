@@ -64,7 +64,7 @@
   "devDependencies": {
     "@semantic-release/changelog": "^3.0.6",
     "@semantic-release/git": "^7.0.18",
-    "@semantic-release/github": "^5.5.5",
+    "@semantic-release/github": "^6.0.0",
     "@semantic-release/npm": "^5.3.4",
     "@types/aggregate-error": "^1.0.1",
     "@types/dot": "^1.1.3",
