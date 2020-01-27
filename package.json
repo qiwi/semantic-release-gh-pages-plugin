@@ -62,7 +62,7 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^3.0.6",
+    "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^8.0.0",
     "@semantic-release/github": "^6.0.1",
     "@semantic-release/npm": "^6.0.0",
