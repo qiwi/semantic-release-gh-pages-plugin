@@ -85,4 +85,4 @@ or even shorter if default settings are used:
 | `branch`        | Docs branch to push                                     | `gh-pages` |
 | `repositoryUrl` | Repository url                                          | inherited from .git |
 | `enterprise`    | Disables host assertion for GitHub Enterprise domains   | false      |
-| `pullTagsBranch`| Target branch for tags fetching hook. If '' empty string, skips this action | `globalConfig.branch || 'master'` |
+| `pullTagsBranch`| Target branch for tags fetching hook. If '' empty string, skips this action | `globalConfig.branch` \|\| `master` |
