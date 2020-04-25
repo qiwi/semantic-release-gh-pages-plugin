@@ -79,7 +79,7 @@
     "esm": "^3.2.25",
     "flowgen": "1.10.0",
     "jest": "^25.4.0",
-    "replace-in-file": "^5.0.2",
+    "replace-in-file": "^6.0.0",
     "semantic-release": "^17.0.7",
     "ts-jest": "^25.4.0",
     "tslint": "^6.1.1",
