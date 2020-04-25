@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.11...v1.16.0) (2020-04-25)
+
+
+### Features
+
+* **config:** add pullTagsBranch customization ([#83](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/83)) ([e919066](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/e919066af76933f389ecae6678dee93b19d03d48)), closes [#48](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/48)
+
 ## [1.15.11](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.10...v1.15.11) (2020-04-24)
 
 
