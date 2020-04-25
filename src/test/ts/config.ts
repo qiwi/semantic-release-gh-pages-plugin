@@ -5,6 +5,8 @@ import {
   DEFAULT_MSG,
   DEFAULT_SRC,
   DEFAULT_ENTERPRISE,
+  DEFAULT_CURRENT_BRANCH,
+  DEFAULT_PULL_BRANCH,
   resolveOptions,
   resolveConfig,
   extractRepoName,
@@ -36,8 +38,10 @@ describe('config', () => {
       PLUGIN_PATH,
       DEFAULT_DST,
       DEFAULT_MSG,
-      DEFAULT_SRC
+      DEFAULT_SRC,
+      DEFAULT_CURRENT_BRANCH
     ]).forEach(v => expect(v).toEqual(expect.any(String)))
+    expect(DEFAULT_PULL_BRANCH).toEqual(expect.any(Boolean))
   })
 
   describe('#resolveOptions', () => {
@@ -101,7 +105,9 @@ describe('config', () => {
         baz: 'qux',
         msg: 'doc update',
         branch: 'master', // NOTE must be omitted,
-        repositoryUrl: 'https://enterprise.com/org/repo.git'
+        repositoryUrl: 'https://enterprise.com/org/repo.git',
+        currentBranch: 'dev',
+        pullBranch: false
       }
       const extra = {
         enterprise: true,
@@ -129,7 +135,9 @@ describe('config', () => {
         branch: DEFAULT_BRANCH,
         msg: 'doc update',
         token,
-        repo: `https://${token}@enterprise.com/org/repo.git`
+        repo: `https://${token}@enterprise.com/org/repo.git`,
+        currentBranch: 'dev',
+        pullBranch: false
       })
     })
 
@@ -163,7 +171,9 @@ describe('config', () => {
         msg: DEFAULT_MSG,
         src: DEFAULT_SRC,
         token,
-        repo: `https://${token}@github.com/${repoName}.git`
+        repo: `https://${token}@github.com/${repoName}.git`,
+        currentBranch: DEFAULT_CURRENT_BRANCH,
+        pullBranch: DEFAULT_PULL_BRANCH
       })
     })
 
@@ -234,7 +244,9 @@ describe('config', () => {
         msg: DEFAULT_MSG,
         src: 'dist/web',
         token: 'secure',
-        repo: `https://secure@github-enterprise-repo-url.com/foo/bar.git`
+        repo: `https://secure@github-enterprise-repo-url.com/foo/bar.git`,
+        currentBranch: DEFAULT_CURRENT_BRANCH,
+        pullBranch: DEFAULT_PULL_BRANCH
       })
     })
   })

@@ -12,7 +12,9 @@ import {
   DEFAULT_MSG,
   DEFAULT_SRC,
   PLUGIN_PATH,
-  DEFAULT_ENTERPRISE
+  DEFAULT_ENTERPRISE,
+  DEFAULT_CURRENT_BRANCH,
+  DEFAULT_PULL_BRANCH
 } from './defaults'
 
 export {
@@ -21,7 +23,9 @@ export {
   DEFAULT_MSG,
   DEFAULT_DST,
   DEFAULT_ENTERPRISE,
-  PLUGIN_PATH
+  PLUGIN_PATH,
+  DEFAULT_CURRENT_BRANCH,
+  DEFAULT_PULL_BRANCH
 }
 
 const gitUrlParse = catchToSmth(gitParse, {})
@@ -154,7 +158,9 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
     branch: opts.branch || DEFAULT_BRANCH,
     enterprise,
     token,
-    repo
+    repo,
+    currentBranch: opts.currentBranch || DEFAULT_CURRENT_BRANCH,
+    pullBranch: typeof(opts.pullBranch) === 'boolean' ? opts.pullBranch : DEFAULT_PULL_BRANCH
   }
 }
 
