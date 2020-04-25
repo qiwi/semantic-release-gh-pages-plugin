@@ -8,6 +8,7 @@ import {
   DEFAULT_MSG,
   DEFAULT_BRANCH,
   DEFAULT_ENTERPRISE,
+  DEFAULT_PULL_TAGS_BRANCH,
   PLUGIN_PATH
 } from '../../main/ts'
 import { getUrlFromPackage } from '../../main/ts/config'
@@ -82,7 +83,8 @@ describe('index', () => {
         src: DEFAULT_SRC,
         enterprise: DEFAULT_ENTERPRISE,
         repo: getRepo(pluginConfig, context),
-        token
+        token,
+        pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH
       })
       expect(result).toBeUndefined()
     })
@@ -171,7 +173,7 @@ describe('index', () => {
     it('performs commit to docs branch via gh-pages util', async () => {
       const { publish: ghpagesPublish } = require('gh-pages')
       const { publish } = require('../../main/ts')
-      const { getRepo } = require('../../main/ts/config')
+      const { getRepo, resolveConfig } = require('../../main/ts/config')
       const { OK } = require('../../main/ts/ghpages')
       const pluginConfig = {
         foo: 'bar',
@@ -213,7 +215,8 @@ describe('index', () => {
           'pull',
           '--tags',
           '--force',
-          expectedOpts.repo
+          expectedOpts.repo,
+          resolveConfig(pluginConfig, context).pullTagsBranch
         ],
         execaOpts
       )
