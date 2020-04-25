@@ -8,8 +8,7 @@ import {
   DEFAULT_MSG,
   DEFAULT_BRANCH,
   DEFAULT_ENTERPRISE,
-  DEFAULT_CURRENT_BRANCH,
-  DEFAULT_PULL_BRANCH,
+  DEFAULT_PULL_TAGS_BRANCH,
   PLUGIN_PATH
 } from '../../main/ts'
 import { getUrlFromPackage } from '../../main/ts/config'
@@ -85,8 +84,7 @@ describe('index', () => {
         enterprise: DEFAULT_ENTERPRISE,
         repo: getRepo(pluginConfig, context),
         token,
-        currentBranch: DEFAULT_CURRENT_BRANCH,
-        pullBranch: DEFAULT_PULL_BRANCH
+        pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH
       })
       expect(result).toBeUndefined()
     })
@@ -218,7 +216,7 @@ describe('index', () => {
           '--tags',
           '--force',
           expectedOpts.repo,
-          resolveConfig(pluginConfig, context).currentBranch
+          resolveConfig(pluginConfig, context).pullTagsBranch
         ],
         execaOpts
       )

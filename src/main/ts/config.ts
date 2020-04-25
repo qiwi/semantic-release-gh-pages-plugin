@@ -5,7 +5,7 @@ import { castArray, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
 import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
-import { catchToSmth } from './util'
+import { anyDefined, catchToSmth } from './util'
 import {
   DEFAULT_BRANCH,
   DEFAULT_DST,
@@ -13,8 +13,7 @@ import {
   DEFAULT_SRC,
   PLUGIN_PATH,
   DEFAULT_ENTERPRISE,
-  DEFAULT_CURRENT_BRANCH,
-  DEFAULT_PULL_BRANCH
+  DEFAULT_PULL_TAGS_BRANCH
 } from './defaults'
 
 export {
@@ -24,8 +23,7 @@ export {
   DEFAULT_DST,
   DEFAULT_ENTERPRISE,
   PLUGIN_PATH,
-  DEFAULT_CURRENT_BRANCH,
-  DEFAULT_PULL_BRANCH
+  DEFAULT_PULL_TAGS_BRANCH
 }
 
 const gitUrlParse = catchToSmth(gitParse, {})
@@ -142,6 +140,7 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   const repo = getRepo(pluginConfig, context, enterprise)
   const repoUrl = getRepoUrl(pluginConfig, context)
   const token = getToken(env, repoUrl)
+  const pullTagsBranch = anyDefined(opts.pullTagsBranch, DEFAULT_PULL_TAGS_BRANCH)
 
   if (process.env.DEBUG) {
     logger.log('resolveConfig args:')
@@ -149,6 +148,7 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
     logger.log('pluginConfig=', JSON.stringify(pluginConfig, null, 2))
     logger.log('path=', path)
     logger.log('step=', step)
+    logger.log('pullTagsBranch=', pullTagsBranch)
   }
 
   return {
@@ -159,8 +159,7 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
     enterprise,
     token,
     repo,
-    currentBranch: opts.currentBranch || DEFAULT_CURRENT_BRANCH,
-    pullBranch: typeof(opts.pullBranch) === 'boolean' ? opts.pullBranch : DEFAULT_PULL_BRANCH
+    pullTagsBranch
   }
 }
 

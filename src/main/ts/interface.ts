@@ -26,9 +26,8 @@ export interface IGhpagesPluginConfig {
   msg: string,
   token?: string,
   repo?: string,
-  enterprise?: boolean
-  currentBranch?: string,
-  pullBranch?: boolean
+  enterprise?: boolean,
+  pullTagsBranch?: string
 }
 
 export interface IPushOpts extends IGhpagesPluginConfig {

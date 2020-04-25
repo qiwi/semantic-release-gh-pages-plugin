@@ -5,8 +5,7 @@ import {
   DEFAULT_MSG,
   DEFAULT_SRC,
   DEFAULT_ENTERPRISE,
-  DEFAULT_CURRENT_BRANCH,
-  DEFAULT_PULL_BRANCH,
+  DEFAULT_PULL_TAGS_BRANCH,
   resolveOptions,
   resolveConfig,
   extractRepoName,
@@ -39,9 +38,8 @@ describe('config', () => {
       DEFAULT_DST,
       DEFAULT_MSG,
       DEFAULT_SRC,
-      DEFAULT_CURRENT_BRANCH
+      DEFAULT_PULL_TAGS_BRANCH
     ]).forEach(v => expect(v).toEqual(expect.any(String)))
-    expect(DEFAULT_PULL_BRANCH).toEqual(expect.any(Boolean))
   })
 
   describe('#resolveOptions', () => {
@@ -106,8 +104,7 @@ describe('config', () => {
         msg: 'doc update',
         branch: 'master', // NOTE must be omitted,
         repositoryUrl: 'https://enterprise.com/org/repo.git',
-        currentBranch: 'dev',
-        pullBranch: false
+        pullTagsBranch: 'dev'
       }
       const extra = {
         enterprise: true,
@@ -136,8 +133,7 @@ describe('config', () => {
         msg: 'doc update',
         token,
         repo: `https://${token}@enterprise.com/org/repo.git`,
-        currentBranch: 'dev',
-        pullBranch: false
+        pullTagsBranch: 'dev'
       })
     })
 
@@ -172,8 +168,7 @@ describe('config', () => {
         src: DEFAULT_SRC,
         token,
         repo: `https://${token}@github.com/${repoName}.git`,
-        currentBranch: DEFAULT_CURRENT_BRANCH,
-        pullBranch: DEFAULT_PULL_BRANCH
+        pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH
       })
     })
 
@@ -245,8 +240,7 @@ describe('config', () => {
         src: 'dist/web',
         token: 'secure',
         repo: `https://secure@github-enterprise-repo-url.com/foo/bar.git`,
-        currentBranch: DEFAULT_CURRENT_BRANCH,
-        pullBranch: DEFAULT_PULL_BRANCH
+        pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH
       })
     })
   })

@@ -8,3 +8,5 @@ export const catchToSmth = (fn: Function, smth?: any) => {
     }
   }
 }
+
+export const anyDefined = (...args: any[]) => args.find(item => typeof item !== 'undefined')

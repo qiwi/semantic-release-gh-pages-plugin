@@ -13,15 +13,18 @@ export const OK = { status: 'OK' }
  * @private
  */
 export const pullTags = (opts: IPushOpts): Promise<any> => {
-  if (!opts.pullBranch) return Promise.resolve()
+  if (opts.pullTagsBranch === '') {
+    return Promise.resolve()
+  }
+
   const repo = '' + opts.repo
-  const branch = '' + opts.currentBranch
+  const pullTagsBranch = '' + opts.pullTagsBranch
   const execaOpts = {
     env: opts.env,
     cwd: opts.cwd
   }
 
-  return execa('git', ['pull', '--tags', '--force', repo, branch], execaOpts)
+  return execa('git', ['pull', '--tags', '--force', repo, pullTagsBranch], execaOpts)
 }
 
 /**
