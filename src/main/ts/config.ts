@@ -140,7 +140,7 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   const repo = getRepo(pluginConfig, context, enterprise)
   const repoUrl = getRepoUrl(pluginConfig, context)
   const token = getToken(env, repoUrl)
-  const pullTagsBranch = anyDefined(opts.pullTagsBranch, DEFAULT_PULL_TAGS_BRANCH)
+  const pullTagsBranch = anyDefined(opts.pullTagsBranch, opts._branch, DEFAULT_PULL_TAGS_BRANCH)
 
   if (process.env.DEBUG) {
     logger.log('resolveConfig args:')
@@ -181,5 +181,5 @@ export const resolveOptions = (pluginConfig: TAnyMap, context: TContext, path = 
     })
     .find(config => config?.path === path) || {}
 
-  return { ...base, ...extra }
+  return { ...base, ...extra, _branch: pluginConfig.branch }
 }
