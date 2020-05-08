@@ -72,7 +72,7 @@
     "@types/jest": "^25.2.1",
     "@types/lodash": "^4.14.150",
     "@types/read-pkg": "^5.1.0",
-    "@types/semantic-release": "^15.13.1",
+    "@types/semantic-release": "^17.0.0",
     "coveralls": "^3.1.0",
     "dts-generator": "^3.0.0",
     "eslint-plugin-typescript": "^0.14.0",
