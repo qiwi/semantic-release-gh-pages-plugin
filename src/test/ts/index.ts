@@ -47,6 +47,7 @@ describe('index', () => {
   }
   const globalConfig = {
     branch: 'master',
+    branches: [],
     tagFormat: 'v{{version}}',
     repositoryUrl,
     plugins: []

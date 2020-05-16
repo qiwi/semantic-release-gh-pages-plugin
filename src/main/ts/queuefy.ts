@@ -14,12 +14,11 @@ export const invoke = (fn: IAsyncFn, task: ITask, next: any) => {
   try {
     fn(...args)
       .then(v => {
-        iop.resolve(v)
-        next()
+        iop.resolve(v) && next()
+
       })
       .catch(v => {
-        iop.reject(v)
-        next()
+        iop.reject(v) && next()
       })
 
   } catch (e) {

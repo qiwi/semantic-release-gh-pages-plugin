@@ -26,6 +26,7 @@ describe('config', () => {
   }
   const globalConfig = {
     branch: 'master',
+    branches: [],
     tagFormat: 'v{{version}}',
     repositoryUrl,
     plugins: []
@@ -190,6 +191,7 @@ describe('config', () => {
         env: {},
         options: {
           branch: 'master',
+          branches: [],
           repositoryUrl: 'https://secure@github-enterprise-repo-url.com/foo/bar.git',
           tagFormat: 'v${version}',
           plugins: [

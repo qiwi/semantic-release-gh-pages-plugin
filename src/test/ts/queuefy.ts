@@ -58,6 +58,6 @@ describe('queuefy', () => {
     const target = (): any => { throw new Error('foo') }
     const fn = queuefy(target)
 
-    expect(await fn().catch((e: any) => e)).toBe('foo')
+    expect(await fn().catch((e: any) => e)).toEqual(new Error('foo'))
   })
 })
