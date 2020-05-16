@@ -31,7 +31,6 @@ doc
 # Deps
 node_modules/
 jspm_packages/
-flow-typed/npm/
 
 .npm
 .eslintcache
@@ -41,6 +40,7 @@ flow-typed/npm/
 .idea
 *.iml
 typings
+flow-typed
 
 # Typescript
 *.tsbuildinfo

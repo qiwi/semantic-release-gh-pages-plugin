@@ -30,14 +30,11 @@
     "lint:fix": "yarn lint --fix",
     "test": "yarn lint && yarn jest",
     "clean": "rm -rf lib typings",
-    "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn libdef && yarn docs",
+    "build": "yarn clean && yarn build:es5 && yarn build:es6 && yarn build:ts && yarn build:libdef && yarn docs",
     "build:es5": "mkdir -p target/es5 && tsc -p tsconfig.es5.json",
     "build:es6": "mkdir -p target/es6 && tsc -p tsconfig.es6.json",
     "build:ts": "cp -r src/main/ts/ target/ts/",
-    "dtsgen": "dts-generator --project ./ --out typings/index.d.ts --prefix @qiwi/semantic-release-gh-pages-plugin/lib/es5 --name @qiwi/semantic-release-gh-pages-plugin --main @qiwi/semantic-release-gh-pages-plugin/lib/es5/index --moduleResolution node",
-    "flowgen": "flowgen typings/index.d.ts --output-file typings/index.flow.js",
-    "libdef": "yarn dtsgen && yarn libdeffix && yarn flowgen",
-    "libdeffix": "node -r esm ./src/gen/js/libdef-import-fix.js --dts=./typings/index.d.ts",
+    "build:libdef": "dts-generator --project ./ --out typings/index.d.ts --prefix @qiwi/semantic-release-gh-pages-plugin/target/es5 --name @qiwi/semantic-release-gh-pages-plugin --main @qiwi/semantic-release-gh-pages-plugin/target/es5/index --moduleResolution node && libdeffix --dts=./typings/index.d.ts --prefix=@qiwi/semantic-release-gh-pages-plugin/target/es5 && flowgen typings/index.d.ts --output-file flow-typed/index.flow.js",
     "test:report": "yarn test && yarn coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
     "docs": "typedoc src/main/ts --ignoreCompilerErrors || exit 0",
@@ -47,7 +44,8 @@
     "README.md",
     "CHANGELOG.md",
     "target",
-    "typings"
+    "typings",
+    "flow-typed"
   ],
   "dependencies": {
     "@types/git-url-parse": "^9.0.0",
@@ -63,6 +61,7 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
+    "@qiwi/libdefkit": "^1.0.1",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.0.6",
@@ -75,10 +74,8 @@
     "@types/read-pkg": "^5.1.0",
     "@types/semantic-release": "^17.0.1",
     "coveralls": "^3.1.0",
-    "dts-generator": "^3.0.0",
     "eslint-plugin-typescript": "^0.14.0",
     "esm": "^3.2.25",
-    "flowgen": "1.10.0",
     "jest": "^26.0.1",
     "replace-in-file": "^6.0.0",
     "semantic-release": "^17.0.7",
