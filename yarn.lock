@@ -601,6 +601,34 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@qiwi/substrate-abstract@^1.17.40":
+  version "1.17.41"
+  resolved "https://registry.yarnpkg.com/@qiwi/substrate-abstract/-/substrate-abstract-1.17.41.tgz#492e527bb6adf5165554c70d3cbc24c9ff3cbaf6"
+  integrity sha512-n9OQG71QHBRLlTt0T6w5vyjQX57FxnjuXnckKTERdEzPBjSy6htW4z4VsFvB6h+3UnE8BmzR+0J6E0XTKzNEqg==
+  dependencies:
+    "@qiwi/substrate-types" "^1.39.0"
+
+"@qiwi/substrate-std@*":
+  version "1.0.29"
+  resolved "https://registry.yarnpkg.com/@qiwi/substrate-std/-/substrate-std-1.0.29.tgz#6f9ffe5b1a81ea7781ea68874612365b66ef50f0"
+  integrity sha512-aL7GLwG5j5vWomtoLow8/YvpkQn+Y/mhJ6pFCn8++R+Ih7FNynrcBDi7fG8njar1leCSkgp/K7m6RZdUwreHHw==
+  dependencies:
+    "@qiwi/substrate-types" "^1.39.0"
+
+"@qiwi/substrate-types@^1.39.0":
+  version "1.40.0"
+  resolved "https://registry.yarnpkg.com/@qiwi/substrate-types/-/substrate-types-1.40.0.tgz#8b81d7e5f4b865e910cb1ed823ce5d309e342692"
+  integrity sha512-iQbHzbjYVewGbdh0JPgFeCksMLyGRw22xC0Ssd8aMw8MfvhP0DgB/gXatojp37Y51BFdDVCbHWSjM1L7cojVXQ==
+
+"@qiwi/substrate@^1.17.12":
+  version "1.18.28"
+  resolved "https://registry.yarnpkg.com/@qiwi/substrate/-/substrate-1.18.28.tgz#bf8e447fd552992deaa5f2b02ac0ee41ecbd5db6"
+  integrity sha512-K5JE3C4rm5Mc/N1lqcFfTEHkq3OE9lcqwa2FjyqKtTW5lHSd4ciNeMRxzTC+mNe3UP5g+otVGhiqYJ7OzjLYow==
+  dependencies:
+    "@qiwi/substrate-abstract" "^1.17.40"
+    "@qiwi/substrate-std" "*"
+    "@qiwi/substrate-types" "^1.39.0"
+
 "@semantic-release/changelog@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@semantic-release/changelog/-/changelog-5.0.1.tgz#50a84b63e5d391b7debfe021421589fa2bcdafe4"
@@ -3265,6 +3293,14 @@ init-package-json@^1.10.3:
     semver "2.x || 3.x || 4 || 5"
     validate-npm-package-license "^3.0.1"
     validate-npm-package-name "^3.0.0"
+
+inside-out-promise@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/inside-out-promise/-/inside-out-promise-1.4.3.tgz#904d936c5fad737a856b48b6a0cc916888a0ad9c"
+  integrity sha512-03UJVeFfMlq90Kf4K6iQmiGQOphkEXVOwsPcrDrKAGEUw4cHJfuyJoeUMUIo/8S9Q0EpIfR0kln2Yoqt9cM06Q==
+  dependencies:
+    "@qiwi/substrate" "^1.17.12"
+    tslib "^1.10.0"
 
 interpret@^1.0.0:
   version "1.2.0"

@@ -2,7 +2,8 @@
 
 import { publish as ghpagePublish, clean } from 'gh-pages'
 import execa from 'execa'
-import { IPushOpts, TAnyMap } from './interface'
+import {queuefy} from './queuefy'
+import {IPushOpts, TAnyMap} from './interface'
 
 /**
  * @private
@@ -24,7 +25,14 @@ export const pullTags = (opts: IPushOpts): Promise<any> => {
     cwd: opts.cwd
   }
 
-  return execa('git', ['pull', '--tags', '--force', repo, pullTagsBranch], execaOpts)
+  return execa('git', [
+    'pull',
+    '--tags',
+    '--force',
+    repo,
+    pullTagsBranch
+  ], execaOpts)
+    .catch(console.log)
 }
 
 /**
@@ -54,6 +62,16 @@ export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
 /**
  * @private
  */
-export const publish = (opts: IPushOpts) => pullTags(opts)
-  .then(() => clean())
-  .then(() => pushPages(opts))
+export const _publish = (opts: IPushOpts) =>
+  pullTags(opts)
+    .then(() => pushPages(opts))
+    .then(res => {
+      clean()
+
+      return res
+    })
+
+/**
+ * @private
+ */
+export const publish = queuefy(_publish)
