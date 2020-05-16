@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.16.0...v2.0.0) (2020-05-16)
+
+
+### Features
+
+* add execution queue ([c722679](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/c722679e398d9d98a5f5ac180cb45589f03fa8b3))
+
+
+### BREAKING CHANGES
+
+* tslib 2.0 requires TS 3.9+
+
 # [1.16.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.15.11...v1.16.0) (2020-04-25)
 
 
