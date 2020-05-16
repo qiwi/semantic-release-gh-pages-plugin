@@ -1,4 +1,4 @@
-import {factory, TInsideOutPromise} from 'inside-out-promise'
+import { factory, TInsideOutPromise } from 'inside-out-promise'
 
 export type IAsyncFn = (...args: any[]) => Promise<any>
 
@@ -9,13 +9,19 @@ export type ITask = {
 export type ITaskQueue = Array<ITask>
 
 export const invoke = (fn: IAsyncFn, task: ITask, next: any) => {
-  const {iop, args} = task
+  const { iop, args } = task
 
   try {
     fn(...args)
-      .then(v => {iop.resolve(v)})
-      .catch(v => {iop.reject(v)})
-      .then(next)
+      .then(v => {
+        iop.resolve(v)
+        next()
+      })
+      .catch(v => {
+        iop.reject(v)
+        next()
+      })
+
   } catch (e) {
     iop.reject(e)
     next()
@@ -41,7 +47,7 @@ export const queuefy = <T extends IAsyncFn>(fn: T): T => {
   return ((...args: any[]): any => {
     const iop = factory()
 
-    queue.push({ args, iop})
+    queue.push({ args, iop })
 
     if (queue.length === 1) {
       processQueue()

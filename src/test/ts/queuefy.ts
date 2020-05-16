@@ -1,4 +1,4 @@
-import {queuefy} from '../../main/ts/queuefy'
+import { queuefy } from '../../main/ts/queuefy'
 
 describe('queuefy', () => {
   it('returns queuefied fn', async () => {
@@ -55,7 +55,7 @@ describe('queuefy', () => {
   })
 
   it('captures thrown exceptions', async () => {
-    const target = (): any => { throw 'foo' }
+    const target = (): any => { throw new Error('foo') }
     const fn = queuefy(target)
 
     expect(await fn().catch((e: any) => e)).toBe('foo')
