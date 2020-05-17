@@ -2,7 +2,7 @@
 
 import { publish as ghpagePublish, clean } from 'gh-pages'
 import execa from 'execa'
-import { queuefy } from './queuefy'
+import { queuefy } from 'queuefy'
 import { IPushOpts, TAnyMap } from './interface'
 
 /**
