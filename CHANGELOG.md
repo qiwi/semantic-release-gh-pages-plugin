@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v2.0.0...v3.0.0) (2020-05-31)
+
+
+### Performance Improvements
+
+* **package:** up deps, up gh-pages to v3.0.0 ([33fd9ab](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/33fd9ab9ece59140274414f7e0bff1529c8be7eb))
+
+
+### BREAKING CHANGES
+
+* **package:** gh-pages@3.0.0 requires Node.js 10
+
 # [2.0.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v1.16.0...v2.0.0) (2020-05-16)
 
 
