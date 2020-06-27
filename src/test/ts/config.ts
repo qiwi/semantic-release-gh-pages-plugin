@@ -11,11 +11,11 @@ import {
   extractRepoName,
   getUrlFromPackage,
   getRepoUrl,
-  getRepo,
+  // getRepo,
   extractRepoDomain
 } from '../../main/ts/config'
 
-import { TAnyMap, TContext, TStringMap } from '../../main/ts/interface'
+import { TAnyMap, TContext } from '../../main/ts/interface'
 
 describe('config', () => {
   const repositoryUrl = getUrlFromPackage()
@@ -31,7 +31,6 @@ describe('config', () => {
     repositoryUrl,
     plugins: []
   }
-  const repoName = extractRepoName(repositoryUrl)
 
   it('exposes defaults', () => {
     ([DEFAULT_BRANCH,
@@ -168,7 +167,7 @@ describe('config', () => {
         msg: DEFAULT_MSG,
         src: DEFAULT_SRC,
         token,
-        repo: `https://${token}@github.com/${repoName}.git`,
+        repo: repositoryUrl,
         pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH
       })
     })
@@ -285,83 +284,9 @@ describe('config', () => {
     cases.forEach(([input, result]) => expect(extractRepoDomain(input)).toBe(result))
   })
 
-  it('#getRepo returns proper repo url with token', () => {
-    const cases = [
-      {
-        pluginConfig: {
-
-        },
-        context: {
-          logger,
-          options: {
-            ...globalConfig
-          },
-          cwd,
-          env: {
-            GH_TOKEN: 'foo'
-          }
-        },
-        enterprise: true,
-        result: 'https://foo@github.com/qiwi/semantic-release-gh-pages-plugin.git'
-      },
-      {
-        pluginConfig: {},
-        context: {
-          logger,
-          options: {
-            ...globalConfig,
-            repositoryUrl: 'https://github.qiwi.com/qiwi/foo.git'
-          },
-          cwd,
-          env: {
-            GH_TOKEN: 'foo'
-          } as TStringMap
-        },
-        enterprise: true,
-        result: 'https://foo@github.qiwi.com/qiwi/foo.git'
-      },
-      {
-        pluginConfig: {},
-        context: {
-          logger,
-          options: {
-            ...globalConfig,
-            repositoryUrl: ''
-          },
-          cwd,
-          env: {
-            REPO_URL: 'http://github.qiwi.com/qiwi/foo',
-            GH_TOKEN: 'foo'
-          }
-        },
-        enterprise: true,
-        result: 'https://foo@github.qiwi.com/qiwi/foo.git'
-      },
-      {
-        pluginConfig: {},
-        context: {
-          logger,
-          options: {
-            ...globalConfig,
-            repositoryUrl: ''
-          },
-          cwd,
-          env: {
-            REPO_URL: 'http://github.qiwi.com/qiwi/foo',
-            GH_TOKEN: 'foo'
-          }
-        },
-        enterprise: false,
-        result: undefined
-      }
-    ]
-
-    cases.forEach(({ pluginConfig, context, enterprise, result }) => expect(getRepo(pluginConfig, context, enterprise)).toBe(result))
-  })
-
   describe('#getRepoUrl', () => {
     it('returns proper value', () => {
-      const cases: Array<{pluginConfig: TAnyMap, context: TContext, result: string}> =
+      const cases: Array<{pluginConfig: TAnyMap, context: TContext, enterprise?: boolean, result: string}> =
         [
           {
             pluginConfig: {},
@@ -386,11 +311,12 @@ describe('config', () => {
               cwd,
               env: {}
             },
+            enterprise: true,
             result: 'bar'
           },
           {
             pluginConfig: {
-              repositoryUrl: 'baz'
+              repositoryUrl: 'https://baz.com/foo/bar'
             },
             context: {
               logger,
@@ -398,9 +324,12 @@ describe('config', () => {
                 ...globalConfig
               },
               cwd,
-              env: {}
+              env: {
+                GH_TOKEN: 'token'
+              }
             },
-            result: 'baz'
+            enterprise: true,
+            result: 'https://token@baz.com/foo/bar.git'
           },
           {
             pluginConfig: {},
@@ -424,10 +353,12 @@ describe('config', () => {
               },
               cwd,
               env: {
-                REPO_URL: 'bat'
+                GITHUB_TOKEN: 'secret',
+                REPO_URL: 'https://qux.com/foo/bar'
               }
             },
-            result: 'bat'
+            enterprise: true,
+            result: 'https://secret@qux.com/foo/bar.git'
           },
           {
             pluginConfig: {},
@@ -447,10 +378,11 @@ describe('config', () => {
       cases.forEach(({
         pluginConfig,
         context,
-        result
+        result,
+        enterprise
       }) => {
 
-        expect(getRepoUrl(pluginConfig, context)).toBe(result)
+        expect(getRepoUrl(pluginConfig, context, !!enterprise)).toBe(result)
       })
     })
   })

@@ -15,6 +15,7 @@ import {
   DEFAULT_ENTERPRISE,
   DEFAULT_PULL_TAGS_BRANCH
 } from './defaults'
+import AggregateError from 'aggregate-error'
 
 export {
   DEFAULT_BRANCH,
@@ -55,14 +56,15 @@ export const extractRepoToken = (repoUrl: string): string => {
 /**
  * @private
  */
-export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => {
+export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext, enterprise: boolean): string => {
   const { env, logger } = context
   const urlFromEnv = getRepoUrlFromEnv(env)
   const urlFromStepOpts = pluginConfig.repositoryUrl
   const urlFromOpts = context?.options?.repositoryUrl || ''
   const urlFromPackage = getUrlFromPackage()
+  const reassemble = !!urlFromStepOpts || !urlFromOpts
 
-  const url = urlFromStepOpts || urlFromOpts || urlFromEnv || urlFromPackage
+  let url = urlFromStepOpts || urlFromOpts || urlFromEnv || urlFromPackage
 
   if (process.env.DEBUG) {
     logger.log('getRepoUrl:')
@@ -70,12 +72,19 @@ export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext): string => 
     logger.log('urlFromStepOpts=', urlFromStepOpts)
     logger.log('urlFromOpts=', urlFromOpts)
     logger.log('urlFromPackage', urlFromPackage)
-    logger.log('url=', url)
   }
 
   if (GITIO_REPO_PATTERN.test(url)) {
     const res: any = request('GET', urlFromOpts, { followRedirects: false, timeout: 5000 })
-    return res.headers.location
+    url = res.headers.location
+  }
+
+  if (reassemble) {
+    url = reassembleRepoUrl(url, context)
+  }
+
+  if (enterprise && extractRepoDomain(url) === 'github.com') {
+    throw new AggregateError(['repo refers to `github.com` but enterprise url is expected'])
   }
 
   return url
@@ -102,45 +111,25 @@ export const getToken = (env: TAnyMap, repoUrl: string) => env.GH_TOKEN || env.G
 /**
  * @private
  */
-export const getRepo = (pluginConfig: TAnyMap, context: TContext, enterprise?: boolean): string | undefined => {
-  const { env, logger } = context
-  const repoUrl = getRepoUrl(pluginConfig, context)
-  const repoName = extractRepoName(repoUrl)
-  const repoDomain = extractRepoDomain(repoUrl)
-  const token = getToken(env, repoUrl)
-  const url = `https://${token}@${repoDomain}/${repoName}.git`
+export const reassembleRepoUrl = (redirectedUrl: string, context: TContext): string | undefined => {
+  const { env } = context
+  const repoName = extractRepoName(redirectedUrl)
+  const repoDomain = extractRepoDomain(redirectedUrl)
+  const token = getToken(env, redirectedUrl)
 
-  if (process.env.DEBUG) {
-    logger.log('getRepo:')
-    logger.log('repoUrl=', repoUrl)
-    logger.log('repoName=', repoName)
-    logger.log('repoDomain=', repoDomain)
-    logger.log('has token=', !!token)
-    logger.log('enterprise=', enterprise)
-  }
-
-  if (repoDomain === 'github.com' && repoName) {
-    return url
-  }
-
-  if (enterprise) {
-    return repoName
-      ? url
-      : repoUrl
-  }
+  return `https://${token}@${repoDomain}/${repoName}.git`
 }
 
 /**
  * @private
  */
 export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): IGhpagesPluginConfig => {
-  const { env, logger } = context
+  const { logger } = context
   const opts = resolveOptions(pluginConfig, context, path, step)
   const enterprise = Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE)
-  const repo = getRepo(pluginConfig, context, enterprise)
-  const repoUrl = getRepoUrl(pluginConfig, context)
-  const token = getToken(env, repoUrl)
+  const repo = getRepoUrl(pluginConfig, context, enterprise)
   const pullTagsBranch = anyDefined(opts.pullTagsBranch, opts._branch, DEFAULT_PULL_TAGS_BRANCH)
+  const token = getToken(context.env, repo)
 
   if (process.env.DEBUG) {
     logger.log('resolveConfig args:')
@@ -157,8 +146,8 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
     msg: opts.msg || DEFAULT_MSG,
     branch: opts.branch || DEFAULT_BRANCH,
     enterprise,
-    token,
     repo,
+    token,
     pullTagsBranch
   }
 }
