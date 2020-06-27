@@ -24,8 +24,8 @@ export interface IGhpagesPluginConfig {
   dst: string,
   branch: string,
   msg: string,
+  repo: string,
   token?: string,
-  repo?: string,
   enterprise?: boolean,
   pullTagsBranch?: string
 }

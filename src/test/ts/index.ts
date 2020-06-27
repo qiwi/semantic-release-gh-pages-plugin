@@ -65,7 +65,7 @@ describe('index', () => {
   describe('verifyConditions', () => {
     it('populates plugin context with resolved config data and returns void', async () => {
       const { verifyConditions } = require('../../main/ts')
-      const { getRepo } = require('../../main/ts/config')
+      const { getRepoUrl } = require('../../main/ts/config')
       const context = {
         logger,
         options: {
@@ -83,7 +83,7 @@ describe('index', () => {
         dst: DEFAULT_DST,
         src: DEFAULT_SRC,
         enterprise: DEFAULT_ENTERPRISE,
-        repo: getRepo(pluginConfig, context),
+        repo: getRepoUrl(pluginConfig, context, DEFAULT_ENTERPRISE),
         token,
         pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH
       })
@@ -121,22 +121,22 @@ describe('index', () => {
         jest.resetModules()
       })
 
-      it('asserts repository.url', async () => {
+      it('asserts enterprise url', async () => {
         const AggregateError = require('aggregate-error')
         const { verifyConditions } = require('../../main/ts')
         const context = {
           logger,
           options: {
             ...globalConfig,
-            [step]: [{ path }],
-            repositoryUrl: null
+            [step]: [[path, { enterprise: true }]],
+            repositoryUrl: 'https://github.com/qiwi/foobar.git'
           },
           cwd,
           env: { GITHUB_TOKEN: token }
         }
 
         await expect(verifyConditions(pluginConfig, context))
-          .rejects.toEqual(new AggregateError(['package.json repository.url does not match github.com pattern']))
+          .rejects.toEqual(new AggregateError(['repo refers to `github.com` but enterprise url is expected']))
       })
     })
   })
@@ -174,7 +174,7 @@ describe('index', () => {
     it('performs commit to docs branch via gh-pages util', async () => {
       const { publish: ghpagesPublish } = require('gh-pages')
       const { publish } = require('../../main/ts')
-      const { getRepo, resolveConfig } = require('../../main/ts/config')
+      const { getRepoUrl, resolveConfig } = require('../../main/ts/config')
       const { OK } = require('../../main/ts/ghpages')
       const pluginConfig = {
         foo: 'bar',
@@ -196,7 +196,7 @@ describe('index', () => {
         env: { GITHUB_TOKEN: token }
       }
       const expectedOpts = {
-        repo: getRepo(pluginConfig, context),
+        repo: getRepoUrl(pluginConfig, context, false),
         branch: 'doc-branch',
         message: 'docs updated v{{=it.nextRelease.gitTag}}',
         dest: 'root'
@@ -251,7 +251,7 @@ describe('index', () => {
 
     it('throws rejection on gh-pages fail', async () => {
       const { publish } = require('../../main/ts')
-      const { getRepo } = require('../../main/ts/config')
+      const { getRepoUrl } = require('../../main/ts/config')
       const pluginConfig = {
         foo: 'bar',
         baz: 'qux'
@@ -266,7 +266,7 @@ describe('index', () => {
         env: { GITHUB_TOKEN: token + 'foo' }
       }
       const expectedOpts = {
-        repo: getRepo(pluginConfig, context),
+        repo: getRepoUrl(pluginConfig, context, false),
         branch: DEFAULT_BRANCH,
         message: DEFAULT_MSG,
         dest: DEFAULT_DST
