@@ -38,7 +38,8 @@
     "test:report": "yarn test && yarn coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
     "docs": "typedoc src/main/ts --ignoreCompilerErrors || exit 0",
-    "postupdate": "yarn && yarn build && yarn test"
+    "postupdate": "yarn && yarn build && yarn test",
+    "publish:beta": "npm publish --no-git-tag-version --tag beta"
   },
   "files": [
     "README.md",
