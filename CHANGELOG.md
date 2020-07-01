@@ -1,3 +1,20 @@
+# [4.0.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v3.0.0...v4.0.0) (2020-07-01)
+
+
+### Bug Fixes
+
+* let semrel core take care about repositoryUrl ([9e46b88](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/9e46b885b645361f8fa5665aabf802abac7bbb8d)), closes [#80](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/80)
+
+
+### Features
+
+* **package:** up gh-pages to 3.1.0, cache location can be customized by CACHE_DIR env var ([44ac885](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/44ac885e765638023782ce9bafc534acc902f11a))
+
+
+### BREAKING CHANGES
+
+* 1) removed custom url builder 2) `enterprise` flag if enabled checks the repoUrl not to be 'github.com'
+
 # [3.0.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v2.0.0...v3.0.0) (2020-05-31)
 
 
