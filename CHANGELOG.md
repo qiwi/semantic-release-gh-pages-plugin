@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v4.0.0...v4.0.1) (2020-07-20)
+
+
+### Bug Fixes
+
+* **package:** up deps, fix vulnerable deps ([f12505d](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/f12505de2d7e7ff6389c95c37e76af42a1d4d94f))
+
 # [4.0.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v3.0.0...v4.0.0) (2020-07-01)
 
 
