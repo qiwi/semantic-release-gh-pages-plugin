@@ -100,22 +100,22 @@
 				</a>
 				<p>Describe plugin configuration in <a href="https://github.com/semantic-release/semantic-release/blob/master/docs/01-usage/plugins.md#plugins-configuration-options">package.json / .releaserc.js</a></p>
 				<pre><code class="language-json">{
-  <span class="hljs-attr">"release"</span>: {
-    <span class="hljs-attr">"branch"</span>: <span class="hljs-string">"master"</span>,
-    <span class="hljs-attr">"verifyConditions"</span>: [
-      <span class="hljs-string">"@semantic-release/changelog"</span>,
-      <span class="hljs-string">"@semantic-release/npm"</span>,
-      <span class="hljs-string">"@semantic-release/git"</span>,
-      <span class="hljs-string">"@qiwi/semantic-release-gh-pages-plugin"</span>
+  <span class="hljs-attr">&quot;release&quot;</span>: {
+    <span class="hljs-attr">&quot;branch&quot;</span>: <span class="hljs-string">&quot;master&quot;</span>,
+    <span class="hljs-attr">&quot;verifyConditions&quot;</span>: [
+      <span class="hljs-string">&quot;@semantic-release/changelog&quot;</span>,
+      <span class="hljs-string">&quot;@semantic-release/npm&quot;</span>,
+      <span class="hljs-string">&quot;@semantic-release/git&quot;</span>,
+      <span class="hljs-string">&quot;@qiwi/semantic-release-gh-pages-plugin&quot;</span>
     ],
-    <span class="hljs-attr">"publish"</span>: [
-      <span class="hljs-string">"@semantic-release/npm"</span>,
-      <span class="hljs-string">"@semantic-release/github"</span>,
+    <span class="hljs-attr">&quot;publish&quot;</span>: [
+      <span class="hljs-string">&quot;@semantic-release/npm&quot;</span>,
+      <span class="hljs-string">&quot;@semantic-release/github&quot;</span>,
       [
-        <span class="hljs-string">"@qiwi/semantic-release-gh-pages-plugin"</span>,
+        <span class="hljs-string">&quot;@qiwi/semantic-release-gh-pages-plugin&quot;</span>,
         {
-          <span class="hljs-attr">"msg"</span>: <span class="hljs-string">"updated"</span>,
-          <span class="hljs-attr">"branch"</span>: <span class="hljs-string">"docs"</span>
+          <span class="hljs-attr">&quot;msg&quot;</span>: <span class="hljs-string">&quot;updated&quot;</span>,
+          <span class="hljs-attr">&quot;branch&quot;</span>: <span class="hljs-string">&quot;docs&quot;</span>
         }
       ]
     ]
@@ -123,15 +123,15 @@
 }</code></pre>
 				<p>or even shorter if default settings are used:</p>
 				<pre><code class="language-json">{
-  <span class="hljs-attr">"release"</span>: {
-    <span class="hljs-attr">"branch"</span>: <span class="hljs-string">"master"</span>,
-    <span class="hljs-attr">"plugins"</span>: [
-      <span class="hljs-string">"@semantic-release/release-notes-generator"</span>,
-      <span class="hljs-string">"@semantic-release/changelog"</span>,
-      <span class="hljs-string">"@semantic-release/git"</span>,
-      <span class="hljs-string">"@semantic-release/github"</span>,
-      <span class="hljs-string">"@semantic-release/npm"</span>,
-      <span class="hljs-string">"@qiwi/semantic-release-gh-pages-plugin"</span>
+  <span class="hljs-attr">&quot;release&quot;</span>: {
+    <span class="hljs-attr">&quot;branch&quot;</span>: <span class="hljs-string">&quot;master&quot;</span>,
+    <span class="hljs-attr">&quot;plugins&quot;</span>: [
+      <span class="hljs-string">&quot;@semantic-release/release-notes-generator&quot;</span>,
+      <span class="hljs-string">&quot;@semantic-release/changelog&quot;</span>,
+      <span class="hljs-string">&quot;@semantic-release/git&quot;</span>,
+      <span class="hljs-string">&quot;@semantic-release/github&quot;</span>,
+      <span class="hljs-string">&quot;@semantic-release/npm&quot;</span>,
+      <span class="hljs-string">&quot;@qiwi/semantic-release-gh-pages-plugin&quot;</span>
     ]
   }
 }</code></pre>
