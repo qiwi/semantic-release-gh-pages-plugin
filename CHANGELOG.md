@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v4.0.1...v4.0.2) (2020-07-30)
+
+
+### Bug Fixes
+
+* fix pluginConfig logging in debug mode ([4bf30d9](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/4bf30d915fa05921cb0c559b2a07727e76259749))
+
 ## [4.0.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v4.0.0...v4.0.1) (2020-07-20)
 
 
