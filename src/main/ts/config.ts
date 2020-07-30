@@ -4,6 +4,8 @@ import gitParse from 'git-url-parse'
 import { castArray, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
+import safeJsonStringify from 'safe-json-stringify'
+import dbg from 'debug'
 import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
 import { anyDefined, catchToSmth } from './util'
 import {
@@ -16,6 +18,8 @@ import {
   DEFAULT_PULL_TAGS_BRANCH
 } from './defaults'
 import AggregateError from 'aggregate-error'
+
+const debug = dbg('semantic-release:gh-pages')
 
 export {
   DEFAULT_BRANCH,
@@ -57,7 +61,7 @@ export const extractRepoToken = (repoUrl: string): string => {
  * @private
  */
 export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext, enterprise: boolean): string => {
-  const { env, logger } = context
+  const { env } = context
   const urlFromEnv = getRepoUrlFromEnv(env)
   const urlFromStepOpts = pluginConfig.repositoryUrl
   const urlFromOpts = context?.options?.repositoryUrl || ''
@@ -66,13 +70,11 @@ export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext, enterprise:
 
   let url = urlFromStepOpts || urlFromOpts || urlFromEnv || urlFromPackage
 
-  if (process.env.DEBUG) {
-    logger.log('getRepoUrl:')
-    logger.log('urlFromEnv=', urlFromEnv)
-    logger.log('urlFromStepOpts=', urlFromStepOpts)
-    logger.log('urlFromOpts=', urlFromOpts)
-    logger.log('urlFromPackage', urlFromPackage)
-  }
+  debug('getRepoUrl:')
+  debug('urlFromEnv=', urlFromEnv)
+  debug('urlFromStepOpts=', urlFromStepOpts)
+  debug('urlFromOpts=', urlFromOpts)
+  debug('urlFromPackage', urlFromPackage)
 
   if (GITIO_REPO_PATTERN.test(url)) {
     const res: any = request('GET', urlFromOpts, { followRedirects: false, timeout: 5000 })
@@ -124,21 +126,18 @@ export const reassembleRepoUrl = (redirectedUrl: string, context: TContext): str
  * @private
  */
 export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): IGhpagesPluginConfig => {
-  const { logger } = context
   const opts = resolveOptions(pluginConfig, context, path, step)
   const enterprise = Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE)
   const repo = getRepoUrl(pluginConfig, context, enterprise)
   const pullTagsBranch = anyDefined(opts.pullTagsBranch, opts._branch, DEFAULT_PULL_TAGS_BRANCH)
   const token = getToken(context.env, repo)
 
-  if (process.env.DEBUG) {
-    logger.log('resolveConfig args:')
-    logger.log('context=', JSON.stringify(omit(context, 'env.GH_TOKEN', 'env.GITHUB_TOKEN'), null, 2))
-    logger.log('pluginConfig=', JSON.stringify(pluginConfig, null, 2))
-    logger.log('path=', path)
-    logger.log('step=', step)
-    logger.log('pullTagsBranch=', pullTagsBranch)
-  }
+  debug('resolveConfig args:')
+  debug('context=', safeJsonStringify(omit(context, 'env.GH_TOKEN', 'env.GITHUB_TOKEN'), null, 2))
+  debug('pluginConfig=', safeJsonStringify(pluginConfig, null, 2))
+  debug('path=', path)
+  debug('step=', step)
+  debug('pullTagsBranch=', pullTagsBranch)
 
   return {
     src: opts.src || DEFAULT_SRC,
