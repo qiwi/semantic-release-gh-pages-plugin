@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v4.0.2...v4.0.3) (2020-08-01)
+
+
+### Bug Fixes
+
+* fix debug output formatting ([9a3f77e](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/9a3f77e63780ab3c8a233969eeb773cef1f25abf))
+
 ## [4.0.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v4.0.1...v4.0.2) (2020-07-30)
 
 
