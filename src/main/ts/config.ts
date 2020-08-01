@@ -1,11 +1,12 @@
 /** @module semantic-release-gh-pages-plugin */
 
 import gitParse from 'git-url-parse'
-import { castArray, omit } from 'lodash'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
 import safeJsonStringify from 'safe-json-stringify'
+import AggregateError from 'aggregate-error'
 import dbg from 'debug'
+import { castArray, omit } from 'lodash'
 import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
 import { anyDefined, catchToSmth } from './util'
 import {
@@ -17,7 +18,6 @@ import {
   DEFAULT_ENTERPRISE,
   DEFAULT_PULL_TAGS_BRANCH
 } from './defaults'
-import AggregateError from 'aggregate-error'
 
 const debug = dbg('semantic-release:gh-pages')
 
@@ -71,10 +71,10 @@ export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext, enterprise:
   let url = urlFromStepOpts || urlFromOpts || urlFromEnv || urlFromPackage
 
   debug('getRepoUrl:')
-  debug('urlFromEnv=', urlFromEnv)
-  debug('urlFromStepOpts=', urlFromStepOpts)
-  debug('urlFromOpts=', urlFromOpts)
-  debug('urlFromPackage', urlFromPackage)
+  debug('urlFromEnv= %s', urlFromEnv)
+  debug('urlFromStepOpts= %s', urlFromStepOpts)
+  debug('urlFromOpts= %s', urlFromOpts)
+  debug('urlFromPackage= %s', urlFromPackage)
 
   if (GITIO_REPO_PATTERN.test(url)) {
     const res: any = request('GET', urlFromOpts, { followRedirects: false, timeout: 5000 })
@@ -133,11 +133,10 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   const token = getToken(context.env, repo)
 
   debug('resolveConfig args:')
-  debug('context=', safeJsonStringify(omit(context, 'env.GH_TOKEN', 'env.GITHUB_TOKEN'), null, 2))
-  debug('pluginConfig=', safeJsonStringify(pluginConfig, null, 2))
-  debug('path=', path)
-  debug('step=', step)
-  debug('pullTagsBranch=', pullTagsBranch)
+  debug('pluginConfig= %O', safeJsonStringify(pluginConfig, null, 2))
+  debug('path= %s', path)
+  debug('step= %s', step)
+  debug('pullTagsBranch= %s', pullTagsBranch)
 
   return {
     src: opts.src || DEFAULT_SRC,
