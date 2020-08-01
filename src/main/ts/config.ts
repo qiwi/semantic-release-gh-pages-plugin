@@ -3,7 +3,6 @@
 import gitParse from 'git-url-parse'
 import readPkg from 'read-pkg'
 import request from 'sync-request'
-import safeJsonStringify from 'safe-json-stringify'
 import AggregateError from 'aggregate-error'
 import dbg from 'debug'
 import { castArray, omit } from 'lodash'
@@ -133,7 +132,7 @@ export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = P
   const token = getToken(context.env, repo)
 
   debug('resolveConfig args:')
-  debug('pluginConfig= %O', safeJsonStringify(pluginConfig, null, 2))
+  debug('pluginConfig= %j', pluginConfig)
   debug('path= %s', path)
   debug('step= %s', step)
   debug('pullTagsBranch= %s', pullTagsBranch)
