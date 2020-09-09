@@ -87,7 +87,7 @@
     "typedoc": "^0.17.8",
     "typedoc-plugin-external-module-name": "^4.0.3",
     "typescript": "^3.9.7",
-    "yargs": "^15.4.1"
+    "yargs": "^16.0.0"
   },
   "release": {
     "branch": "master",
