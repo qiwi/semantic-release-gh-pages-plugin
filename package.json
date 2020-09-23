@@ -64,7 +64,7 @@
     "tslib": "^2.0.0"
   },
   "devDependencies": {
-    "@qiwi/libdefkit": "^1.0.2",
+    "@qiwi/libdefkit": "^2.0.0",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/github": "^7.0.7",
