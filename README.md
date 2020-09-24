@@ -5,7 +5,6 @@
 [![dependencyStatus](https://img.shields.io/david/qiwi/semantic-release-gh-pages-plugin.svg?maxAge=300)](https://david-dm.org/qiwi/semantic-release-gh-pages-plugin)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c149b0666dda28813aa4/test_coverage)](https://codeclimate.com/github/qiwi/semantic-release-gh-pages-plugin/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c149b0666dda28813aa4/maintainability)](https://codeclimate.com/github/qiwi/semantic-release-gh-pages-plugin/maintainability)
-[![Greenkeeper badge](https://badges.greenkeeper.io/qiwi/semantic-release-gh-pages-plugin.svg)](https://greenkeeper.io/)
 [![CodeStyle](https://img.shields.io/badge/code%20style-tslint--config--qiwi-brightgreen.svg)](https://github.com/qiwi/tslint-config-qiwi)
 
 gh-pages publishing plugin for [semantic-release](https://github.com/semantic-release/semantic-release)
@@ -79,7 +78,7 @@ or even shorter if default settings are used:
 
 | Option          | Description                                             | Default |
 |-----------------|---------------------------------------------------------| --------|
-| `msg`           | Commit message template                                 | `updated v{{=it.nextRelease.gitTag}}` |
+| `msg`           | Commit message template                                 | `docs updated <%= nextRelease.gitTag %>` |
 | `src`           | Documentation directory                                 | `docs`<br/><br/>**NOTE** don't forget to run docs builder (`yarn docs`, `yarn typedoc`, etc) as a part of your build step or any other way|
 | `dst`           | Destination directory                                   | `.` (root) |
 | `branch`        | Docs branch to push                                     | `gh-pages` |
