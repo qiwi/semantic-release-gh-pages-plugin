@@ -79,7 +79,7 @@ or even shorter if default settings are used:
 
 | Option          | Description                                             | Default |
 |-----------------|---------------------------------------------------------| --------|
-| `msg`           | Commit message template                                 | `updated v{{=it.nextRelease.gitTag}}` |
+| `msg`           | Commit message template                                 | `docs updated <%= nextRelease.gitTag %>` |
 | `src`           | Documentation directory                                 | `docs`<br/><br/>**NOTE** don't forget to run docs builder (`yarn docs`, `yarn typedoc`, etc) as a part of your build step or any other way|
 | `dst`           | Destination directory                                   | `.` (root) |
 | `branch`        | Docs branch to push                                     | `gh-pages` |
