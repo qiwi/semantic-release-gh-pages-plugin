@@ -1,17 +1,16 @@
 /** @module semantic-release-gh-pages-plugin */
 
 import { ILogger, TAnyMap } from './interface'
-import * as dot from 'dot'
+import templateMaker from 'lodash.template'
 
 /**
  * @private
  */
 export const render = (template: string, context: TAnyMap, logger: ILogger) => {
   try {
-    return dot.template(template)(context)
-
+    return templateMaker(template)(context)
   } catch (err) {
-    logger.error('dot-template render failure', err)
+    logger.error('lodash.template render failure', err)
 
     return template
   }
