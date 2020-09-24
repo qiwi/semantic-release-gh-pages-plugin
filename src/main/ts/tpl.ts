@@ -1,7 +1,7 @@
 /** @module semantic-release-gh-pages-plugin */
 
 import { ILogger, TAnyMap } from './interface'
-import compile from 'lodash.template'
+import { template as compile } from 'lodash'
 
 /**
  * @private
