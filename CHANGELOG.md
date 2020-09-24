@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v4.0.3...v5.0.0) (2020-09-24)
+
+
+### Features
+
+* migrate from dot to lodash.template ([fbf3902](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/fbf39023916a415d870d87be2da47457d032a20e)), closes [#99](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/99)
+
+
+### BREAKING CHANGES
+
+* dot syntax is no longer supported
+
 ## [4.0.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v4.0.2...v4.0.3) (2020-08-01)
 
 
