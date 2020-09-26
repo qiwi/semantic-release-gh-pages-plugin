@@ -616,10 +616,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@qiwi/libdefkit@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-2.0.1.tgz#dd02f8927590b1d46aa0a7dc99c7de4b69954f5b"
-  integrity sha512-tcjLAmwV9NfVB3vHY4kTCA+PAcKZGxImLkUJ8No3K11f8QuQ8tMuhvw2kRnMWMZBqYBTbXD9qGMGVFwfplGj/g==
+"@qiwi/libdefkit@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-2.1.0.tgz#2fb422550db9d542bb312ff2aa527f4d5c060e91"
+  integrity sha512-h3xJpoRxR5gRLpuQipXUypuo28vt2PaQ/MtPo6fWGod7I5hbz1y7Ny+rJddXCXjSnRYQwhjSptgk8TkvjfgO0Q==
   dependencies:
     "@antongolub/dts-bundle" "^0.7.4-beta.0"
     "@qiwi/substrate" "^1.19.0"
@@ -635,7 +635,6 @@
     flowgen "1.11.0"
     fs-extra "^9.0.1"
     meow "^7.1.1"
-    mkdirp "^1.0.4"
     tslib "^2.0.1"
     yargs-parser "^20.2.0"
 
