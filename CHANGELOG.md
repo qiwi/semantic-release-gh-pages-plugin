@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.0...v5.0.1) (2020-10-05)
+
+
+### Bug Fixes
+
+* update docs config ([6104329](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/6104329dd223121f517ab9ba36bdc6d76317c56b))
+
 # [5.0.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v4.0.3...v5.0.0) (2020-09-24)
 
 
