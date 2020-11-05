@@ -1,3 +1,10 @@
+## [5.0.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.1...v5.0.2) (2020-11-05)
+
+
+### Performance Improvements
+
+* **package:** deps revision ([dfd430a](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/dfd430a6c4a270328a1ec53a8773134b8abf71ec))
+
 ## [5.0.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.0...v5.0.1) (2020-10-05)
 
 
