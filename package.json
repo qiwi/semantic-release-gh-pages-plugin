@@ -37,7 +37,7 @@
     "build:libdef": "libdefkit --tsconfig=tsconfig.es5.json --tsconfig=tsconfig.es6.json",
     "test:report": "yarn test && yarn coveralls:push",
     "coveralls:push": "cat ./coverage/lcov.info | coveralls",
-    "docs": "typedoc src/main/ts --ignoreCompilerErrors || exit 0",
+    "docs": "typedoc src/main/ts",
     "postupdate": "yarn && npx yarn-audit-fix && yarn build && yarn test",
     "publish:beta": "npm publish --no-git-tag-version --tag beta"
   },
