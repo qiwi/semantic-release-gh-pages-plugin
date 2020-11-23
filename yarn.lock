@@ -487,10 +487,10 @@
     glob "^7.1.6"
     mkdirp "^1.0.4"
 
-"@qiwi/libdefkit@2.1.4":
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-2.1.4.tgz#25ee9176a2090bfc1d41afdd9c650bf6e05156fe"
-  integrity sha512-DIG1WX++r+fkKSZNMOryYfVWxLt/TcKG6/Ci+AVVg6ZCDp/r7QaF5TxJGpOabZRsnJmzTK+4IWT7kW15Jejjgw==
+"@qiwi/libdefkit@2.1.5":
+  version "2.1.5"
+  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-2.1.5.tgz#3cfb95026b5b37b6056d0a739c5102f8de7858ec"
+  integrity sha512-GcJ+8TYAadJ+0qvtxtBgUFzyOEz244ufybXNgfFsxeXcrpEefI4AigStTvmgyscS9Uv1WA3/VHmk50kptDlT4g==
   dependencies:
     "@qiwi/dts-bundle" "^0.7.4"
     "@types/find-cache-dir" "^3.2.0"
