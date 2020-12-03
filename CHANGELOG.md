@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.2...v5.0.3) (2020-12-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency execa to v5 ([808a5fb](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/808a5fbbbb99c84151a285aa95d68ded57ac829b))
+
 ## [5.0.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.1...v5.0.2) (2020-11-05)
 
 
