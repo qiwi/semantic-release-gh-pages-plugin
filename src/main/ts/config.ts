@@ -2,7 +2,7 @@
 
 import gitParse from 'git-url-parse'
 import readPkg from 'read-pkg'
-import request from 'sync-request'
+import request from 'then-request'
 import AggregateError from 'aggregate-error'
 import dbg from 'debug'
 import { castArray, omit } from 'lodash'
@@ -59,7 +59,7 @@ export const extractRepoToken = (repoUrl: string): string => {
 /**
  * @private
  */
-export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext, enterprise: boolean): string => {
+export const getRepoUrl = async (pluginConfig: TAnyMap, context: TContext, enterprise: boolean): Promise<string> => {
   const { env } = context
   const urlFromEnv = getRepoUrlFromEnv(env)
   const urlFromStepOpts = pluginConfig.repositoryUrl
@@ -76,7 +76,7 @@ export const getRepoUrl = (pluginConfig: TAnyMap, context: TContext, enterprise:
   debug('urlFromPackage= %s', urlFromPackage)
 
   if (GITIO_REPO_PATTERN.test(url)) {
-    const res: any = request('GET', urlFromOpts, { followRedirects: false, timeout: 5000 })
+    const res: any = await request('GET', urlFromOpts, { followRedirects: false, timeout: 5000 })
     url = res.headers.location
   }
 
@@ -124,10 +124,10 @@ export const reassembleRepoUrl = (redirectedUrl: string, context: TContext): str
 /**
  * @private
  */
-export const resolveConfig = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): IGhpagesPluginConfig => {
+export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): Promise<IGhpagesPluginConfig> => {
   const opts = resolveOptions(pluginConfig, context, path, step)
   const enterprise = Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE)
-  const repo = getRepoUrl(pluginConfig, context, enterprise)
+  const repo = await getRepoUrl(pluginConfig, context, enterprise)
   const pullTagsBranch = anyDefined(opts.pullTagsBranch, opts._branch, DEFAULT_PULL_TAGS_BRANCH)
   const token = getToken(context.env, repo)
 

@@ -15,7 +15,7 @@ let _config: any
 
 export const verifyConditions = async (pluginConfig: any, context: TContext) => {
   const { logger } = context
-  const config = resolveConfig(pluginConfig, context, undefined, 'publish')
+  const config = await resolveConfig(pluginConfig, context, undefined, 'publish')
 
   logger.log('verify gh-pages config')
 
@@ -38,7 +38,7 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
 }
 
 export const publish = async (pluginConfig: any, context: TContext) => {
-  const config = resolveConfig(pluginConfig, context, undefined, 'publish')
+  const config = await resolveConfig(pluginConfig, context, undefined, 'publish')
   const { logger, env, cwd } = context
   const message = render(config.msg, context, logger)
   const pushOpts: IPushOpts = {

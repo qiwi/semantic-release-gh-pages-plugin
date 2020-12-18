@@ -94,7 +94,7 @@ describe('config', () => {
   })
 
   describe('#resolveConfig', () => {
-    it('extracts meaningful props only', () => {
+    it('extracts meaningful props only', async () => {
       const step = 'publish'
       const path = PLUGIN_PATH
       const token = 'token'
@@ -123,7 +123,7 @@ describe('config', () => {
         env: { GH_TOKEN: token }
       }
 
-      const config = resolveConfig(pluginConfig, context, path, step)
+      const config = await resolveConfig(pluginConfig, context, path, step)
 
       expect(config).toEqual({
         src: 'docsdocs',
@@ -137,7 +137,7 @@ describe('config', () => {
       })
     })
 
-    it('fills empty values with defaults', () => {
+    it('fills empty values with defaults', async () => {
       const step = 'publish'
       const path = PLUGIN_PATH
       const token = 'token'
@@ -157,7 +157,7 @@ describe('config', () => {
         env: { GITHUB_TOKEN: token }
       }
       process.env.DEBUG = 'true'
-      const config = resolveConfig(pluginConfig, context, undefined, step)
+      const config = await resolveConfig(pluginConfig, context, undefined, step)
       delete process.env.DEBUG
 
       expect(config).toEqual({
@@ -172,7 +172,7 @@ describe('config', () => {
       })
     })
 
-    it('issues/60', () => {
+    it('issues/60', async () => {
       const step = 'publish'
       const path = '@qiwi/semantic-release-gh-pages-plugin'
       const pluginConfig = {
@@ -231,7 +231,7 @@ describe('config', () => {
         }
       }
 
-      const config = resolveConfig(pluginConfig, context, path, step)
+      const config = await resolveConfig(pluginConfig, context, path, step)
 
       expect(config).toEqual({
         branch: DEFAULT_BRANCH,
@@ -284,7 +284,7 @@ describe('config', () => {
     cases.forEach(([input, result]) => expect(extractRepoDomain(input)).toBe(result))
   })
 
-  describe('#getRepoUrl', () => {
+  describe('#getRepoUrl', async () => {
     it('returns proper value', () => {
       const cases: Array<{pluginConfig: TAnyMap, context: TContext, enterprise?: boolean, result: string}> =
         [
@@ -375,14 +375,13 @@ describe('config', () => {
           }
         ]
 
-      cases.forEach(({
+      cases.forEach(async ({
         pluginConfig,
         context,
         result,
         enterprise
       }) => {
-
-        expect(getRepoUrl(pluginConfig, context, !!enterprise)).toBe(result)
+        await expect(getRepoUrl(pluginConfig, context, !!enterprise)).resolves.toBe(result)
       })
     })
   })

@@ -83,7 +83,7 @@ describe('index', () => {
         dst: DEFAULT_DST,
         src: DEFAULT_SRC,
         enterprise: DEFAULT_ENTERPRISE,
-        repo: getRepoUrl(pluginConfig, context, DEFAULT_ENTERPRISE),
+        repo: await getRepoUrl(pluginConfig, context, DEFAULT_ENTERPRISE),
         token,
         pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH
       })
@@ -196,7 +196,7 @@ describe('index', () => {
         env: { GITHUB_TOKEN: token }
       }
       const expectedOpts = {
-        repo: getRepoUrl(pluginConfig, context, false),
+        repo: await getRepoUrl(pluginConfig, context, false),
         branch: 'doc-branch',
         message: 'docs updated v{{=it.nextRelease.gitTag}}',
         dest: 'root'
@@ -209,6 +209,7 @@ describe('index', () => {
       }
 
       const res = await publish(pluginConfig, context)
+      const resolvedConfig = await resolveConfig(pluginConfig, context)
 
       expect(fakeExeca).toHaveBeenCalledWith(
         'git',
@@ -217,7 +218,7 @@ describe('index', () => {
           '--tags',
           '--force',
           expectedOpts.repo,
-          resolveConfig(pluginConfig, context).pullTagsBranch
+          resolvedConfig.pullTagsBranch
         ],
         execaOpts
       )
@@ -266,7 +267,7 @@ describe('index', () => {
         env: { GITHUB_TOKEN: token + 'foo' }
       }
       const expectedOpts = {
-        repo: getRepoUrl(pluginConfig, context, false),
+        repo: await getRepoUrl(pluginConfig, context, false),
         branch: DEFAULT_BRANCH,
         message: DEFAULT_MSG,
         dest: DEFAULT_DST
