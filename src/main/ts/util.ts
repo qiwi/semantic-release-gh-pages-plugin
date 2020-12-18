@@ -1,4 +1,6 @@
-export const catchToSmth = (fn: Function, smth?: any) => {
+import { ICallable } from '@qiwi/substrate'
+
+export const catchToSmth = (fn: ICallable, smth?: any) => {
   return (...args: any[]) => {
     try {
       return fn(...args)

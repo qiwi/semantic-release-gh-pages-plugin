@@ -1,3 +1,5 @@
+import { ICallable } from '@qiwi/substrate'
+
 import { IPushOpts, TAnyMap } from '../../main/ts/interface'
 
 describe('ghpages', () => {
@@ -9,7 +11,7 @@ describe('ghpages', () => {
     jest.mock('execa', () => fakeExeca)
     jest.mock('gh-pages', () => ({
       clean: () => { /* noop */ },
-      publish: jest.fn((_src: string, _opts: TAnyMap, cb: Function) => cb())
+      publish: jest.fn((_src: string, _opts: TAnyMap, cb: ICallable) => cb())
     }))
 
     pullTags = require('../../main/ts/ghpages').pullTags

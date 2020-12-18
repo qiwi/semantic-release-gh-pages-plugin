@@ -1,22 +1,22 @@
 /** @module semantic-release-gh-pages-plugin */
 
-import gitParse from 'git-url-parse'
-import readPkg from 'read-pkg'
-import request from 'then-request'
 import AggregateError from 'aggregate-error'
 import dbg from 'debug'
+import gitParse from 'git-url-parse'
 import { castArray, omit } from 'lodash'
-import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
-import { anyDefined, catchToSmth } from './util'
+import readPkg from 'read-pkg'
+import request from 'then-request'
+
 import {
   DEFAULT_BRANCH,
   DEFAULT_DST,
-  DEFAULT_MSG,
-  DEFAULT_SRC,
-  PLUGIN_PATH,
   DEFAULT_ENTERPRISE,
-  DEFAULT_PULL_TAGS_BRANCH
-} from './defaults'
+  DEFAULT_MSG,
+  DEFAULT_PULL_TAGS_BRANCH,
+  DEFAULT_SRC,
+  PLUGIN_PATH} from './defaults'
+import { IGhpagesPluginConfig, TAnyMap, TContext } from './interface'
+import { anyDefined, catchToSmth } from './util'
 
 const debug = dbg('semantic-release:gh-pages')
 
@@ -32,7 +32,7 @@ export {
 
 const gitUrlParse = catchToSmth(gitParse, {})
 
-export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[A-Za-z0-9-]+$/
+export const GITIO_REPO_PATTERN = /^https:\/\/git\.io\/[\dA-Za-z-]+$/
 
 /**
  * @private
@@ -107,7 +107,7 @@ export const getUrlFromPackage = (): string => {
 /**
  * @private
  */
-export const getToken = (env: TAnyMap, repoUrl: string) => env.GH_TOKEN || env.GITHUB_TOKEN || extractRepoToken(repoUrl)
+export const getToken = (env: TAnyMap, repoUrl: string): string | undefined => env.GH_TOKEN || env.GITHUB_TOKEN || extractRepoToken(repoUrl)
 
 /**
  * @private

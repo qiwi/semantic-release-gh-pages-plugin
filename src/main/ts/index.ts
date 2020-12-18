@@ -2,12 +2,13 @@
 
 import AggregateError from 'aggregate-error'
 import fs from 'fs'
+import { isEqual } from 'lodash'
 import path from 'path'
-import { TContext, IPushOpts } from './interface'
+
 import { resolveConfig } from './config'
 import { publish as ghpagesPublish } from './ghpages'
+import { IPushOpts,TContext } from './interface'
 import { render } from './tpl'
-import { isEqual } from 'lodash'
 
 export * from './defaults'
 
