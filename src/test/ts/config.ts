@@ -1,20 +1,18 @@
 import {
-  PLUGIN_PATH,
   DEFAULT_BRANCH,
   DEFAULT_DST,
-  DEFAULT_MSG,
-  DEFAULT_SRC,
   DEFAULT_ENTERPRISE,
+  DEFAULT_MSG,
   DEFAULT_PULL_TAGS_BRANCH,
-  resolveOptions,
-  resolveConfig,
-  extractRepoName,
-  getUrlFromPackage,
-  getRepoUrl,
+  DEFAULT_SRC,
   // getRepo,
-  extractRepoDomain
-} from '../../main/ts/config'
-
+  extractRepoDomain,
+  extractRepoName,
+  getRepoUrl,
+  getUrlFromPackage,
+  PLUGIN_PATH,
+  resolveConfig,
+  resolveOptions} from '../../main/ts/config'
 import { TAnyMap, TContext } from '../../main/ts/interface'
 
 describe('config', () => {
@@ -174,7 +172,7 @@ describe('config', () => {
 
     it('issues/60', async () => {
       const step = 'publish'
-      const path = '@qiwi/semantic-release-gh-pages-plugin'
+      const path = PLUGIN_PATH
       const pluginConfig = {
         branch: 'master',
         repositoryUrl: 'https://secure@github-enterprise-repo-url.com/foo/bar.git',

@@ -2,6 +2,12 @@
 
 import { Context } from 'semantic-release'
 
+
+export interface ILogger {
+  log: (message: string, ...vars: any[]) => void,
+  error: (message: string, ...vars: any[]) => void,
+}
+
 export type TAnyMap = {
   [key: string]: any
 }
@@ -35,9 +41,4 @@ export interface IPushOpts extends IGhpagesPluginConfig {
   logger: ILogger,
   env: TAnyMap,
   cwd: string
-}
-
-export interface ILogger {
-  log: (message: string, ...vars: any[]) => void,
-  error: (message: string, ...vars: any[]) => void,
 }

@@ -1,17 +1,19 @@
+import { ICallable } from '@qiwi/substrate'
 import AggregateError from 'aggregate-error'
 import fs from 'fs'
 import path from 'path'
-import { TAnyMap, TContext } from '../../main/ts/interface'
+
 import {
-  DEFAULT_SRC,
-  DEFAULT_DST,
-  DEFAULT_MSG,
   DEFAULT_BRANCH,
+  DEFAULT_DST,
   DEFAULT_ENTERPRISE,
+  DEFAULT_MSG,
   DEFAULT_PULL_TAGS_BRANCH,
+  DEFAULT_SRC,
   PLUGIN_PATH
 } from '../../main/ts'
 import { getUrlFromPackage } from '../../main/ts/config'
+import { TAnyMap, TContext } from '../../main/ts/interface'
 
 const TEMP = path.resolve(__dirname, '../temp')
 const DOCS_AS_FILE = TEMP + '/testFile'
@@ -99,7 +101,7 @@ describe('index', () => {
           [step]: [{ path }]
         },
         cwd,
-        env: { GITHUB_TOKEN: null }
+        env: { GITHUB_TOKEN: undefined }
       }
 
       await expect(verifyConditions(pluginConfig, context))
@@ -148,7 +150,7 @@ describe('index', () => {
       jest.resetModules()
       jest.mock('gh-pages', () => ({
         clean: () => { /* noop */ },
-        publish: jest.fn((src: string, opts: TAnyMap, cb: Function) => {
+        publish: jest.fn((src: string, opts: TAnyMap, cb: ICallable): void => {
           // NOTE If cb gets some value, this triggers error flow
           if (src === DOCS_ERR) {
             cb({
