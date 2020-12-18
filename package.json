@@ -75,19 +75,10 @@
     "mkdirp": "^1.0.4",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.4",
-<<<<<<< HEAD
-    "tslint": "^6.1.3",
-    "tslint-config-qiwi": "^1.6.1",
-<<<<<<< HEAD
-    "typedoc": "^0.19.2",
-=======
-=======
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-config-qiwi": "^1.10.1",
->>>>>>> style: migrate to eslint
     "typedoc": "^0.20.0-beta.27",
->>>>>>> build: apply parallel building
     "typescript": "4.1.3"
   },
   "repository": {
