@@ -1,15 +1,11 @@
 {
   "name": "@qiwi/semantic-release-gh-pages-plugin",
-  "mode": "modules",
   "out": "./docs",
-  "target": "ES6",
-  "exclude": ["src/test", "node_modules"],
-  "externalPattern": "**/node_modules/**",
-  "excludePrivate": true,
-  "excludeNotExported": true,
-  "moduleResolution": "node",
-  "module": "commonjs",
+  "exclude": ["src/test", "**/node_modules/**"],
+  "externalPattern": ["**/node_modules/**"],
+  "excludePrivate": false,
   "hideGenerator": true,
-  "readme": true,
-  "ignoreCompilerErrors": true
+  "readme": "README.md",
+  "theme": "minimal",
+  "tsconfig": "./tsconfig.es5.json"
 }
