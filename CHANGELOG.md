@@ -1,3 +1,10 @@
+## [5.0.4](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.3...v5.0.4) (2020-12-18)
+
+
+### Performance Improvements
+
+* replace sync-request with then-request ([8ca53ff](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/8ca53ff71bb04d507c323a79227250ae11cacd84)), closes [#119](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/119)
+
 ## [5.0.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.2...v5.0.3) (2020-12-03)
 
 
