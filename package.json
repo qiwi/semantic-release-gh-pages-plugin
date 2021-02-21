@@ -76,7 +76,7 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.4",
     "eslint": "^7.15.0",
-    "eslint-config-prettier": "^7.0.0",
+    "eslint-config-prettier": "^8.0.0",
     "eslint-config-qiwi": "^1.10.1",
     "typedoc": "^0.20.0-beta",
     "typescript": "4.1.5"
