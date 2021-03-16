@@ -1,3 +1,10 @@
+## [5.0.5](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.4...v5.0.5) (2021-03-16)
+
+
+### Performance Improvements
+
+* **pkg:** up deps, fix vuls ([315aedc](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/315aedc0d4256749a1d8e72615835d7d3390c526))
+
 ## [5.0.4](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.3...v5.0.4) (2020-12-18)
 
 
