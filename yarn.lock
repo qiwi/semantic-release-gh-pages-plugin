@@ -559,28 +559,27 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@qiwi/dts-bundle@^0.7.4":
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/@qiwi/dts-bundle/-/dts-bundle-0.7.4.tgz#f93f26c0eaba36cb3061148aab15657298248a51"
-  integrity sha512-3obassdaXGei6Ymvwb11S8jbDc5xoPyioIogmqqE9QXj1qs1jycC18s3ggYZPg1ErOPARxdaUD10va+odSZnpw==
+"@qiwi/dts-bundle@^0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@qiwi/dts-bundle/-/dts-bundle-0.7.5.tgz#5a0c50041e4bb5cdabcd813ce17d4cf108a041b9"
+  integrity sha512-/5TXq6vMMi3JhiJOUQnNAQ4exSbQLdoBVUn2jVnO47zHWvAjMVJv9vA0ya1ki/LQJh2FpuP1n5kGdskU+eEwDg==
   dependencies:
-    "@types/detect-indent" "6.0.0"
     "@types/glob" "7.1.3"
     "@types/mkdirp" "1.0.1"
-    "@types/node" "14.14.6"
-    commander "^6.2.0"
+    "@types/node" "14.14.35"
+    commander "^7.1.0"
     detect-indent "^6.0.0"
     glob "^7.1.6"
     mkdirp "^1.0.4"
 
-"@qiwi/libdefkit@2.1.6":
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-2.1.6.tgz#912850530c4390fd0b509a26b4bdafffd8dcfc55"
-  integrity sha512-UZ7IsVzfgkTYeJBynV6Rsz4yIkewCGUdf0P7uZbve9HuvY9WoPC2TocEclnbC5MzbDJnnevAAUKFdWmgKgFKIA==
+"@qiwi/libdefkit@2.1.8":
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-2.1.8.tgz#509003783dd8c58279329c4267ec5a0b1c7be80a"
+  integrity sha512-mQHopuPBQigtFLJtfdG5oB09QyA0xRMyqSi4MbqJ1gkIT95G1QVyV2AVpmYqz+4zLQhIuAUSWJSdx0fRuwWaOQ==
   dependencies:
-    "@qiwi/dts-bundle" "^0.7.4"
+    "@qiwi/dts-bundle" "^0.7.5"
     "@types/find-cache-dir" "^3.2.0"
-    "@types/fs-extra" "^9.0.6"
+    "@types/fs-extra" "^9.0.8"
     chalk "^4.1.0"
     find-cache-dir "^3.3.1"
     find-up "^5.0.0"
@@ -699,13 +698,6 @@
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.5.tgz#b14efa8852b7768d898906613c23f688713e02cd"
   integrity sha512-Q1y515GcOdTHgagaVFhHnIFQ38ygs/kmxdNpvpou+raI9UO3YZcHDngBSYKQklcKlvA7iuQlmIKbzvmxcOE9CQ==
 
-"@types/detect-indent@6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@types/detect-indent/-/detect-indent-6.0.0.tgz#5ff60617bfa71950694f53bcca86309414534f19"
-  integrity sha512-KeE9HzRWAoOy/YPEMzNbljqTmDR7JXCD8NpOwSjta9oWoL8+i9E2KzwUX0nb1b78iB481RSJ5XIxHfjaJnUtvA==
-  dependencies:
-    detect-indent "*"
-
 "@types/find-cache-dir@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@types/find-cache-dir/-/find-cache-dir-3.2.0.tgz#eaaf331699dccf52c47926e4d4f8f3ed8db33f3c"
@@ -718,10 +710,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/fs-extra@^9.0.6":
-  version "9.0.6"
-  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-9.0.6.tgz#488e56b77299899a608b8269719c1d133027a6ab"
-  integrity sha512-ecNRHw4clCkowNOBJH1e77nvbPxHYnWIXMv1IAoG/9+MYGkgoyr3Ppxr7XYFNL41V422EDhyV4/4SSK8L2mlig==
+"@types/fs-extra@^9.0.8":
+  version "9.0.8"
+  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-9.0.8.tgz#32c3c07ddf8caa5020f84b5f65a48470519f78ba"
+  integrity sha512-bnlTVTwq03Na7DpWxFJ1dvnORob+Otb8xHyUqUWhqvz/Ksg8+JXPlR52oeMSZ37YEOa5PyccbgUNutiQdi13TA==
   dependencies:
     "@types/node" "*"
 
@@ -817,10 +809,15 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@14.14.6":
+"@types/node@*":
   version "14.14.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.6.tgz#146d3da57b3c636cc0d1769396ce1cfa8991147f"
   integrity sha512-6QlRuqsQ/Ox/aJEQWBEJG7A9+u7oSYl3mem/K8IzxXG/kAGbV1YPD9Bg9Zw3vyxC/YP+zONKwy8hGkSt1jxFMw==
+
+"@types/node@14.14.35":
+  version "14.14.35"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.35.tgz#42c953a4e2b18ab931f72477e7012172f4ffa313"
+  integrity sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
 
 "@types/node@^10.0.3":
   version "10.17.44"
@@ -1526,10 +1523,15 @@ commander@^2.18.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@^6.1.0, commander@^6.2.0:
+commander@^6.1.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.0.tgz#b990bfb8ac030aedc6d11bc04d1488ffef56db75"
   integrity sha512-zP4jEKbe8SHzKJYQmq8Y9gYjtO/POJLgIdKgV7B9qNmABVFVc+ctqSX6iXh4mCpJfRBOabiZ2YKPg8ciDw6C+Q==
+
+commander@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-7.1.0.tgz#f2eaecf131f10e36e07d894698226e36ae0eb5ff"
+  integrity sha512-pRxBna3MJe6HKnBGsDyMv8ETbptw3axEdYHoqNh7gu5oDcew8fs0xnivZGm06Ogk8zGAJ9VX+OPEr2GXEQK4dg==
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -1763,7 +1765,7 @@ delayed-stream@~1.0.0:
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
 
-detect-indent@*, detect-indent@^6.0.0:
+detect-indent@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-6.0.0.tgz#0abd0f549f69fc6659a254fe96786186b6f528fd"
   integrity sha512-oSyFlqaTHCItVRGK5RmrmjB+CmaMOW7IaNA/kdxqhoa6d17j/5ce9O9eWXmV/KEdRwqpQA+Vqe8a8Bsybu4YnA==
