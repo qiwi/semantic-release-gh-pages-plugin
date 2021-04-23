@@ -1,3 +1,10 @@
+## [5.0.6](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.5...v5.0.6) (2021-04-23)
+
+
+### Bug Fixes
+
+* **deps:** apply yarn-audit-fix, fix some vuls ([9ae0970](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/9ae09707af15bcd840f05f86893658924ea89ca1))
+
 ## [5.0.5](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.4...v5.0.5) (2021-03-16)
 
 
