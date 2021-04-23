@@ -1,3 +1,10 @@
+## [5.0.7](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.6...v5.0.7) (2021-04-23)
+
+
+### Bug Fixes
+
+* dont use @types/aggregate-error ([#136](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/136)) ([6feba10](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/6feba1091b6093e54c2acb0add7e7abf47d21fd1))
+
 ## [5.0.6](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.5...v5.0.6) (2021-04-23)
 
 
