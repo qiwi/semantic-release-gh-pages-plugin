@@ -73,7 +73,7 @@
     "cpy-cli": "^3.1.1",
     "mkdirp": "^1.0.4",
     "rimraf": "^3.0.2",
-    "ts-jest": "^26.5.5",
+    "ts-jest": "^27.0.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-config-qiwi": "^1.10.7",
