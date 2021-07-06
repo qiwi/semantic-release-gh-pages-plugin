@@ -145,7 +145,9 @@ export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, pa
     enterprise,
     repo,
     token,
-    pullTagsBranch
+    pullTagsBranch,
+    add: opts.add,
+    dotfiles: opts.dotfiles,
   }
 }
 

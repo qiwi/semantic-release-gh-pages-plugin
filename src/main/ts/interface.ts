@@ -34,6 +34,8 @@ export interface IGhpagesPluginConfig {
   token?: string,
   enterprise?: boolean,
   pullTagsBranch?: string
+  dotfiles?: boolean
+  add?: boolean
 }
 
 export interface IPushOpts extends IGhpagesPluginConfig {
