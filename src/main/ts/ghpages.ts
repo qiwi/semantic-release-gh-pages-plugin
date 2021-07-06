@@ -1,10 +1,10 @@
 /** @module semantic-release-gh-pages-plugin */
 
 import execa from 'execa'
-import { clean,publish as ghpagePublish } from 'gh-pages'
+import { clean, publish as ghpagePublish, PublishOptions } from 'gh-pages'
 import { queuefy } from 'queuefy'
 
-import { IPushOpts, TAnyMap } from './interface'
+import { IPushOpts } from './interface'
 
 /**
  * @private
@@ -41,11 +41,13 @@ export const pullTags = (opts: IPushOpts): Promise<any> => {
  */
 export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
   const { src, logger } = opts
-  const ghpagesOpts: TAnyMap = {
+  const ghpagesOpts: PublishOptions = {
     repo: opts.repo,
     branch: opts.branch,
     dest: opts.dst,
-    message: opts.message
+    message: opts.message,
+    add: opts.add,
+    dotfiles: opts.dotfiles,
   }
 
   ghpagePublish(src, ghpagesOpts, (err?: any) => {
