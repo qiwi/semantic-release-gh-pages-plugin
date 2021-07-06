@@ -1,3 +1,10 @@
+# [5.1.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.7...v5.1.0) (2021-07-06)
+
+
+### Features
+
+* dotfiles & add opts ([#148](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/148)) ([57f2b9d](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/57f2b9da5c807e635f27392ceb39c44db4ede887)), closes [#147](https://github.com/qiwi/semantic-release-gh-pages-plugin/issues/147)
+
 ## [5.0.7](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.6...v5.0.7) (2021-04-23)
 
 
