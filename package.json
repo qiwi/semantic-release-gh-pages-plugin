@@ -22,7 +22,7 @@
     "clean": "rimraf target flow-typed typings docs coverage",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "yarn lint --fix",
-    "test": "npm-run-all -p -l lint test:unit test:depcheck test:depaudit",
+    "test": "npm-run-all -p -l lint test:unit test:depcheck",
     "test:unit": "jest --config=jest.config.json --detectOpenHandles --forceExit",
     "test:deps": "npm-run-all -p -l test:depcheck test:depaudit",
     "test:depcheck": "npx depcheck --ignores tslib,@swissquote/crafty-preset-jest,@types/jest,semantic-release",
