@@ -282,7 +282,7 @@ describe('config', () => {
     cases.forEach(([input, result]) => expect(extractRepoDomain(input)).toBe(result))
   })
 
-  describe('#getRepoUrl', async () => {
+  describe('#getRepoUrl', () => {
     it('returns proper value', () => {
       const cases: Array<{pluginConfig: TAnyMap, context: TContext, enterprise?: boolean, result: string}> =
         [
@@ -373,14 +373,11 @@ describe('config', () => {
           }
         ]
 
-      cases.forEach(async ({
-        pluginConfig,
-        context,
-        result,
-        enterprise
-      }) => {
-        await expect(getRepoUrl(pluginConfig, context, !!enterprise)).resolves.toBe(result)
-      })
+      return Promise.all(
+        cases.map(({ pluginConfig, context, result, enterprise }) =>
+          expect(getRepoUrl(pluginConfig, context, !!enterprise)).resolves.toBe(result)
+        )
+      )
     })
   })
 })
