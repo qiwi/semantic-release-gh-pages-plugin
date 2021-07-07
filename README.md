@@ -85,3 +85,5 @@ or even shorter if default settings are used:
 | `repositoryUrl` | Repository url                                          | inherited from .git |
 | `enterprise`    | Disables host assertion for GitHub Enterprise domains   | false      |
 | `pullTagsBranch`| Target branch for tags fetching hook. If '' empty string, skips this action | `globalConfig.branch` \|\| `master` |
+| `dotfiles`| gh-pages [dotfiles](https://github.com/tschaub/gh-pages#optionsdotfiles) option | `false` |
+| `add`| gh-pages [add](https://github.com/tschaub/gh-pages#optionsadd) option | `false` |
