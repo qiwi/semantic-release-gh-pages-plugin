@@ -1,3 +1,5 @@
+## [5.1.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.1.0...v5.1.1) (2021-07-07)
+
 # [5.1.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.7...v5.1.0) (2021-07-06)
 
 
