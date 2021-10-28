@@ -80,7 +80,7 @@ describe('index', () => {
       const result = await verifyConditions(pluginConfig, context)
 
       expect(pluginConfig).toEqual({
-        branch: DEFAULT_BRANCH,
+        docsBranch: DEFAULT_BRANCH,
         msg: DEFAULT_MSG,
         dst: DEFAULT_DST,
         src: DEFAULT_SRC,

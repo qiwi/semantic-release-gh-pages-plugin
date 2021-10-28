@@ -1,6 +1,6 @@
 /** @module semantic-release-gh-pages-plugin */
 
-import { Context } from 'semantic-release'
+import { BranchSpec, Context } from 'semantic-release'
 
 
 export interface ILogger {
@@ -18,6 +18,7 @@ export type TStringMap = {
 
 export type TContext = Context & {
   env: TStringMap,
+  branch?: Exclude<BranchSpec, string>
   cwd: string,
   options: TAnyMap & {
     publish?: Array<any>,
@@ -28,12 +29,13 @@ export type TContext = Context & {
 export interface IGhpagesPluginConfig {
   src: string,
   dst: string,
-  branch: string,
+  ciBranch: string,
+  docsBranch: string,
+  pullTagsBranch?: string
   msg: string,
   repo: string,
   token?: string,
   enterprise?: boolean,
-  pullTagsBranch?: string
   dotfiles?: boolean
   add?: boolean
 }

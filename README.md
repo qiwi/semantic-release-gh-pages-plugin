@@ -82,8 +82,9 @@ or even shorter if default settings are used:
 | `src`           | Documentation directory                                 | `docs`<br/><br/>**NOTE** don't forget to run docs builder (`yarn docs`, `yarn typedoc`, etc) as a part of your build step or any other way|
 | `dst`           | Destination directory                                   | `.` (root) |
 | `branch`        | Docs branch to push                                     | `gh-pages` |
+| `branches`      | Optional list of src-to-target branches association. If defined it suppresses `branch` option. For example, `[['master', 'gh-pages'], ['beta', beta-docs]]`             | undefined |
 | `repositoryUrl` | Repository url                                          | inherited from .git |
 | `enterprise`    | Disables host assertion for GitHub Enterprise domains   | false      |
 | `pullTagsBranch`| Target branch for tags fetching hook. If '' empty string, skips this action | `globalConfig.branch` \|\| `master` |
-| `dotfiles`| gh-pages [dotfiles](https://github.com/tschaub/gh-pages#optionsdotfiles) option | `false` |
-| `add`| gh-pages [add](https://github.com/tschaub/gh-pages#optionsadd) option | `false` |
+| `dotfiles`      | gh-pages [dotfiles](https://github.com/tschaub/gh-pages#optionsdotfiles) option | `false` |
+| `add`           | gh-pages [add](https://github.com/tschaub/gh-pages#optionsadd) option | `false` |
