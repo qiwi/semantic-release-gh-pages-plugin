@@ -1,3 +1,15 @@
+# [5.2.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.1.1...v5.2.0) (2021-10-28)
+
+
+### Bug Fixes
+
+* update deps, fix some vuls ([57a30a5](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/57a30a5adc7a66efcf241c84650e73cb84ae42cd))
+
+
+### Features
+
+* introduce src-to-dst branch pairing config ([d6813b4](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/d6813b429504e853118203dd2c68f3bec30a9492))
+
 ## [5.1.1](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.1.0...v5.1.1) (2021-07-07)
 
 # [5.1.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.0.7...v5.1.0) (2021-07-06)
