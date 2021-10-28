@@ -126,28 +126,42 @@ export const reassembleRepoUrl = (redirectedUrl: string, context: TContext): str
  */
 export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): Promise<IGhpagesPluginConfig> => {
   const opts = resolveOptions(pluginConfig, context, path, step)
+  const {
+    branches,
+    branch = DEFAULT_BRANCH,
+    msg = DEFAULT_MSG,
+    src = DEFAULT_SRC,
+    dst = DEFAULT_DST,
+    add,
+    dotfiles
+  } = opts
   const enterprise = Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE)
   const repo = await getRepoUrl(pluginConfig, context, enterprise)
-  const pullTagsBranch = anyDefined(opts.pullTagsBranch, opts._branch, DEFAULT_PULL_TAGS_BRANCH)
+  const ciBranch = context?.branch?.name as string
+  const docsBranch = branches ? branches.find(([from]: string[]) => from === ciBranch)?.[1] : branch
+  const pullTagsBranch = anyDefined(opts.pullTagsBranch, ciBranch, opts._branch, DEFAULT_PULL_TAGS_BRANCH)
   const token = getToken(context.env, repo)
 
   debug('resolveConfig args:')
   debug('pluginConfig= %j', pluginConfig)
   debug('path= %s', path)
   debug('step= %s', step)
+  debug('ciBranch= %s', ciBranch)
+  debug('docsBranch= %s', docsBranch)
   debug('pullTagsBranch= %s', pullTagsBranch)
 
   return {
-    src: opts.src || DEFAULT_SRC,
-    dst: opts.dst || DEFAULT_DST,
-    msg: opts.msg || DEFAULT_MSG,
-    branch: opts.branch || DEFAULT_BRANCH,
+    src,
+    dst,
+    msg,
+    ciBranch,
+    pullTagsBranch,
+    docsBranch,
     enterprise,
     repo,
     token,
-    pullTagsBranch,
-    add: opts.add,
-    dotfiles: opts.dotfiles,
+    add,
+    dotfiles,
   }
 }
 
@@ -156,7 +170,7 @@ export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, pa
  */
 export const resolveOptions = (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): TAnyMap => {
   const { options } = context
-  const base = omit(pluginConfig, 'branch')
+  const base = omit(pluginConfig, 'branch', 'branches')
   const extra = step && options[step] && castArray(options[step])
     .map(config => {
       if (Array.isArray(config)) {

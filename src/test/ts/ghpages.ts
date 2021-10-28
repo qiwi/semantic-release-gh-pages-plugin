@@ -33,7 +33,8 @@ describe('ghpages', () => {
     cwd: 'stub',
     src: 'stub',
     dst: 'stub',
-    branch: 'stub',
+    ciBranch: 'stub',
+    docsBranch: 'stub',
     msg: 'stub'
   }
 

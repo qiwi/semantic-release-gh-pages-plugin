@@ -12,7 +12,8 @@ import {
   getUrlFromPackage,
   PLUGIN_PATH,
   resolveConfig,
-  resolveOptions} from '../../main/ts/config'
+  resolveOptions,
+} from '../../main/ts/config'
 import { TAnyMap, TContext } from '../../main/ts/interface'
 
 describe('config', () => {
@@ -127,11 +128,58 @@ describe('config', () => {
         src: 'docsdocs',
         dst: 'root',
         enterprise: true,
-        branch: DEFAULT_BRANCH,
+        docsBranch: DEFAULT_BRANCH,
         msg: 'doc update',
         token,
         repo: `https://${token}@enterprise.com/org/repo.git`,
         pullTagsBranch: 'dev'
+      })
+    })
+
+    it('overrides `docBranch` with `branches` value if defined', async () => {
+      const step = 'publish'
+      const path = PLUGIN_PATH
+      const token = 'token'
+      const pluginConfig = {
+        foo: 'bar',
+        baz: 'qux',
+        msg: 'doc update',
+        branch: 'master',             // NOTE will be omitted,
+        branches: ['master', 'beta'], // NOTE will be omitted,
+        repositoryUrl: 'https://enterprise.com/org/repo.git'
+      }
+      const extra = {
+        enterprise: true,
+        src: 'docsdocs',
+        dst: 'root',
+        branch: 'aaa',
+        branches: [['foo', 'bar'], ['baz', 'qux']],
+      }
+      const context = {
+        logger,
+        options: {
+          ...globalConfig,
+          [step]: [
+            { path, foo: 'BAR', ...extra }
+          ]
+        },
+        cwd,
+        branch: { name: 'foo' },
+        env: { GH_TOKEN: token }
+      }
+
+      const config = await resolveConfig(pluginConfig, context, path, step)
+
+      expect(config).toEqual({
+        src: 'docsdocs',
+        dst: 'root',
+        enterprise: true,
+        ciBranch: 'foo',
+        docsBranch: 'bar',
+        msg: 'doc update',
+        token,
+        repo: `https://${token}@enterprise.com/org/repo.git`,
+        pullTagsBranch: 'foo'
       })
     })
 
@@ -159,7 +207,7 @@ describe('config', () => {
       delete process.env.DEBUG
 
       expect(config).toEqual({
-        branch: DEFAULT_BRANCH,
+        docsBranch: DEFAULT_BRANCH,
         dst: DEFAULT_DST,
         enterprise: DEFAULT_ENTERPRISE,
         msg: DEFAULT_MSG,
@@ -186,6 +234,7 @@ describe('config', () => {
         logger,
         cwd,
         env: {},
+        branch: {name: 'master'},
         options: {
           branch: 'master',
           branches: [],
@@ -232,7 +281,8 @@ describe('config', () => {
       const config = await resolveConfig(pluginConfig, context, path, step)
 
       expect(config).toEqual({
-        branch: DEFAULT_BRANCH,
+        docsBranch: DEFAULT_BRANCH,
+        ciBranch: 'master',
         dst: DEFAULT_DST,
         enterprise: true,
         msg: DEFAULT_MSG,

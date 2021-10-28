@@ -17,19 +17,26 @@ let _config: any
 export const verifyConditions = async (pluginConfig: any, context: TContext) => {
   const { logger } = context
   const config = await resolveConfig(pluginConfig, context, undefined, 'publish')
+  const { token, repo, src, ciBranch, docsBranch } = config
+
+  if (!docsBranch) {
+    logger.log(`gh-pages [skipped]: 'docsBranch' is empty for ${ciBranch}`)
+    return
+  }
 
   logger.log('verify gh-pages config')
 
-  if (!config.token) {
+
+  if (!token) {
     throw new AggregateError(['env.GH_TOKEN is required by gh-pages plugin'])
   }
 
-  if (!config.repo) {
+  if (!repo) {
     throw new AggregateError(['package.json repository.url does not match github.com pattern'])
   }
 
-  if (!fs.existsSync(config.src) || !fs.lstatSync(config.src).isDirectory()) {
-    logger.error('Resolved docs src path=', path.resolve(config.src))
+  if (!fs.existsSync(src) || !fs.lstatSync(src).isDirectory()) {
+    logger.error('Resolved docs src path=', path.resolve(src))
     throw new AggregateError(['docs source directory does not exist'])
   }
 
@@ -41,13 +48,19 @@ export const verifyConditions = async (pluginConfig: any, context: TContext) => 
 export const publish = async (pluginConfig: any, context: TContext) => {
   const config = await resolveConfig(pluginConfig, context, undefined, 'publish')
   const { logger, env, cwd } = context
-  const message = render(config.msg, context, logger)
+  const { msg, docsBranch, ciBranch } = config
+  const message = render(msg, context, logger)
   const pushOpts: IPushOpts = {
     ...config,
     message,
     logger,
     env,
     cwd
+  }
+
+  if (!docsBranch) {
+    logger.log(`gh-pages [skipped]: 'docsBranch' is empty for ${ciBranch}`)
+    return
   }
 
   if (!isEqual(_config, config)) {

@@ -43,7 +43,7 @@ export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
   const { src, logger } = opts
   const ghpagesOpts: PublishOptions = {
     repo: opts.repo,
-    branch: opts.branch,
+    branch: opts.docsBranch,
     dest: opts.dst,
     message: opts.message,
     add: opts.add,
