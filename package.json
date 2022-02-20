@@ -70,7 +70,7 @@
     "tslib": "^2.3.1"
   },
   "devDependencies": {
-    "@qiwi/libdefkit": "4.0.4",
+    "@qiwi/libdefkit": "4.0.5",
     "@qiwi/npm-run-all": "^4.1.7",
     "@types/jest": "^27.0.2",
     "coveralls": "^3.1.1",

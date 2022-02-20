@@ -580,19 +580,19 @@
     glob "^7.1.6"
     mkdirp "^1.0.4"
 
-"@qiwi/libdefkit@4.0.4":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-4.0.4.tgz#c73c4035b68bc0a6fbb631a252230da49964749e"
-  integrity sha512-mrvUZVDKrNzJqgA8hEKbSOWEvVLT1IM3/GeNBeZNgOQ9Heu1WsRUULIS2dP23Au6pCoC/6x/LD6IxlAHDlDhZw==
+"@qiwi/libdefkit@4.0.5":
+  version "4.0.5"
+  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-4.0.5.tgz#a047f28a23f11beca86aaa6d14232381c4207c08"
+  integrity sha512-ZxKZ4hwmpltu7kAKHxxq+qFHpq5zI+iyxIJkyyDvvgw81od4DKNBQfcgNiuC1qS16SjHgBmsZMx9Nk9gRd1gWQ==
   dependencies:
     "@qiwi/dts-bundle" "^0.7.5"
     chalk "^5.0.0"
-    find-up "^6.2.0"
+    find-up "^6.3.0"
     flowgen "1.17.0"
     fs-extra "^10.0.0"
     globby "^13.1.1"
     meow "^10.1.2"
-    nanoid "^3.2.0"
+    nanoid "^3.3.1"
     pkg-dir "^6.0.1"
     tempy "^2.0.0"
     tslib "^2.3.1"
@@ -2282,12 +2282,20 @@ find-up@^5.0.0:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
 
-find-up@^6.1.0, find-up@^6.2.0:
+find-up@^6.1.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-6.2.0.tgz#f3b81d633fa83bebe64f83a8bab357f86d5914be"
   integrity sha512-yWHzMzXCaFoABSnFTCPKNFlYoq4mSga9QLRRKOCLSJ33hSkzROB14ITbAWW0QDQDyuzsPQ33S1DsOWQb/oW1yA==
   dependencies:
     locate-path "^7.0.0"
+    path-exists "^5.0.0"
+
+find-up@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/find-up/-/find-up-6.3.0.tgz#2abab3d3280b2dc7ac10199ef324c4e002c8c790"
+  integrity sha512-v2ZsoEuVHYy8ZIlYqwPe/39Cy+cFDzp4dXPaxNvkEuouymu+2Jbz0PxpKarJHYJTmv2HWT3O382qY8l4jMWthw==
+  dependencies:
+    locate-path "^7.1.0"
     path-exists "^5.0.0"
 
 flat-cache@^3.0.4:
@@ -3634,6 +3642,13 @@ locate-path@^7.0.0:
   dependencies:
     p-locate "^6.0.0"
 
+locate-path@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-7.1.0.tgz#241d62af60739f6097c055efe10329c88b798425"
+  integrity sha512-HNx5uOnYeK4SxEoid5qnhRfprlJeGMzFRKPLCf/15N3/B4AiofNwC/yq7VBKdVk9dx7m+PiYCJOGg55JYTAqoQ==
+  dependencies:
+    p-locate "^6.0.0"
+
 lodash.memoize@4.x:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -3840,10 +3855,15 @@ multimap@^1.1.0:
   resolved "https://registry.yarnpkg.com/multimap/-/multimap-1.1.0.tgz#5263febc085a1791c33b59bb3afc6a76a2a10ca8"
   integrity sha512-0ZIR9PasPxGXmRsEF8jsDzndzHDj7tIav+JUmvIFB/WHswliFnquxECT/De7GR4yg99ky/NlRKJT82G1y271bw==
 
-nanoid@^3.1.30, nanoid@^3.2.0:
+nanoid@^3.1.30:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.2.0.tgz#62667522da6673971cca916a6d3eff3f415ff80c"
   integrity sha512-fmsZYa9lpn69Ad5eDn7FMcnnSR+8R34W9qJEijxYhTbfOWzr22n1QxCMzXLK+ODyW2973V3Fux959iQoUxzUIA==
+
+nanoid@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.1.tgz#6347a18cac88af88f58af0b3594b723d5e99bb35"
+  integrity sha512-n6Vs/3KGyxPQd6uO0eH4Bv0ojGSUvuLlIHtC3Y0kEO23YRge8H9x1GCzLn28YX0H66pMkxuaeESFq4tKISKwdw==
 
 natural-compare@^1.4.0:
   version "1.4.0"
