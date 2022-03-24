@@ -580,10 +580,10 @@
     glob "^7.1.6"
     mkdirp "^1.0.4"
 
-"@qiwi/libdefkit@4.0.5":
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-4.0.5.tgz#a047f28a23f11beca86aaa6d14232381c4207c08"
-  integrity sha512-ZxKZ4hwmpltu7kAKHxxq+qFHpq5zI+iyxIJkyyDvvgw81od4DKNBQfcgNiuC1qS16SjHgBmsZMx9Nk9gRd1gWQ==
+"@qiwi/libdefkit@4.0.6":
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-4.0.6.tgz#07461a4c2729a89f31af31f48949f322a311a312"
+  integrity sha512-sCjKgqiYrFhFLiJ34X1en6leUy82cK1dLHClGP4J0TqBdNoUWHAVX9ItEZ1csvwDd/JiVgB3tD3n/fg95aYmaQ==
   dependencies:
     "@qiwi/dts-bundle" "^0.7.5"
     chalk "^5.0.0"
