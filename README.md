@@ -1,10 +1,8 @@
 # @qiwi/semantic-release-gh-pages-plugin
 
-[![Build Status](https://travis-ci.com/qiwi/semantic-release-gh-pages-plugin.svg?branch=master)](https://travis-ci.com/qiwi/semantic-release-gh-pages-plugin)
-[![Deps](https://img.shields.io/david/qiwi/semantic-release-gh-pages-plugin?label=deps)](https://david-dm.org/qiwi/semantic-release-gh-pages-plugin)
+[![CI](https://github.com/qiwi/semantic-release-gh-pages-plugin/workflows/CI/badge.svg)](https://github.com/qiwi/semantic-release-gh-pages-plugin/actions)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c149b0666dda28813aa4/test_coverage)](https://codeclimate.com/github/qiwi/semantic-release-gh-pages-plugin/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c149b0666dda28813aa4/maintainability)](https://codeclimate.com/github/qiwi/semantic-release-gh-pages-plugin/maintainability)
-[![CodeStyle](https://img.shields.io/badge/code%20style-eslint--config--qiwi-brightgreen.svg)](https://github.com/qiwi/lint-config-qiwi)
 [![npm (tag)](https://img.shields.io/npm/v/@qiwi/semantic-release-gh-pages-plugin/latest.svg)](https://www.npmjs.com/package/@qiwi/semantic-release-gh-pages-plugin)
 
 gh-pages publishing plugin for [semantic-release](https://github.com/semantic-release/semantic-release)
@@ -16,15 +14,13 @@ gh-pages publishing plugin for [semantic-release](https://github.com/semantic-re
 
 ### Install
 ```bash
+# yarn
 yarn add @qiwi/semantic-release-gh-pages-plugin --dev
-```
-or
-```bash
-npm add @qiwi/semantic-release-gh-pages-plugin -D
+# npm
+npm i @qiwi/semantic-release-gh-pages-plugin -D
 ```
 
 ### Usage
-
 Describe plugin configuration in [package.json / .releaserc.js](https://github.com/semantic-release/semantic-release/blob/master/docs/01-usage/plugins.md#plugins-configuration-options)
 ```json
 {
@@ -88,3 +84,6 @@ or even shorter if default settings are used:
 | `pullTagsBranch`| Target branch for tags fetching hook. If '' empty string, skips this action | `globalConfig.branch` \|\| `master` |
 | `dotfiles`      | gh-pages [dotfiles](https://github.com/tschaub/gh-pages#optionsdotfiles) option | `false` |
 | `add`           | gh-pages [add](https://github.com/tschaub/gh-pages#optionsadd) option | `false` |
+
+### License
+[MIT](./LICENSE)
