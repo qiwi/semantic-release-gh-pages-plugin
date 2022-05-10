@@ -153,6 +153,7 @@ describe('index', () => {
         publish: jest.fn((src: string, opts: TAnyMap, cb: ICallable): void => {
           // NOTE If cb gets some value, this triggers error flow
           if (src === DOCS_ERR) {
+            // eslint-disable-next-line
             cb({
               src,
               opts
