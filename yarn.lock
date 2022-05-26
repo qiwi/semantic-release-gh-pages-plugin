@@ -588,10 +588,10 @@
     glob "^7.1.6"
     mkdirp "^1.0.4"
 
-"@qiwi/libdefkit@4.0.7":
-  version "4.0.7"
-  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-4.0.7.tgz#550a7b22eb5e945a95ac40a56eae65c1abf7e106"
-  integrity sha512-IPv2NISsUfk8yzaBoDyVukv2zy2VwkG+w70cvOA67EVWyOFM5aYdrZ+fSJfFTD5CfS0ow3imgb6/XBHPM3q/RA==
+"@qiwi/libdefkit@4.0.8":
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-4.0.8.tgz#2a7aebc8ec2b6eed0d3211133555510c4e157a64"
+  integrity sha512-c++/PWoE+ANnu72WriP+A7dVYqzv0ART8yeSwLgShvRwFucvLUHYn8//qLyY5lgQg3sGpVeHKjAYbSdffOxssQ==
   dependencies:
     "@qiwi/dts-bundle" "^0.7.5"
     chalk "^5.0.1"
