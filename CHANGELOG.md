@@ -1,3 +1,10 @@
+## [5.2.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.2...v5.2.3) (2022-06-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency git-url-parse to v12 ([bead84d](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/bead84da9e6dc669efa16ec9f3cfe5631f580f51))
+
 ## [5.2.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.1...v5.2.2) (2022-05-10)
 
 
