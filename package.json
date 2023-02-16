@@ -57,7 +57,7 @@
     "@types/semantic-release": "^17.2.3",
     "@types/gh-pages": "^3.2.1",
     "@types/lodash": "^4.14.182",
-    "@qiwi/substrate": "^1.20.12",
+    "@qiwi/substrate": "^2.0.0",
     "aggregate-error": "^3.1.0",
     "debug": "^4.3.4",
     "execa": "^5.1.1",
