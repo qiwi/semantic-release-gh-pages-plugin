@@ -1,3 +1,10 @@
+## [5.2.5](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.4...v5.2.5) (2023-02-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @qiwi/substrate to v2 ([6cd1c10](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/6cd1c108efa6e4ad64d50ec984388967ffaea07a))
+
 ## [5.2.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.2...v5.2.3) (2022-06-27)
 
 
