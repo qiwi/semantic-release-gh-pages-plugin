@@ -83,7 +83,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-qiwi": "^1.17.1",
     "typedoc": "^0.24.0",
-    "typescript": "5.0.4"
+    "typescript": "5.1.5"
   },
   "repository": {
     "type": "git",
