@@ -81,7 +81,7 @@
     "ts-jest": "^29.0.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-config-qiwi": "^1.17.1",
+    "eslint-config-qiwi": "^2.0.0",
     "typedoc": "^0.24.0",
     "typescript": "5.1.6"
   },
