@@ -1,9 +1,9 @@
 /** @module semantic-release-gh-pages-plugin */
 
 import AggregateError from 'aggregate-error'
-import fs from 'fs'
+import fs from 'node:fs'
 import { isEqual } from 'lodash'
-import path from 'path'
+import path from 'node:path'
 
 import { resolveConfig } from './config'
 import { publish as ghpagesPublish } from './ghpages'

@@ -28,7 +28,7 @@ export {
   DEFAULT_ENTERPRISE,
   PLUGIN_PATH,
   DEFAULT_PULL_TAGS_BRANCH
-}
+} from './defaults'
 
 const gitUrlParse = catchToSmth(gitParse, {})
 

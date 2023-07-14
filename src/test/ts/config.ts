@@ -22,6 +22,9 @@ describe('config', () => {
   const logger = {
     log (msg: string, ...vars: any[]) { console.log(vars || msg) },
     error (msg: string, ...vars: any[]) { console.log(vars || msg) }
+  } as unknown as TContext['logger']
+  const branch = {
+    name: 'master'
   }
   const globalConfig = {
     branch: 'master',
@@ -52,6 +55,7 @@ describe('config', () => {
       }
       const context: TContext = {
         logger,
+        branch,
         options: {
           ...globalConfig,
           [step]: [
@@ -77,8 +81,9 @@ describe('config', () => {
         foo: 'bar',
         baz: 'qux'
       }
-      const context = {
+      const context: TContext = {
         logger,
+        branch,
         options: {
           ...globalConfig
         },
@@ -112,6 +117,7 @@ describe('config', () => {
       }
       const context = {
         logger,
+        branch,
         options: {
           ...globalConfig,
           [step]: [
@@ -125,6 +131,9 @@ describe('config', () => {
       const config = await resolveConfig(pluginConfig, context, path, step)
 
       expect(config).toEqual({
+        add: undefined,
+        ciBranch: 'master',
+        dotfiles: undefined,
         src: 'docsdocs',
         dst: 'root',
         enterprise: true,
@@ -193,6 +202,7 @@ describe('config', () => {
       }
       const context = {
         logger,
+        branch,
         options: {
           ...globalConfig,
           [step]: [
@@ -207,7 +217,10 @@ describe('config', () => {
       delete process.env.DEBUG
 
       expect(config).toEqual({
+        add: undefined,
+        ciBranch: 'master',
         docsBranch: DEFAULT_BRANCH,
+        dotfiles: undefined,
         dst: DEFAULT_DST,
         enterprise: DEFAULT_ENTERPRISE,
         msg: DEFAULT_MSG,
@@ -339,6 +352,7 @@ describe('config', () => {
           {
             pluginConfig: {},
             context: {
+              branch,
               logger,
               options: {
                 ...globalConfig
@@ -351,6 +365,7 @@ describe('config', () => {
           {
             pluginConfig: {},
             context: {
+              branch,
               logger,
               options: {
                 ...globalConfig,
@@ -367,6 +382,7 @@ describe('config', () => {
               repositoryUrl: 'https://baz.com/foo/bar'
             },
             context: {
+              branch,
               logger,
               options: {
                 ...globalConfig
@@ -383,6 +399,7 @@ describe('config', () => {
             pluginConfig: {},
             context: {
               logger,
+              branch,
               options: {
                 ...globalConfig
               },
@@ -395,6 +412,7 @@ describe('config', () => {
             pluginConfig: {},
             context: {
               logger,
+              branch,
               options: {
                 ...globalConfig,
                 repositoryUrl: ''
@@ -412,6 +430,7 @@ describe('config', () => {
             pluginConfig: {},
             context: {
               logger,
+              branch,
               options: {
                 ...globalConfig,
                 repositoryUrl: 'https://git.io/fjYhK'

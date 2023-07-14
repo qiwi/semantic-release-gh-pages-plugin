@@ -1,7 +1,7 @@
 import { ICallable } from '@qiwi/substrate'
 import AggregateError from 'aggregate-error'
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 
 import {
   DEFAULT_BRANCH,
@@ -46,7 +46,7 @@ describe('index', () => {
   const logger = {
     log,
     error
-  }
+  } as unknown as TContext['logger']
   const globalConfig = {
     branch: 'master',
     branches: [],
@@ -191,6 +191,7 @@ describe('index', () => {
       const context: TContext = {
         logger,
         cwd,
+        branch: {name: 'master'},
         // nextRelease: {},
         options: {
           ...globalConfig,
@@ -238,6 +239,7 @@ describe('index', () => {
       const pluginConfig = {}
       const context: TContext = {
         logger,
+        branch: {name: 'master'},
         options: {
           ...globalConfig,
           [step]: [{ path }]

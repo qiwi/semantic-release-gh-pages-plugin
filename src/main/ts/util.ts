@@ -11,4 +11,4 @@ export const catchToSmth = (fn: ICallable, smth?: any) => {
   }
 }
 
-export const anyDefined = (...args: any[]) => args.find(item => typeof item !== 'undefined')
+export const anyDefined = (...args: any[]) => args.find(item => item !== undefined)
