@@ -12,7 +12,7 @@ gh-pages publishing plugin for [semantic-release](https://github.com/semantic-re
 | `verifyConditions` | Verify the presence of the `GH_TOKEN` set via [environment variables](#environment-variables). |
 | `publish`          | Pushes commit to the [documentation branch](#options) |
 
-### Install
+## Install
 ```bash
 # yarn
 yarn add @qiwi/semantic-release-gh-pages-plugin --dev
@@ -20,7 +20,7 @@ yarn add @qiwi/semantic-release-gh-pages-plugin --dev
 npm i @qiwi/semantic-release-gh-pages-plugin -D
 ```
 
-### Usage
+## Usage
 Describe plugin configuration in [package.json / .releaserc.js](https://github.com/semantic-release/semantic-release/blob/master/docs/01-usage/plugins.md#plugins-configuration-options)
 ```json
 {
@@ -63,27 +63,27 @@ or even shorter if default settings are used:
 }
 ```
 
-### Configuration
-##### Environment variables
+## Configuration
+### Environment variables
 
 | Variable                     | Description                                               |
-|------------------------------| --------------------------------------------------------- |
+|------------------------------|-----------------------------------------------------------|
 | `GH_TOKEN` or `GITHUB_TOKEN` | **Required.** The token used to authenticate with GitHub. |
 
-##### Options
+### Options
 
-| Option          | Description                                             | Default |
-|-----------------|---------------------------------------------------------| --------|
-| `msg`           | Commit message template                                 | `docs updated <%= nextRelease.gitTag %>` |
-| `src`           | Documentation directory                                 | `docs`<br/><br/>**NOTE** don't forget to run docs builder (`yarn docs`, `yarn typedoc`, etc) as a part of your build step or any other way|
-| `dst`           | Destination directory                                   | `.` (root) |
-| `branch`        | Docs branch to push                                     | `gh-pages` |
-| `branches`      | Optional list of src-to-target branches association. If defined it suppresses `branch` option. For example, `[['master', 'gh-pages'], ['beta', beta-docs]]`             | undefined |
-| `repositoryUrl` | Repository url                                          | inherited from .git |
-| `enterprise`    | Disables host assertion for GitHub Enterprise domains   | false      |
-| `pullTagsBranch`| Target branch for tags fetching hook. If '' empty string, skips this action | `globalConfig.branch` \|\| `master` |
-| `dotfiles`      | gh-pages [dotfiles](https://github.com/tschaub/gh-pages#optionsdotfiles) option | `false` |
-| `add`           | gh-pages [add](https://github.com/tschaub/gh-pages#optionsadd) option | `false` |
+| Option           | Description                                                                                                                                                 | Default                                                                                                                                    |
+|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| `msg`            | Commit message template                                                                                                                                     | `docs updated <%= nextRelease.gitTag %>`                                                                                                   |
+| `src`            | Documentation directory                                                                                                                                     | `docs`<br/><br/>**NOTE** don't forget to run docs builder (`yarn docs`, `yarn typedoc`, etc) as a part of your build step or any other way |
+| `dst`            | Destination directory                                                                                                                                       | `.` (root)                                                                                                                                 |
+| `branch`         | Docs branch to push                                                                                                                                         | `gh-pages`                                                                                                                                 |
+| `branches`       | Optional list of src-to-target branches association. If defined it suppresses `branch` option. For example, `[['master', 'gh-pages'], ['beta', beta-docs]]` | undefined                                                                                                                                  |
+| `repositoryUrl`  | Repository url                                                                                                                                              | inherited from .git                                                                                                                        |
+| `enterprise`     | Disables host assertion for GitHub Enterprise domains                                                                                                       | `false`                                                                                                                                    |
+| `pullTagsBranch` | Target branch for tags fetching hook. If '' empty string, skips this action                                                                                 | `globalConfig.branch` \|\| `master`                                                                                                        |
+| `dotfiles`       | gh-pages [dotfiles](https://github.com/tschaub/gh-pages#optionsdotfiles) option                                                                             | `false`                                                                                                                                    |
+| `add`            | gh-pages [add](https://github.com/tschaub/gh-pages#optionsadd) option                                                                                       | `false`                                                                                                                                    |
 
-### License
+## License
 [MIT](./LICENSE)

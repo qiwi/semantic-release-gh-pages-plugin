@@ -1,5 +1,7 @@
 {
-  "preset": "ts-jest",
+  "transform": {
+    "^.+\\.tsx?$": ["ts-jest", {"tsconfig": "tsconfig.test.json"}]
+  },
   "collectCoverage": true,
   "coveragePathIgnorePatterns": [
     "<rootDir>/src/main/ts/interface.ts"
@@ -21,10 +23,5 @@
     "jsx",
     "json",
     "node"
-  ],
-  "globals": {
-    "ts-jest": {
-      "tsconfig": "tsconfig.test.json"
-    }
-  }
+  ]
 }

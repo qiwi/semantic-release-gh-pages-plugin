@@ -8,6 +8,7 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         'sonarjs/no-duplicate-string': 'off',
         'no-template-curly-in-string': 'off',
-        'node/no-callback-literal': 'off'
+        'node/no-callback-literal': 'off',
+        'unicorn/consistent-destructuring': 'off'
     }
 };
