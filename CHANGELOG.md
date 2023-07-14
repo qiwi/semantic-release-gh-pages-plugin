@@ -1,3 +1,8 @@
+## [5.2.6](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.5...v5.2.6) (2023-07-14)
+
+### Fixes & improvements
+* perf: up some deps, update linter config ([448bbc7](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/448bbc737c6c107936a908b00c5e45c12d1fa609))
+
 ## [5.2.5](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.4...v5.2.5) (2023-02-16)
 
 
