@@ -4,8 +4,8 @@ export const catchToSmth = (fn: ICallable, smth?: any) => {
   return (...args: any[]) => {
     try {
       return fn(...args)
-    } catch {
-
+    } catch (e) {
+      console.warn(e)
       return smth
     }
   }
