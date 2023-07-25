@@ -1,3 +1,8 @@
+## [5.2.7](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.6...v5.2.7) (2023-07-25)
+
+### Fixes & improvements
+* fix: bump git-url-parse to fix vuln issues ([d072204](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/d0722041949b89c646ee168f50d5fc1f672546f0))
+
 ## [5.2.6](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.5...v5.2.6) (2023-07-14)
 
 ### Fixes & improvements
