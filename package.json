@@ -80,7 +80,7 @@
     "rimraf": "^5.0.1",
     "ts-jest": "^29.1.1",
     "eslint": "^8.45.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-config-qiwi": "^2.1.3",
     "typedoc": "^0.24.8",
     "typescript": "5.1.6"
