@@ -1,3 +1,8 @@
+## [5.2.8](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.7...v5.2.8) (2023-08-11)
+
+### Fixes & improvements
+* fix(deps): update dependency gh-pages to v6 ([cbe3958](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/cbe3958f1f9620a1cb43b08e06ba83047f82d5b4))
+
 ## [5.2.7](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.6...v5.2.7) (2023-07-25)
 
 ### Fixes & improvements
