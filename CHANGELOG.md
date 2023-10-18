@@ -1,3 +1,8 @@
+## [5.2.9](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.8...v5.2.9) (2023-10-18)
+
+### Fixes & improvements
+* fix: inject `branches` directive to config ([ed25734](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/ed25734301a909102db2c8f53dd2e2b2752a0cc4))
+
 ## [5.2.8](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.7...v5.2.8) (2023-08-11)
 
 ### Fixes & improvements
