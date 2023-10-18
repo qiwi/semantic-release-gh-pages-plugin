@@ -231,6 +231,32 @@ describe('config', () => {
       })
     })
 
+    it('issues/248: injects `branches` opt to config', async () => {
+      const _cfg = {
+        branches: [
+          ['main', 'gh-pages'],
+          ['alpha', 'gh-pages-alpha'],
+          ['beta', 'gh-pages-beta']
+        ]
+      }
+      const context = {
+        env: {},
+        branch: {name: 'alpha'},
+        logger,
+        cwd,
+        options: {
+          branch: 'master',
+          branches: [],
+          repositoryUrl: 'https://secure@github-enterprise-repo-url.com/foo/bar.git',
+          tagFormat: 'v${version}',
+          plugins: []
+        }
+      }
+      const cfg = await resolveConfig(_cfg, context)
+
+      expect(cfg.docsBranch).toEqual('gh-pages-alpha')
+    })
+
     it('issues/60', async () => {
       const step = 'publish'
       const path = PLUGIN_PATH

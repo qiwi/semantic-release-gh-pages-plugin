@@ -127,7 +127,7 @@ export const reassembleRepoUrl = (redirectedUrl: string, context: TContext): str
 export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, path = PLUGIN_PATH, step?: string): Promise<IGhpagesPluginConfig> => {
   const opts = resolveOptions(pluginConfig, context, path, step)
   const {
-    branches,
+    branches = opts._branches,
     branch = DEFAULT_BRANCH,
     msg = DEFAULT_MSG,
     src = DEFAULT_SRC,
@@ -138,7 +138,7 @@ export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, pa
   const enterprise = Boolean(opts.enterprise || pluginConfig.enterprise || DEFAULT_ENTERPRISE)
   const repo = await getRepoUrl(pluginConfig, context, enterprise)
   const ciBranch = context?.branch?.name as string
-  const docsBranch = branches ? branches.find(([from]: string[]) => from === ciBranch)?.[1] : branch
+  const docsBranch = branches?.find(([from]: string[]) => from === ciBranch)?.[1] || branch
   const pullTagsBranch = anyDefined(opts.pullTagsBranch, ciBranch, opts._branch, DEFAULT_PULL_TAGS_BRANCH)
   const token = getToken(context.env, repo)
 
@@ -183,5 +183,10 @@ export const resolveOptions = (pluginConfig: TAnyMap, context: TContext, path = 
     })
     .find(config => config?.path === path) || {}
 
-  return { ...base, ...extra, _branch: pluginConfig.branch }
+  return {
+    _branch: pluginConfig.branch,
+    _branches: pluginConfig.branches,
+    ...base,
+    ...extra,
+  }
 }
