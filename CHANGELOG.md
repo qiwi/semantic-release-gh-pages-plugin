@@ -1,3 +1,8 @@
+## [5.2.12](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.11...v5.2.12) (2024-01-02)
+
+### Fixes & improvements
+* fix(deps): update dependency git-url-parse to v14 ([acbb41d](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/acbb41db423575d4191b4635b10a9074d60b9bd7))
+
 ## [5.2.11](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.10...v5.2.11) (2023-12-22)
 
 ### Fixes & improvements
