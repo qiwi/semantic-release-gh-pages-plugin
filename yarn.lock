@@ -792,21 +792,21 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@qiwi/libdefkit@6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-6.0.0.tgz#0572fcfeffa31662f590a5266f61270c2852aa89"
-  integrity sha512-r5dsuqxwZEj2TlXeWdhN4zORcD/cXp6lClrPpwXqF/nr4Sgw3d30A4qFPMa9hnrV7I2w7YRO2lY/MZxAGbbBAA==
+"@qiwi/libdefkit@6.1.3":
+  version "6.1.3"
+  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-6.1.3.tgz#85d04eb355cc9c3ee73fdab733d5356c7df807ec"
+  integrity sha512-XGsfo+kqvNijfZdkI0DBWp4Q8h97hBI1XwHxr6lmmTSgEknzf29UGNCEn77y11taN1KzUiDp2umjrvsrdYWfCg==
   dependencies:
+    "@topoconfig/extends" "^0.1.9"
     chalk "^5.3.0"
-    depseek "^0.2.2"
     find-up "^6.3.0"
     flowgen "1.21.0"
     fs-extra "^11.2.0"
     globby "^13.1.3"
     meow "^11.0.0"
-    nanoid "^4.0.0"
     pkg-dir "^7.0.0"
     tempy "^3.1.0"
+    tsc-dts-fix "^0.0.8"
     tslib "^2.6.2"
 
 "@qiwi/npm-run-all@^4.1.7":
@@ -877,6 +877,11 @@
   integrity sha512-V4BG07kuYSUkTCSBHG8G8TNhM+F19jXFWnQtzj+we8DrkpSBCee9Z3Ms8yiGer/dlmhe35/Xdgyo3/0rQKg7YA==
   dependencies:
     "@sinonjs/commons" "^3.0.0"
+
+"@topoconfig/extends@0.1.9", "@topoconfig/extends@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@topoconfig/extends/-/extends-0.1.9.tgz#232b80bb59defc427ee78e1ac66ceda9c45bb0cc"
+  integrity sha512-hOI4v5tcrphtpjhEPnFBbezQtASnloTyLtVAIBc3wr9+Wk8cCnWn2PJU/0IrvjZazA79L8VHFwA6Vq3I5m57dA==
 
 "@types/babel__core@^7.1.14":
   version "7.1.19"
@@ -1845,10 +1850,10 @@ delayed-stream@~1.0.0:
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
 
-depseek@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/depseek/-/depseek-0.2.2.tgz#53386e7a339c8044b58283ff5505c8077bb2d2d6"
-  integrity sha512-RqWAxWU2T49e39PQpJla4oIBoxXIFXgMd/vBZnTXk1hKH34kyo2G62C7tYKKnBxrj1WFfIvz74kFDTldXagE0Q==
+depseek@0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/depseek/-/depseek-0.2.4.tgz#93c857191be14f73f6fef674c44f7dd88732af4e"
+  integrity sha512-MneWFr//kZfwpJNiVfb4QkFLU9e3G78ZoAxEHYhd7MuCIRRBqMDVq1kkyeOcFkvybLFwGsnO+VGuEjncmedczQ==
 
 detect-newline@^3.0.0:
   version "3.1.0"
@@ -3930,6 +3935,11 @@ minimist@^1.2.5:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.7.tgz#daa1c4d91f507390437c6a8bc01078e7000c4d18"
   integrity sha512-bzfL1YUZsP41gmu/qjrEk0Q6i2ix/cVeAhbCbqH9u3zYutS1cLg00qhrD0M2MVdCcx4Sc0UpP2eBWo9rotpq6g==
 
+minimist@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
+  integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
+
 "minipass@^5.0.0 || ^6.0.2 || ^7.0.0":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/minipass/-/minipass-7.0.2.tgz#58a82b7d81c7010da5bd4b2c0c85ac4b4ec5131e"
@@ -3949,11 +3959,6 @@ nanoid@^3.3.6:
   version "3.3.6"
   resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.6.tgz#443380c856d6e9f9824267d960b4236ad583ea4c"
   integrity sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==
-
-nanoid@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-4.0.0.tgz#6e144dee117609232c3f415c34b0e550e64999a5"
-  integrity sha512-IgBP8piMxe/gf73RTQx7hmnhwz0aaEXYakvqZyE302IXW3HyVNhdNGC+O2MwMAVhLEnvXlvKtGbtJf6wvHihCg==
 
 natural-compare-lite@^1.4.0:
   version "1.4.0"
@@ -5136,6 +5141,15 @@ ts-jest@^29.1.1:
     make-error "1.x"
     semver "^7.5.3"
     yargs-parser "^21.0.1"
+
+tsc-dts-fix@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/tsc-dts-fix/-/tsc-dts-fix-0.0.8.tgz#be0870fcf2f2f530677cfce183b3a871d303ecbd"
+  integrity sha512-As8cFCXPgrr9gjf/hblApNfY1u/95lxSz1MC1Sxe25/BnJYXcGuPY3Wfj2j9fq8Z2I6AlR636UCbUnKY2XwupQ==
+  dependencies:
+    "@topoconfig/extends" "0.1.9"
+    depseek "0.2.4"
+    minimist "^1.2.8"
 
 tslib@^1.8.1:
   version "1.14.1"
