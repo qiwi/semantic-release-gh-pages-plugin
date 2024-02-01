@@ -1,4 +1,4 @@
-import { ICallable } from '@qiwi/substrate'
+import { ICallable } from '@qiwi/substrate-types'
 import AggregateError from 'aggregate-error'
 import fs from 'node:fs'
 import path from 'node:path'

@@ -1,4 +1,4 @@
-import { ICallable } from '@qiwi/substrate'
+import { ICallable } from '@qiwi/substrate-types'
 
 export const catchToSmth = (fn: ICallable, smth?: any) => {
   return (...args: any[]) => {

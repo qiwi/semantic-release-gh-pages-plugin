@@ -1,4 +1,4 @@
-import { ICallable } from '@qiwi/substrate'
+import { ICallable } from '@qiwi/substrate-types'
 
 import { IPushOpts, TAnyMap } from '../../main/ts/interface'
 
