@@ -631,12 +631,12 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@qiwi/libdefkit@6.1.3":
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-6.1.3.tgz#85d04eb355cc9c3ee73fdab733d5356c7df807ec"
-  integrity sha512-XGsfo+kqvNijfZdkI0DBWp4Q8h97hBI1XwHxr6lmmTSgEknzf29UGNCEn77y11taN1KzUiDp2umjrvsrdYWfCg==
+"@qiwi/libdefkit@6.1.4":
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/@qiwi/libdefkit/-/libdefkit-6.1.4.tgz#f662c07faff956df9ff1902d097de76ae559c5bb"
+  integrity sha512-+/2OpAJjuSe4hk1dDOIVGVlhr3RxG5ceNH7X9TBv3l3hI+1ti7UPT90/6noFkoc6SUpmyKDEbogDbvGKqmHPow==
   dependencies:
-    "@topoconfig/extends" "^0.1.9"
+    "@topoconfig/extends" "^0.7.5"
     chalk "^5.3.0"
     find-up "^6.3.0"
     flowgen "1.21.0"
@@ -645,7 +645,7 @@
     meow "^11.0.0"
     pkg-dir "^7.0.0"
     tempy "^3.1.0"
-    tsc-dts-fix "^0.0.8"
+    tsc-dts-fix "^0.0.22"
     tslib "^2.6.2"
 
 "@qiwi/npm-run-all@^4.1.7":
@@ -687,10 +687,10 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@topoconfig/extends@0.1.9", "@topoconfig/extends@^0.1.9":
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/@topoconfig/extends/-/extends-0.1.9.tgz#232b80bb59defc427ee78e1ac66ceda9c45bb0cc"
-  integrity sha512-hOI4v5tcrphtpjhEPnFBbezQtASnloTyLtVAIBc3wr9+Wk8cCnWn2PJU/0IrvjZazA79L8VHFwA6Vq3I5m57dA==
+"@topoconfig/extends@0.7.5", "@topoconfig/extends@^0.7.5":
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/@topoconfig/extends/-/extends-0.7.5.tgz#48894d5046a35711832c45e3b9acf7c9e6d1d364"
+  integrity sha512-Beckx2UCfhSX4HmaWCDurqdP9y7VyKZaUURQphQYQ+uVWdhw7kXVIKR0gl5HtmrNbRpN/uRUqDsQdR2K4b0qaw==
 
 "@types/babel__core@^7.1.14":
   version "7.20.5"
@@ -4604,12 +4604,12 @@ ts-jest@^29.1.2:
     semver "^7.5.3"
     yargs-parser "^21.0.1"
 
-tsc-dts-fix@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/tsc-dts-fix/-/tsc-dts-fix-0.0.8.tgz#be0870fcf2f2f530677cfce183b3a871d303ecbd"
-  integrity sha512-As8cFCXPgrr9gjf/hblApNfY1u/95lxSz1MC1Sxe25/BnJYXcGuPY3Wfj2j9fq8Z2I6AlR636UCbUnKY2XwupQ==
+tsc-dts-fix@^0.0.22:
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/tsc-dts-fix/-/tsc-dts-fix-0.0.22.tgz#ac1cdc531347ad32a60b5a2bd2e75f3ef500c158"
+  integrity sha512-Bigk4edYMs7lMV1RnpPXCkvR9iOt38plc/LDdfGiu2tMUYolf5AoQo1XAgV8yla5D1uU8FmKUuPLdjm6FW7fCA==
   dependencies:
-    "@topoconfig/extends" "0.1.9"
+    "@topoconfig/extends" "0.7.5"
     depseek "0.2.4"
     minimist "^1.2.8"
 
