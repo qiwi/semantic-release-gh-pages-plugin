@@ -50,7 +50,7 @@
     "debug": "^4.3.4",
     "execa": "^5.1.1",
     "gh-pages": "^6.1.1",
-    "git-url-parse": "^14.0.0",
+    "git-url-parse": "^15.0.0",
     "lodash": "^4.17.21",
     "queuefy": "^1.2.1",
     "read-pkg": "^5.2.0",
