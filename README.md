@@ -1,9 +1,9 @@
-# @qiwi/semantic-release-gh-pages-plugin
+# @wiki/semantic-release-gh-pages-plugin
 
-[![CI](https://github.com/qiwi/semantic-release-gh-pages-plugin/workflows/CI/badge.svg)](https://github.com/qiwi/semantic-release-gh-pages-plugin/actions)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/c149b0666dda28813aa4/test_coverage)](https://codeclimate.com/github/qiwi/semantic-release-gh-pages-plugin/test_coverage)
-[![Maintainability](https://api.codeclimate.com/v1/badges/c149b0666dda28813aa4/maintainability)](https://codeclimate.com/github/qiwi/semantic-release-gh-pages-plugin/maintainability)
-[![npm (tag)](https://img.shields.io/npm/v/@qiwi/semantic-release-gh-pages-plugin/latest.svg)](https://www.npmjs.com/package/@qiwi/semantic-release-gh-pages-plugin)
+[![CI](https://github.com/wiki/semantic-release-gh-pages-plugin/workflows/CI/badge.svg)](https://github.com/wiki/semantic-release-gh-pages-plugin/actions)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c149b0666dda28813aa4/test_coverage)](https://codeclimate.com/github/wiki/semantic-release-gh-pages-plugin/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c149b0666dda28813aa4/maintainability)](https://codeclimate.com/github/wiki/semantic-release-gh-pages-plugin/maintainability)
+[![npm (tag)](https://img.shields.io/npm/v/@wiki/semantic-release-gh-pages-plugin/latest.svg)](https://www.npmjs.com/package/@wiki/semantic-release-gh-pages-plugin)
 
 gh-pages publishing plugin for [semantic-release](https://github.com/semantic-release/semantic-release)
 
@@ -15,9 +15,9 @@ gh-pages publishing plugin for [semantic-release](https://github.com/semantic-re
 ## Install
 ```bash
 # yarn
-yarn add @qiwi/semantic-release-gh-pages-plugin --dev
+yarn add @wiki/semantic-release-gh-pages-plugin --dev
 # npm
-npm i @qiwi/semantic-release-gh-pages-plugin -D
+npm i @wiki/semantic-release-gh-pages-plugin -D
 ```
 
 ## Usage
@@ -30,13 +30,13 @@ Describe plugin configuration in [package.json / .releaserc.js](https://github.c
       "@semantic-release/changelog",
       "@semantic-release/npm",
       "@semantic-release/git",
-      "@qiwi/semantic-release-gh-pages-plugin"
+      "@wiki/semantic-release-gh-pages-plugin"
     ],
     "publish": [
       "@semantic-release/npm",
       "@semantic-release/github",
       [
-        "@qiwi/semantic-release-gh-pages-plugin",
+        "@wiki/semantic-release-gh-pages-plugin",
         {
           "msg": "updated",
           "branch": "docs"
@@ -57,7 +57,7 @@ or even shorter if default settings are used:
       "@semantic-release/git",
       "@semantic-release/github",
       "@semantic-release/npm",
-      "@qiwi/semantic-release-gh-pages-plugin"
+      "@wiki/semantic-release-gh-pages-plugin"
     ]
   }
 }
@@ -84,6 +84,7 @@ or even shorter if default settings are used:
 | `pullTagsBranch` | Target branch for tags fetching hook. If '' empty string, skips this action                                                                                 | `globalConfig.branch` \|\| `master`                                                                                                        |
 | `dotfiles`       | gh-pages [dotfiles](https://github.com/tschaub/gh-pages#optionsdotfiles) option                                                                             | `false`                                                                                                                                    |
 | `add`            | gh-pages [add](https://github.com/tschaub/gh-pages#optionsadd) option                                                                                       | `false`                                                                                                                                    |
+| `pattern`        | gh-pages [src](https://github.com/tschaub/gh-pages#optionssrc) option                                                                                       | `**/*`                                                                                                                                     |
 
 ## License
 [MIT](./LICENSE)

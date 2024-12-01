@@ -10,6 +10,7 @@ import {
   DEFAULT_MSG,
   DEFAULT_PULL_TAGS_BRANCH,
   DEFAULT_SRC,
+  DEFAULT_PATTERN,
   PLUGIN_PATH
 } from '../../main/ts'
 import { getUrlFromPackage } from '../../main/ts/config'
@@ -84,6 +85,7 @@ describe('index', () => {
         msg: DEFAULT_MSG,
         dst: DEFAULT_DST,
         src: DEFAULT_SRC,
+        pattern: DEFAULT_PATTERN,
         enterprise: DEFAULT_ENTERPRISE,
         repo: await getRepoUrl(pluginConfig, context, DEFAULT_ENTERPRISE),
         token,
@@ -203,7 +205,8 @@ describe('index', () => {
         repo: await getRepoUrl(pluginConfig, context, false),
         branch: 'doc-branch',
         message: 'docs updated v{{=it.nextRelease.gitTag}}',
-        dest: 'root'
+        dest: 'root',
+        src: DEFAULT_PATTERN,
       }
       const execaOpts = {
         cwd,
@@ -275,7 +278,8 @@ describe('index', () => {
         repo: await getRepoUrl(pluginConfig, context, false),
         branch: DEFAULT_BRANCH,
         message: DEFAULT_MSG,
-        dest: DEFAULT_DST
+        dest: DEFAULT_DST,
+        src: DEFAULT_PATTERN,
       }
       const expected = {
         src: DOCS_ERR,

@@ -38,6 +38,7 @@ export interface IGhpagesPluginConfig {
   enterprise?: boolean,
   dotfiles?: boolean
   add?: boolean
+  pattern?: string,
 }
 
 export interface IPushOpts extends IGhpagesPluginConfig {

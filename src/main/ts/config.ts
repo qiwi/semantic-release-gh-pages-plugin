@@ -12,6 +12,7 @@ import {
   DEFAULT_DST,
   DEFAULT_ENTERPRISE,
   DEFAULT_MSG,
+  DEFAULT_PATTERN,
   DEFAULT_PULL_TAGS_BRANCH,
   DEFAULT_SRC,
   PLUGIN_PATH} from './defaults'
@@ -27,7 +28,8 @@ export {
   DEFAULT_DST,
   DEFAULT_ENTERPRISE,
   PLUGIN_PATH,
-  DEFAULT_PULL_TAGS_BRANCH
+  DEFAULT_PULL_TAGS_BRANCH,
+  DEFAULT_PATTERN,
 } from './defaults'
 
 const gitUrlParse = catchToSmth(gitParse, {})
@@ -132,6 +134,7 @@ export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, pa
     msg = DEFAULT_MSG,
     src = DEFAULT_SRC,
     dst = DEFAULT_DST,
+    pattern = DEFAULT_PATTERN,
     add,
     dotfiles
   } = opts
@@ -149,6 +152,7 @@ export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, pa
   debug('ciBranch= %s', ciBranch)
   debug('docsBranch= %s', docsBranch)
   debug('pullTagsBranch= %s', pullTagsBranch)
+  debug('pattern = %s', pattern)
 
   return {
     src,
@@ -162,6 +166,7 @@ export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, pa
     token,
     add,
     dotfiles,
+    pattern,
   }
 }
 
