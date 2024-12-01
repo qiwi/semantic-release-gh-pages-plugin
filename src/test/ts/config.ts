@@ -5,6 +5,7 @@ import {
   DEFAULT_MSG,
   DEFAULT_PULL_TAGS_BRANCH,
   DEFAULT_SRC,
+  DEFAULT_PATTERN,
   // getRepo,
   extractRepoDomain,
   extractRepoName,
@@ -141,7 +142,8 @@ describe('config', () => {
         msg: 'doc update',
         token,
         repo: `https://${token}@enterprise.com/org/repo.git`,
-        pullTagsBranch: 'dev'
+        pullTagsBranch: 'dev',
+        pattern: DEFAULT_PATTERN,
       })
     })
 
@@ -188,7 +190,8 @@ describe('config', () => {
         msg: 'doc update',
         token,
         repo: `https://${token}@enterprise.com/org/repo.git`,
-        pullTagsBranch: 'foo'
+        pullTagsBranch: 'foo',
+        pattern: DEFAULT_PATTERN,
       })
     })
 
@@ -227,7 +230,8 @@ describe('config', () => {
         src: DEFAULT_SRC,
         token,
         repo: repositoryUrl,
-        pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH
+        pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH,
+        pattern: DEFAULT_PATTERN,
       })
     })
 
@@ -328,7 +332,8 @@ describe('config', () => {
         src: 'dist/web',
         token: 'secure',
         repo: `https://secure@github-enterprise-repo-url.com/foo/bar.git`,
-        pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH
+        pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH,
+        pattern: DEFAULT_PATTERN,
       })
     })
   })

@@ -40,7 +40,7 @@ export const pullTags = (opts: IPushOpts): Promise<any> => {
  * @private
  */
 export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
-  const { src, logger , repo, docsBranch, dst, message, add, dotfiles} = opts
+  const { src, logger , repo, docsBranch, dst, message, add, dotfiles, pattern } = opts
   const ghpagesOpts: PublishOptions = {
     repo,
     branch: docsBranch,
@@ -48,6 +48,7 @@ export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
     message,
     add,
     dotfiles,
+    src: pattern,
   }
 
   ghpagePublish(src, ghpagesOpts, (err?: any) => {
@@ -56,7 +57,7 @@ export const pushPages = (opts: IPushOpts) => new Promise((resolve, reject) => {
       reject(err)
 
     } else {
-      logger.log(`Docs published successfully, branch=${ghpagesOpts.branch}, src=${src}, dst=${ghpagesOpts.dest}`)
+      logger.log(`Docs published successfully, branch=${ghpagesOpts.branch}, src=${src}, pattern=${ghpagesOpts.src}, dst=${ghpagesOpts.dest}`)
       resolve(OK)
     }
   })
