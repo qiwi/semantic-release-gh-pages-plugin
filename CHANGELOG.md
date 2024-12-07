@@ -1,3 +1,8 @@
+## [5.2.13](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.12...v5.2.13) (2024-12-07)
+
+### Fixes & improvements
+* docs: clarify how `dst` and `src` options are applied via gh-pages ([151362e](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/151362e6aa7bbcd7c07b3f4ecaff00948053ed9c))
+
 ## [5.2.12](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.11...v5.2.12) (2024-01-02)
 
 ### Fixes & improvements
