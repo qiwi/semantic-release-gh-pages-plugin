@@ -113,8 +113,5 @@ jobs:
       - name: Fetch deps
         run: yarn --mutex network --frozen-lockfile --network-concurrency 25 --silent --disable-self-update-check --ignore-engines
 
-      - name: Build
-        run: yarn build
-
       - name: Run tests
         run: yarn test
