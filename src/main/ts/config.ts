@@ -134,7 +134,7 @@ export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, pa
     msg = DEFAULT_MSG,
     src = DEFAULT_SRC,
     dst = DEFAULT_DST,
-    pattern = DEFAULT_PATTERN,
+    pattern: _pattern = DEFAULT_PATTERN,
     add,
     dotfiles
   } = opts
@@ -144,6 +144,7 @@ export const resolveConfig = async (pluginConfig: TAnyMap, context: TContext, pa
   const docsBranch = branches?.find(([from]: string[]) => from === ciBranch)?.[1] || branch
   const pullTagsBranch = anyDefined(opts.pullTagsBranch, ciBranch, opts._branch, DEFAULT_PULL_TAGS_BRANCH)
   const token = getToken(context.env, repo)
+  const pattern = _pattern.includes(':') ? _pattern.split(':') : _pattern
 
   debug('resolveConfig args:')
   debug('pluginConfig= %j', pluginConfig)
