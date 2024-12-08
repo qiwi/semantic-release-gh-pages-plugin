@@ -1,6 +1,6 @@
 /** @module semantic-release-gh-pages-plugin */
 
-import execa from 'execa'
+import { $ } from 'zurk'
 import { clean, publish as ghpagePublish, PublishOptions } from 'gh-pages'
 import { queuefy } from 'queuefy'
 
@@ -21,19 +21,13 @@ export const pullTags = (opts: IPushOpts): Promise<any> => {
 
   const repo = '' + opts.repo
   const pullTagsBranch = '' + opts.pullTagsBranch
-  const execaOpts = {
-    env: opts.env,
-    cwd: opts.cwd
-  }
 
-  return execa('git', [
-    'pull',
-    '--tags',
-    '--force',
-    repo,
-    pullTagsBranch
-  ], execaOpts)
-    .catch(console.log)
+  return $({
+    env: opts.env,
+    cwd: opts.cwd,
+    shell: false
+  })`git pull --tags --force ${repo} ${pullTagsBranch}`
+    .catch(console.error)
 }
 
 /**
