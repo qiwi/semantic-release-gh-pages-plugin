@@ -1,3 +1,11 @@
+## [5.4.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.3.0...v5.4.0) (2024-12-08)
+
+### Fixes & improvements
+* perf: replace execa with zurk ([55f2054](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/55f2054f190331852e22709435c16dd2549c385b))
+
+### Features
+* feat: support multiple patterns ([7d0849d](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/7d0849d721da651bf4de0c69a04b9de5f039fc73))
+
 ## [5.3.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.14...v5.3.0) (2024-12-08)
 
 ### Features
