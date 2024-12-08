@@ -3,12 +3,13 @@ import { ICallable } from '@qiwi/substrate-types'
 import { IPushOpts, TAnyMap } from '../../main/ts/interface'
 
 describe('ghpages', () => {
-  const fakeExeca = jest.fn(() => Promise.resolve())
+  const _$ = jest.fn(() => Promise.resolve())
+  const __$ = jest.fn(() => _$)
   let pullTags: any
 
   beforeAll(() => {
     jest.resetModules()
-    jest.mock('execa', () => fakeExeca)
+    jest.mock('zurk', () => ({$: __$}))
     jest.mock('gh-pages', () => ({
       clean: () => { /* noop */ },
       publish: jest.fn((_src: string, _opts: TAnyMap, cb: ICallable) => cb())
@@ -17,11 +18,11 @@ describe('ghpages', () => {
     pullTags = require('../../main/ts/ghpages').pullTags
   })
 
-  afterEach(fakeExeca.mockClear)
+  afterEach(_$.mockClear)
 
   afterAll(() => {
     jest.unmock('gh-pages')
-    jest.unmock('execa')
+    jest.unmock('zurk')
     jest.resetModules()
   })
 
@@ -45,31 +46,22 @@ describe('ghpages', () => {
         pullTagsBranch: ''
       }
       expect(await pullTags(opts)).toBeUndefined()
-      expect(fakeExeca).not.toHaveBeenCalled()
+      expect(_$).not.toHaveBeenCalled()
     })
 
-    it('invokes execa with proper args', async () => {
+    it('invokes zurk with proper args', async () => {
       const opts: IPushOpts = {
         ...pushOptsStub,
         pullTagsBranch: 'foo'
       }
-      const execaOpts = {
-        cwd: opts.cwd,
-        env: opts.env
-      }
 
       await pullTags(opts)
-      expect(fakeExeca).toHaveBeenCalledWith(
-        'git',
-        [
-          'pull',
-          '--tags',
-          '--force',
-          opts.repo,
-          opts.pullTagsBranch
-        ],
-        execaOpts
-      )
+      expect(_$).toHaveBeenCalledWith(["git pull --tags --force ", " ", ""], "repo", "foo")
+      expect(__$).toHaveBeenCalledWith({
+        cwd: opts.cwd,
+        env: opts.env,
+        shell: false
+      })
     })
   })
 })

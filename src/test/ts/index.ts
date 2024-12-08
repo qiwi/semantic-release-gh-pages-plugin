@@ -146,7 +146,9 @@ describe('index', () => {
   })
 
   describe('publish', () => {
-    const fakeExeca = jest.fn(() => Promise.resolve())
+    const _$ = jest.fn(() => Promise.resolve())
+    const __$ = jest.fn(() => _$)
+    const fakeZurk = {$: __$}
 
     beforeAll(() => {
       jest.resetModules()
@@ -165,14 +167,17 @@ describe('index', () => {
           }
         })
       }))
-      jest.mock('execa', () => fakeExeca)
+      jest.mock('zurk', () => fakeZurk)
     })
 
-    afterEach(fakeExeca.mockClear)
+    afterEach(() => {
+      __$.mockClear()
+      _$.mockClear()
+    })
 
     afterAll(() => {
       jest.unmock('gh-pages')
-      jest.unmock('execa')
+      jest.unmock('zurk')
       jest.resetModules()
     })
 
@@ -208,27 +213,18 @@ describe('index', () => {
         dest: 'root',
         src: DEFAULT_PATTERN,
       }
-      const execaOpts = {
-        cwd,
-        env: {
-          GITHUB_TOKEN: 'token'
-        }
-      }
 
       const res = await publish(pluginConfig, context)
       const resolvedConfig = await resolveConfig(pluginConfig, context)
 
-      expect(fakeExeca).toHaveBeenCalledWith(
-        'git',
-        [
-          'pull',
-          '--tags',
-          '--force',
-          expectedOpts.repo,
-          resolvedConfig.pullTagsBranch
-        ],
-        execaOpts
-      )
+      expect(_$).toHaveBeenCalledWith(["git pull --tags --force ", " ", ""], expectedOpts.repo, resolvedConfig.pullTagsBranch)
+      expect(__$).toHaveBeenCalledWith({
+        cwd,
+        env: {
+          GITHUB_TOKEN: 'token'
+        },
+        shell: false
+      })
 
       expect(log).toHaveBeenCalledWith('Publishing docs via gh-pages')
       expect(log).toHaveBeenCalledWith(`Docs published successfully, branch=doc-branch, src=docs, pattern=${DEFAULT_PATTERN}, dst=root`)
