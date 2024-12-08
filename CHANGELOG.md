@@ -1,3 +1,8 @@
+## [5.3.0](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.14...v5.3.0) (2024-12-08)
+
+### Features
+* feat: add pattern option ([42954db](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/42954db45c79f4c04975fd009a1996e820dabb59))
+
 ## [5.2.13](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.2.12...v5.2.13) (2024-12-07)
 
 ### Fixes & improvements
