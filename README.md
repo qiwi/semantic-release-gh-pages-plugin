@@ -7,12 +7,13 @@
 
 gh-pages publishing plugin for [semantic-release](https://github.com/semantic-release/semantic-release)
 
-| Step               | Description |
-|--------------------|-------------|
+| Step               | Description                                                                                    |
+|--------------------|------------------------------------------------------------------------------------------------|
 | `verifyConditions` | Verify the presence of the `GH_TOKEN` set via [environment variables](#environment-variables). |
-| `publish`          | Pushes commit to the [documentation branch](#options) |
+| `publish`          | Pushes commit to the [documentation branch](#options)                                          |
 
 ## Install
+
 ```bash
 # yarn
 yarn add @qiwi/semantic-release-gh-pages-plugin --dev
@@ -21,7 +22,10 @@ npm i @qiwi/semantic-release-gh-pages-plugin -D
 ```
 
 ## Usage
-Describe plugin configuration in [package.json / .releaserc.js](https://github.com/semantic-release/semantic-release/blob/master/docs/01-usage/plugins.md#plugins-configuration-options)
+
+Describe plugin configuration
+in [package.json / .releaserc.js](https://github.com/semantic-release/semantic-release/blob/master/docs/01-usage/plugins.md#plugins-configuration-options)
+
 ```json
 {
   "release": {
@@ -46,7 +50,9 @@ Describe plugin configuration in [package.json / .releaserc.js](https://github.c
   }
 }
 ```
+
 or even shorter if default settings are used:
+
 ```json
 {
   "release": {
@@ -64,6 +70,7 @@ or even shorter if default settings are used:
 ```
 
 ## Configuration
+
 ### Environment variables
 
 | Variable                     | Description                                               |
@@ -84,7 +91,8 @@ or even shorter if default settings are used:
 | `pullTagsBranch` | Target branch for tags fetching hook. If '' empty string, skips this action                                                                                 | `globalConfig.branch` \|\| `master`                                                                                                        |
 | `dotfiles`       | gh-pages [dotfiles](https://github.com/tschaub/gh-pages#optionsdotfiles) option                                                                             | `false`                                                                                                                                    |
 | `add`            | gh-pages [add](https://github.com/tschaub/gh-pages#optionsadd) option                                                                                       | `false`                                                                                                                                    |
-| `pattern`        | gh-pages [src](https://github.com/tschaub/gh-pages#optionssrc) option                                                                                       | `**/*`                                                                                                                                     |
+| `pattern`        | gh-pages [src](https://github.com/tschaub/gh-pages#optionssrc) option. Use `:` to separate several values `**/*.md:**/*.png`                                | `**/*`                                                                                                                                     |
 
 ## License
+
 [MIT](./LICENSE)

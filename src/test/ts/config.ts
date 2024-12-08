@@ -147,6 +147,37 @@ describe('config', () => {
       })
     })
 
+    it('supports multiple pattern definition', async () => {
+      const step = 'publish'
+      const token = 'token'
+      const pluginConfig = {
+        pattern: '**/*.md:**/*.html'
+      }
+      const context = {
+        logger,
+        branch,
+        options: globalConfig,
+        cwd,
+        env: { GITHUB_TOKEN: token }
+      }
+      const config = await resolveConfig(pluginConfig, context, undefined, step)
+
+      expect(config).toEqual({
+        add: undefined,
+        ciBranch: 'master',
+        docsBranch: DEFAULT_BRANCH,
+        dotfiles: undefined,
+        dst: DEFAULT_DST,
+        enterprise: DEFAULT_ENTERPRISE,
+        msg: DEFAULT_MSG,
+        src: DEFAULT_SRC,
+        token,
+        repo: repositoryUrl,
+        pullTagsBranch: DEFAULT_PULL_TAGS_BRANCH,
+        pattern: ['**/*.md', '**/*.html'],
+      })
+    })
+
     it('overrides `docBranch` with `branches` value if defined', async () => {
       const step = 'publish'
       const path = PLUGIN_PATH
