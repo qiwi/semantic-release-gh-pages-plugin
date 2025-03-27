@@ -1,3 +1,8 @@
+## [5.4.3](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.4.2...v5.4.3) (2025-03-27)
+
+### Fixes & improvements
+* fix(deps): update dependency zurk to ^0.11.0 (#288) ([e211f65](https://github.com/qiwi/semantic-release-gh-pages-plugin/commit/e211f6534843e12f632062c16f868b7519eb245f))
+
 ## [5.4.2](https://github.com/qiwi/semantic-release-gh-pages-plugin/compare/v5.4.1...v5.4.2) (2024-12-25)
 
 ### Fixes & improvements
