@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@types/debug": "^4.1.12",
-    "@types/git-url-parse": "^9.0.3",
+    "@types/git-url-parse": "^16.0.0",
     "@types/semantic-release": "^20.0.6",
     "@types/gh-pages": "^6.1.0",
     "@types/lodash": "^4.17.13",
